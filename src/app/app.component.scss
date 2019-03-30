@@ -1,0 +1,11 @@
+.card{
+	border: none;
+	box-shadow:none;
+	cursor: grabbing;
+}
+
+.custom-drag-over-card{
+	cursor: grabbing;
+	border: 1px solid #d7d7d7;
+	box-shadow: 0 0.125rem 0 0 #d7d7d7;
+}

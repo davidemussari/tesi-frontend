@@ -48,147 +48,88 @@
 
 <!-- Barra laterale di navigazione -->
   <clr-vertical-nav [clrVerticalNavCollapsible]="true">
+	<a clrVerticalNavLink
+               routerLink="./tutorial"
+               routerLinkActive="active">
+              <clr-icon clrVerticalNavIcon shape="happy-face" class="is-solid"></clr-icon>
+              Tutorial
+		</a>
     <clr-vertical-nav-group routerLinkActive="active">
         <clr-icon clrVerticalNavIcon shape="bicycle" class="is-solid"></clr-icon>
             Allenamento
-        <clr-vertical-nav-group-children>
-            <a clrVerticalNavLink
+        <clr-vertical-nav-group-children >
+            <!--<a clrVerticalNavLink
                routerLink="./allenamento/addizione"
-               routerLinkActive="active">
+               routerLinkActive="active">-->
               <clr-icon shape="plus-circle" class="is-solid"></clr-icon>
-              Addizione
-            </a>
-            <a clrVerticalNavLink
+              Addizione <br>
+           <!-- </a>-->
+           <!-- <a clrVerticalNavLink
                routerLink="./allenamento/sottrazione"
-               routerLinkActive="active">
+               routerLinkActive="active">-->
               <clr-icon shape="minus-circle" class="is-solid"></clr-icon>
               Sottrazione
-            </a>
+            <!--</a>-->
         </clr-vertical-nav-group-children>
     </clr-vertical-nav-group>
     <clr-vertical-nav-group routerLinkActive="active">
          <clr-icon clrVerticalNavIcon shape="assign-user" class="is-solid"></clr-icon>
             Verifica
         <clr-vertical-nav-group-children>
-            <a clrVerticalNavLink
+           <!-- <a clrVerticalNavLink
                routerLink="./verifica/addizione"
-               routerLinkActive="active" disabled>
+               routerLinkActive="active" disabled>-->
                 <clr-icon shape="plus-circle" class="is-solid"></clr-icon>
-              Addizione
-            </a>
-            <a clrVerticalNavLink
+              Addizione<br>
+            <!--</a>-->
+            <!--<a clrVerticalNavLink
                routerLink="./verifica/sottrazione"
-               routerLinkActive="active" disabled>
+               routerLinkActive="active" disabled>-->
                  <clr-icon shape="minus-circle" class="is-solid"></clr-icon>
               Sottrazione
-            </a>
+           <!-- </a>-->
     </clr-vertical-nav-group-children>
   </clr-vertical-nav-group>
 
 </clr-vertical-nav>
 
 
-<clr-wizard #wizardxl [(clrWizardOpen)]="xlOpen" [clrWizardClosable]="false">
-    <clr-wizard-title>Funzionalità</clr-wizard-title>
-
-    <clr-wizard-button [type]="'previous'">Indietro</clr-wizard-button>
-    <clr-wizard-button [type]="'next'">Avanti</clr-wizard-button>
-
-    <clr-wizard-page>
-        <ng-template clrPageTitle>Osservazioni</ng-template>
-        <p>Vi prego di non badare troppo alla forma grafica: ci penseremo a tempo debito (ossia, so che non è granché).</p>
-        <p>Staremo su questa parte di pagina (detta "modale") per poter lavorare su wizard affinché possiate percorrere in modo guidato le funzionalità. È soltanto
-        per questo motivo che lo schermo non è completamente occupato.</p>
-        <p>Per ora è statica, poi penseremo a come formare gli esercizi.</p>
-        <p></p>
-    </clr-wizard-page>
-    <clr-wizard-page>
-        <ng-template clrPageTitle>Il testo dell'esercizio</ng-template>
-          <p></p>
-          <div class="clr-row" >
-            <div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
-              <div>
-                <div class="card">
-                  <div class="card-block"><p class="card-text">12</p></div>
-                </div>
-                </div>
-              </div>
 
 
-            <div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
-              <div id="B2">
-                <div class="card">
-                  <div class="card-block"><p class="card-text">+</p></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
-              <div>
-                <div class="card">
-                  <div class="card-block"><p class="card-text">17</p></div>
-                </div>
-              </div>
-            </div>
-          </div>
-    </clr-wizard-page>
-
-    <clr-wizard-page>
-        <ng-template clrPageTitle>La scomposizione</ng-template>
-          <p>Cliccare o toccare la prima box (che contiene il numero 12)</p>
-          <div class="clr-row riga1" >
-            <div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
-              <div>
-                <div class="card clickable" (click)="scomponi=true">
-                  <div class="card-block"><p class="card-text">12</p></div>
-                </div>
-                </div>
-              </div>
 
 
-            <div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
-              <div id="B2">
-                <div class="card">
-                  <div class="card-block"><p class="card-text">+</p></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
-              <div>
-                <div class="card">
-                  <div class="card-block"><p class="card-text">17</p></div>
-                </div>
-              </div>
-            </div>
-          </div>
 
 
-          <clr-modal [(clrModalOpen)]="scomponi">
-              <h3 class="modal-title">Proprietà dissociativa</h3>
-              <div class="modal-body">
-                  <p>Qui si potrà poi scrivere a mano</p>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-outline" (click)="scomponi = false">Annulla</button>
-                  <button type="button" class="btn btn-primary" (click)="scomponi = false">Ok</button>
-              </div>
-          </clr-modal>
-    </clr-wizard-page>
+
+
+
+<!--
+
+<clr-wizard #wizardxl [(clrWizardOpen)]="xlOpen" [clrWizardClosable]="true">
+    
+
+
+   
+
+   
 
     <clr-wizard-page>
         <ng-template clrPageTitle>La somma</ng-template>
-        <p>Qui immaginiamo che la scomposizione sia stata 12 = 10 + 2</p>
+        <p>Sia la scomposizione: 12 = 10 + 2</p>
+        <button class="btn btn-sm btn-danger" (click)="value_1='';value_2='';value_3='';">Reset</button>
           <div class="clr-row riga1" >
+          
+
+          
             <div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
-              <div class="card" id="riga1_1"
-                clrDraggable (clrDragLeave)="null" [clrDraggable]="{'id':'riga1_1','valore':10}"
-                clrDroppable (clrDrop)="drop($event,'riga1_1')">
+              <div class="card"	[dndDraggable]="{'id':'riga1_1','valore':10}"
+					[dndEffectAllowed]="'all'"
+					[dndDisableIf]="false"
+					dndDropzone
+					(dndDragover)="onDragover($event)"
+					(dndDrop)="drop($event,'riga1_1')"
+					dndDragoverClass="custom-drag-over-card">
                 <div class="card-block"><p class="card-text">10{{value_1}}</p></div>
-                <clr-draggable-ghost *clrIfDragged>
-                    <clr-icon shape="image" size="36" class="is-solid"
-                              style="transform: translate3d(-50%, -50%, 0);"></clr-icon>
-                </clr-draggable-ghost>
               </div>
             </div>
             <div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
@@ -200,9 +141,13 @@
               </div>
             </div>
             <div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
-              <div class="card"
-                clrDraggable (clrDragLeave)="null" [clrDraggable]="{'id':'riga1_2','valore':2}"
-                clrDroppable (clrDrop)="drop($event,'riga1_2')">
+              <div class="card"	[dndDraggable]="{'id':'riga1_2','valore':2}"
+					[dndEffectAllowed]="'all'"
+					[dndDisableIf]="false"
+					dndDropzone
+					(dndDragover)="onDragover($event)"
+					(dndDrop)="drop($event,'riga1_2')"
+					dndDragoverClass="custom-drag-over-card">
                 <div class="card-block"><p class="card-text">2{{value_2}}</p></div>
               </div>
             </div>
@@ -216,16 +161,25 @@
             </div>
 
              <div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
-              <div class="card" id="riga1_3"
-                clrDraggable (clrDragLeave)="null" [clrDraggable]="{'id':'riga1_3','valore':17}"
-                clrDroppable (clrDrop)="drop($event,'riga1_3')">
+              <div class="card"	[dndDraggable]="{'id':'riga1_3','valore':17}"
+					[dndEffectAllowed]="'all'"
+					[dndDisableIf]="false"
+					dndDropzone
+					(dndDragover)="onDragover($event)"
+					(dndDrop)="drop($event,'riga1_3')"
+					dndDragoverClass="custom-drag-over-card">
                 <div class="card-block"><p class="card-text">17 {{value_3}}</p></div>
               </div>
             </div>
+       
+             
+             
           </div>
-          <button class="btn btn-danger" (click)="value_1='';value_2='';value_3='';">Reset</button>
+          
+         
     </clr-wizard-page>
 </clr-wizard>
+-->
 
 <!--
     <nav class="sidenav">
@@ -272,7 +226,6 @@
         </nav>
 
         -->
-  </div>
-</div>
+
 
 

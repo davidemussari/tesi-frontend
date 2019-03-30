@@ -1,0 +1,86 @@
+<div class="progress success">
+	<progress max="4" [value]="step-1"></progress>
+</div>
+
+<button class="btn btn-primary" (click)="indietro()">Indietro</button>
+<button class="btn btn-success" (click)="avanti()">Avanti</button>
+
+<div *ngIf="step==1">
+	<h1>Osservazioni</h1>
+
+	<p>Vi prego di non badare troppo alla forma grafica: ci penseremo a tempo debito (ossia, so che non è granché).
+	
+	Per ora è statica, poi penseremo a come formare gli esercizi.
+	</p>
+</div>
+
+
+<div *ngIf="step==2">
+	<h1>Esempio</h1>
+
+	<div class="clr-row" >
+		<div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
+		<div>
+			<div class="card">
+			<div class="card-block"><p class="card-text">12</p></div>
+			</div>
+			</div>
+		</div>
+
+
+		<div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
+		<div id="B2">
+			<div class="card">
+			<div class="card-block"><p class="card-text">+</p></div>
+			</div>
+		</div>
+		</div>
+
+		<div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
+		<div>
+			<div class="card">
+			<div class="card-block"><p class="card-text">17</p></div>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+
+
+<div *ngIf="step==3">
+	<h1>La scomposizione</h1>
+
+	<p>Cliccare o toccare su di uno dei numeri</p>
+	
+	
+	
+	<div *ngFor="let riga of passaggi; index as i; last as ultimo" class="clr-row" >
+		<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1" *ngFor="let carattere of riga; index as j;">
+				<div class="card" [ngClass]="{clickable: ultimo && cliccabile(carattere)}" (click)="modaleScomposizione=ultimo&&cliccabile(carattere);
+					numeroScomposto = carattere; indiceNumeroScomposto = j">
+					<div class="card-block"><p class="card-text">{{carattere}}</p></div>
+				</div>
+		</div>
+	</div>
+	
+	
+	<clr-modal [(clrModalOpen)]="modaleScomposizione">
+		<h3 class="modal-title">Proprietà dissociativa</h3>
+		<app-input-scomposiziont></app-input-scomposizion>
+		<div class="modal-body">
+			<p>Qui si potrà poi scrivere a mano, ma per ora utiliziamo la tastiera</p>
+			<form clrForm>
+				<clr-input-container [ngClass]="{'clr-error': !decomposizioneCorretta }">
+					<label>{{numeroScomposto}} = </label>
+					<input clrInput  [(ngModel)]="decomposizione" required (keyup.enter)="controlloDecomposizione()" name="inputScomposizione"/>
+					<clr-control-helper>Sono ammessi soltanto numeri, spazi ed i segni di addizione e sottrazione. Inoltre la decomposizione deve continuare a valere {{numeroScomposto}}</clr-control-helper>
+					<clr-control-error>Sono ammessi soltanto numeri, spazi ed i segni di addizione e sottrazione. Inoltre la decomposizione deve continuare a valere {{numeroScomposto}}</clr-control-error>
+				</clr-input-container>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-outline" (click)="modaleScomposizione = false">Annulla</button>
+			<button type="button" class="btn btn-primary" (click)="controlloDecomposizione()">Ok</button>
+		</div>
+	</clr-modal>
+</div>
