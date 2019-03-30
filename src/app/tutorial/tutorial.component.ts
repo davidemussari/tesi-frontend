@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { InputScomposizioneComponent } from './input-scomposizione/input-scomposizione.component';
 
 @Component({
 selector: 'app-tutorial',
