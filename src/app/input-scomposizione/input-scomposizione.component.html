@@ -1,3 +1,8 @@
-<p>
-  input-scomposizione works!
-</p>
+<form clrForm>
+	<clr-input-container [ngClass]="{'clr-error': !decomposizioneCorretta }">
+		<label>{{numeroScomposto}} = </label>
+		<input clrInput  [(ngModel)]="decomposizione" required (keyup.enter)="controlloDecomposizione()" name="inputScomposizione"/>
+		<clr-control-helper>Sono ammessi soltanto numeri, spazi ed i segni di addizione e sottrazione. Inoltre la decomposizione deve continuare a valere {{numeroScomposto}}</clr-control-helper>
+		<clr-control-error>Sono ammessi soltanto numeri, spazi ed i segni di addizione e sottrazione. Inoltre la decomposizione deve continuare a valere {{numeroScomposto}}</clr-control-error>
+	</clr-input-container>
+</form>
