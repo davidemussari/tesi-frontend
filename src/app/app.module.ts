@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClarityModule } from '@clr/angular';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddizioneComponent } from './addizione/addizione.component';
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     ClarityModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
-	FormsModule
+	FormsModule,
+	NoopAnimationsModule
   ],
   providers: [ImpostazioniGlobaliService],
   bootstrap: [AppComponent]
