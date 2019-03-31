@@ -17,6 +17,9 @@
 
 <div *ngIf="step==2">
 	<h1>Esempio</h1>
+	<p>Questo è l'esempio da cui si parte.</p>
+	<p>Notare che nell'angolo in alto a destra, nelle impostazioni, è possibile decidere se visualizzare tutti i passaggi o soltanto l'ultimo. Potrebbe
+	essere utile, per esempio, in base alle dimensioni del dispositivo o in base a qualche altra condizione che magari ci verrà in mente.</p>
 
 	<div class="clr-row" >
 		<div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
@@ -51,10 +54,10 @@
 	<h1>La scomposizione</h1>
 
 	<p>Cliccare o toccare su di uno dei numeri</p>
-	
 	<div *ngFor="let riga of passaggi; index as i; last as ultimo" class="clr-row" >
-		<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1" *ngFor="let carattere of riga; index as j;">
-				<div class="card" [ngClass]="{clickable: ultimo && cliccabile(carattere)}" (click)="modaleScomposizione=ultimo&&cliccabile(carattere);
+		<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1"
+			*ngFor="let carattere of riga; index as j;">
+				<div *ngIf="visualizzaPassaggi? true : ultimo" class="card" [ngClass]="{clickable: ultimo && cliccabile(carattere)}" (click)="modaleScomposizione=ultimo&&cliccabile(carattere);
 					numeroScomposto = carattere; indiceNumeroScomposto = j">
 					<div class="card-block"><p class="card-text">{{carattere}}</p></div>
 				</div>

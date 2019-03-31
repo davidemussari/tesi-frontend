@@ -7,13 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClarityModule } from '@clr/angular';
 
-import { DndModule } from 'ngx-drag-drop';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddizioneComponent } from './addizione/addizione.component';
 import { SottrazioneComponent } from './sottrazione/sottrazione.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
 import { InputScomposizioneComponent } from './input-scomposizione/input-scomposizione.component';
+
+import { ImpostazioniGlobaliService } from './impostazioni-globali.service';
 
 const appRoutes: Routes = [
 	{ path: 'tutorial', component: TutorialComponent },
@@ -35,10 +35,9 @@ const appRoutes: Routes = [
     ClarityModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
-	DndModule,
 	FormsModule
   ],
-  providers: [],
+  providers: [ImpostazioniGlobaliService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

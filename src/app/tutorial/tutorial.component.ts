@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { InputScomposizioneComponent } from '../input-scomposizione/input-scomposizione.component';
+import { ImpostazioniGlobaliService } from '../impostazioni-globali.service';
 
 @Component({
 selector: 'app-tutorial',
@@ -13,37 +14,39 @@ export class TutorialComponent implements OnInit {
 	public numeroScomposto: number = 0;
 	public indiceNumeroScomposto: number = 0;
 	public passaggi: Array<any> = [['12','+','17']];
+	
+	public visualizzaPassaggi: boolean = true;
 	@ViewChild(InputScomposizioneComponent) scomposizioneChild:InputScomposizioneComponent;
 	
-ngAfterViewInit() {
-	this.scomposizioneChild.controlloDecomposizione();
-}
-	
-constructor() {}
+	ngAfterViewInit() {
+		this.scomposizioneChild.controlloDecomposizione();
+	}
+		
+	constructor(private _impostazioniGlobali:ImpostazioniGlobaliService) {}
 
-ngOnInit() {
-}
+	ngOnInit() {
+		
+// 		Questa e' l'iscrizione all'evento scatenato dal servizio
+		this._impostazioniGlobali.visualizzaPassaggiChange.subscribe(() => {
+			this.visualizzaPassaggi = this._impostazioniGlobali.visualizzaPassaggi;
+		})    
+	}
 
-controlloDecomposizione(){
-	this.scomposizioneChild.controlloDecomposizione();
-}
+	controlloDecomposizione(){
+		this.scomposizioneChild.controlloDecomposizione();
+	}
 
+	avanti(ev)  :  void {
+		if(this.step < 10)
+			this.step += 1;
+	}
 
-avanti(ev)  :  void {
-	if(this.step < 10)
-		this.step += 1;
-}
+	indietro(ev)  :  void {
+		if(this.step > 1)
+			this.step += -1;
+	}
 
-indietro(ev)  :  void {
-	if(this.step > 1)
-		this.step += -1;
-}
-
-
-
-cliccabile(str: string): boolean{
-	return !isNaN(parseInt(str));
-}
-
-
+	cliccabile(str: string): boolean{
+		return !isNaN(parseInt(str));
+	}
 }
