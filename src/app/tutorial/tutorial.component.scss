@@ -2,3 +2,26 @@
 	padding-top: 6%;
 	padding-right: 10px;
 }
+
+.cdk-drag{
+	//transform: none !important;
+}
+
+.cdk-drag-dragging{
+	z-index: 1;
+	-webkit-box-shadow: -10px 10px 15px 2px #808080;
+	-moz-box-shadow: -10px 10px 15px 2px #808080;
+	box-shadow: -10px 10px 15px 2px #808080;
+}
+
+.cdk-drop-list-dragging .cdk-drag {
+	transition: none !important;
+	transform: none !important;
+}
+
+.cdk-drag-placeholder{
+  background: #ccc;
+  border: dotted 3px #999;
+  min-height: 60px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

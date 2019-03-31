@@ -49,4 +49,15 @@ export class TutorialComponent implements OnInit {
 	cliccabile(str: string): boolean{
 		return !isNaN(parseInt(str));
 	}
+	
+	drop(event: any): void{
+		var valoreSovrapposto = this.passaggi[this.passaggi.length-1][event.currentIndex];
+		var valoreSpostato = this.passaggi[this.passaggi.length-1][event.previousIndex];
+		if (event.isPointerOverContainer){
+			var ultimoPassaggio = this.passaggi[this.passaggi.length-1];
+			ultimoPassaggio[event.currentIndex] = valoreSovrapposto + ' + ' + valoreSpostato
+			ultimoPassaggio.splice(event.previousIndex, 1);
+			this.passaggi.push(ultimoPassaggio);
+		}
+	}
 }

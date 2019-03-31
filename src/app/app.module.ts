@@ -6,7 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClarityModule } from '@clr/angular';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddizioneComponent } from './addizione/addizione.component';
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
 	FormsModule,
-	NoopAnimationsModule
+	NoopAnimationsModule,
+	DragDropModule
   ],
   providers: [ImpostazioniGlobaliService],
   bootstrap: [AppComponent]
