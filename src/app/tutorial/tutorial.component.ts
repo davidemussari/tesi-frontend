@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { InputScomposizioneComponent } from '../input-scomposizione/input-scomposizione.component';
+import { InputSommaAlgebricaComponent } from '../input-somma-algebrica/input-somma-algebrica.component';
 import { ImpostazioniGlobaliService } from '../impostazioni-globali.service';
 
 @Component({
@@ -11,15 +12,21 @@ export class TutorialComponent implements OnInit {
 
 	public step: number = 1;
 	public modaleScomposizione: boolean = false;
+	public modaleAssociativa: boolean = false;
 	public numeroScomposto: number = 0;
 	public indiceNumeroScomposto: number = 0;
+	public valoreSovrapposto: number = 0;
+	public valoreSpostato: number = 0;
 	public passaggi: Array<any> = [['12','+','17']];
-	
 	public visualizzaPassaggi: boolean = true;
+	public eventoDrop: any;
+	
 	@ViewChild(InputScomposizioneComponent) scomposizioneChild:InputScomposizioneComponent;
+	@ViewChild(InputSommaAlgebricaComponent) associativaChild:InputSommaAlgebricaComponent;
 	
 	ngAfterViewInit() {
 		this.scomposizioneChild.controlloDecomposizione();
+		this.associativaChild.controlloAssociativa();
 	}
 		
 	constructor(private _impostazioniGlobali:ImpostazioniGlobaliService) {}
@@ -34,6 +41,10 @@ export class TutorialComponent implements OnInit {
 
 	controlloDecomposizione(){
 		this.scomposizioneChild.controlloDecomposizione();
+	}
+	
+	controlloAssociativa(){
+		this.associativaChild.controlloAssociativa();
 	}
 
 	avanti(ev)  :  void {
@@ -51,13 +62,11 @@ export class TutorialComponent implements OnInit {
 	}
 	
 	drop(event: any): void{
-		var valoreSovrapposto = this.passaggi[this.passaggi.length-1][event.currentIndex];
-		var valoreSpostato = this.passaggi[this.passaggi.length-1][event.previousIndex];
 		if (event.isPointerOverContainer){
-			var ultimoPassaggio = this.passaggi[this.passaggi.length-1];
-			ultimoPassaggio[event.currentIndex] = valoreSovrapposto + ' + ' + valoreSpostato
-			ultimoPassaggio.splice(event.previousIndex, 1);
-			this.passaggi.push(ultimoPassaggio);
+			this.eventoDrop = event;
+			this.valoreSovrapposto = this.passaggi[this.passaggi.length-1][event.currentIndex];
+			this.valoreSpostato = this.passaggi[this.passaggi.length-1][event.previousIndex];
+			this.modaleAssociativa = true;
 		}
 	}
 }

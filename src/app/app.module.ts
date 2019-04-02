@@ -16,6 +16,7 @@ import { TutorialComponent } from './tutorial/tutorial.component';
 import { InputScomposizioneComponent } from './input-scomposizione/input-scomposizione.component';
 
 import { ImpostazioniGlobaliService } from './impostazioni-globali.service';
+import { InputSommaAlgebricaComponent } from './input-somma-algebrica/input-somma-algebrica.component';
 
 const appRoutes: Routes = [
 	{ path: 'tutorial', component: TutorialComponent },
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     AddizioneComponent,
     SottrazioneComponent,
     TutorialComponent,
-    InputScomposizioneComponent
+    InputScomposizioneComponent,
+    InputSommaAlgebricaComponent
   ],
   imports: [
     BrowserModule,
