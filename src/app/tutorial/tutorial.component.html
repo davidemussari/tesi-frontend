@@ -53,7 +53,7 @@
 <div *ngIf="step==3">
 	<h1>Le proprietà dissociativa e associativa</h1>
 
-	<p>Cliccare o toccare su di uno dei numeri</p>
+	<p>Cliccara o toccare su di uno dei numeri oppure trascinare su un altro numero dalla mano</p>
 	<div *ngFor="let riga of passaggi; index as i; last as ultimo">
 		<div class="clr-row" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
 			<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1"
@@ -68,6 +68,9 @@
 						numeroScomposto = carattere; indiceNumeroScomposto = j"><p class="card-text">{{carattere}}</p></div>
 					</div>
 					<div class="card customPlaceholder" *cdkDragPlaceholder></div>
+			</div>
+			<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1">
+				<div class="card" *ngIf="!isArray(riga)"><p class="card-text">{{riga}}</p></div>
 			</div>
 		</div>
 		

@@ -61,8 +61,12 @@ export class TutorialComponent implements OnInit {
 		return !isNaN(parseInt(str));
 	}
 	
+	isArray(elemento: any){
+		return Array.isArray(elemento);
+	}
+	
 	drop(event: any): void{
-		if (event.isPointerOverContainer){
+		if (event.isPointerOverContainer && this.cliccabile(this.passaggi[this.passaggi.length-1][event.currentIndex]) && this.cliccabile(this.passaggi[this.passaggi.length-1][event.previousIndex]) && event.currentIndex != event.previousIndex){
 			this.eventoDrop = event;
 			this.valoreSovrapposto = this.passaggi[this.passaggi.length-1][event.currentIndex];
 			this.valoreSpostato = this.passaggi[this.passaggi.length-1][event.previousIndex];
