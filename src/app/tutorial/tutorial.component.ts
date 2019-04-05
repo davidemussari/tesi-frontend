@@ -48,7 +48,7 @@ export class TutorialComponent implements OnInit {
 	}
 
 	avanti(ev)  :  void {
-		if(this.step < 10)
+		if(this.step < 4)
 			this.step += 1;
 	}
 
