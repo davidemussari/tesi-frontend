@@ -79,7 +79,7 @@
 					<div class="card customPlaceholder" *cdkDragPlaceholder></div>
 			</div>
 			
-			<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1" *ngIf="isArray(riga) && numeroRiga!=0 && ultimo">
+			<div class="clr-col-3 clr-col-sm-2 clr-col-md-1 clr-col-lg-2 clr-col-xl-1" *ngIf="isArray(riga) && numeroRiga!=0 && ultimo">
 					<button type="button" class="btn btn-icon bottoneEliminaPassaggio" (click)="eliminaPassaggio()">
 						<clr-icon shape="trash" class="is-solid"></clr-icon>
 					</button>
@@ -90,7 +90,7 @@
 			
 			
 
-			<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1">
+			<div class="clr-col-3 clr-col-sm-2 clr-col-md-1 clr-col-lg-2 clr-col-xl-1">
 				<div class="card card-block risultatoCorretto" *ngIf="!isArray(riga)"><p class="card-text">{{riga}}</p>
 				</div>
 			</div>
