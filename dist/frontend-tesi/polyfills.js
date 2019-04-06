@@ -1,235 +1,5 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["polyfills"],{
 
-/***/ "./node_modules/mobile-drag-drop/index.min.js":
-/*!****************************************************!*\
-  !*** ./node_modules/mobile-drag-drop/index.min.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*! mobile-drag-drop 2.3.0-rc.0 | Copyright (c) 2018 Tim Ruffles | MIT License */
-!function(t,i){ true?i(exports):undefined}(this,function(t){"use strict";var i="dnd-poly-",s=i+"snapback",n=["none","copy","copyLink","copyMove","link","linkMove","move","all"],h=["none","copy","move","link"];var e=function(){var t=!1;try{var i=Object.defineProperty({},"passive",{get:function(){t=!0}});window.addEventListener("test",null,i)}catch(t){}return t}();function r(t){return t&&t.tagName}function o(t,i,s){void 0===s&&(s=!0),document.addEventListener(t,i,!!e&&{passive:s})}function u(t,i){document.removeEventListener(t,i)}function a(t,i,s,n){void 0===n&&(n=!1);var h=e?{passive:!0,capture:n}:n;return t.addEventListener(i,s,h),{off:function(){t.removeEventListener(i,s,h)}}}function c(t){return 0===t.length?0:t.reduce(function(t,i){return i+t},0)/t.length}function f(t,i){for(var s=0;s<t.changedTouches.length;s++){if(t.changedTouches[s].identifier===i)return!0}return!1}function d(t,i,s){for(var n=[],h=[],e=0;e<i.touches.length;e++){var r=i.touches[e];n.push(r[t+"X"]),h.push(r[t+"Y"])}s.x=c(n),s.y=c(h)}var l=["","-webkit-"];function v(t,i,s,n,h){void 0===h&&(h=!0);var e=i.x,r=i.y;n&&(e+=n.x,r+=n.y),h&&(e-=parseInt(t.offsetWidth,10)/2,r-=parseInt(t.offsetHeight,10)/2);for(var o="translate3d("+e+"px,"+r+"px, 0)",u=0;u<l.length;u++){var a=l[u]+"transform";t.style[a]=o+" "+s[u]}}var p=function(){function t(t,i){this.t=t,this.i=i,this.s=h[0]}return Object.defineProperty(t.prototype,"dropEffect",{get:function(){return this.s},set:function(t){0!==this.t.mode&&n.indexOf(t)>-1&&(this.s=t)},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"types",{get:function(){if(0!==this.t.mode)return Object.freeze(this.t.types)},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"effectAllowed",{get:function(){return this.t.effectAllowed},set:function(t){2===this.t.mode&&n.indexOf(t)>-1&&(this.t.effectAllowed=t)},enumerable:!0,configurable:!0}),t.prototype.setData=function(t,i){if(2===this.t.mode){if(t.indexOf(" ")>-1)throw new Error("illegal arg: type contains space");this.t.data[t]=i,-1===this.t.types.indexOf(t)&&this.t.types.push(t)}},t.prototype.getData=function(t){if(1===this.t.mode||2===this.t.mode)return this.t.data[t]||""},t.prototype.clearData=function(t){if(2===this.t.mode){if(t&&this.t.data[t]){delete this.t.data[t];var i=this.t.types.indexOf(t);return void(i>-1&&this.t.types.splice(i,1))}this.t.data={},this.t.types=[]}},t.prototype.setDragImage=function(t,i,s){2===this.t.mode&&this.i(t,i,s)},t}();function g(t,i){return t?t===n[0]?h[0]:0===t.indexOf(n[1])||t===n[7]?h[1]:0===t.indexOf(n[4])?h[3]:t===n[6]?h[2]:h[1]:3===i.nodeType&&"A"===i.tagName?h[3]:h[1]}function m(t,i,s,n,h,e,r){void 0===e&&(e=!0),void 0===r&&(r=null);var o=function(t,i,s,n,h,e,r){void 0===r&&(r=null);var o=i.changedTouches[0],u=new Event(s,{bubbles:!0,cancelable:n});u.dataTransfer=e,u.relatedTarget=r,u.screenX=o.screenX,u.screenY=o.screenY,u.clientX=o.clientX,u.clientY=o.clientY,u.pageX=o.pageX,u.pageY=o.pageY;var a=t.getBoundingClientRect();return u.offsetX=u.clientX-a.left,u.offsetY=u.clientY-a.top,u}(i,s,t,e,document.defaultView,h,r),u=!i.dispatchEvent(o);return n.mode=0,u}function y(t,i){if(!t||t===n[7])return i;if(i===h[1]){if(0===t.indexOf(h[1]))return h[1]}else if(i===h[3]){if(0===t.indexOf(h[3])||t.indexOf("Link")>-1)return h[3]}else if(i===h[2]&&(0===t.indexOf(h[2])||t.indexOf("Move")>-1))return h[2];return h[0]}var b,w=function(){function t(t,i,s,n){this.h=t,this.o=i,this.u=s,this.l=n,this.v=0,this.p=null,this.g=null,this.m=t,this.I=t.changedTouches[0],this.j=this.S.bind(this),this.k=this.A.bind(this),o("touchmove",this.j,!1),o("touchend",this.k,!1),o("touchcancel",this.k,!1)}return t.prototype.O=function(){var t=this;this.v=1,this.C=h[0],this.D={data:{},effectAllowed:void 0,mode:3,types:[]},this.M={x:null,y:null},this.F={x:null,y:null};var i=this.u;if(this.N=new p(this.D,function(s,n,h){i=s,"number"!=typeof n&&"number"!=typeof h||(t.P={x:n||0,y:h||0})}),this.D.mode=2,this.N.dropEffect=h[0],m("dragstart",this.u,this.m,this.D,this.N))return this.v=3,this.T(),!1;d("page",this.m,this.F);var s,n=this.o.dragImageSetup(i);if(this.L=(s=n,l.map(function(t){var i=s.style[t+"transform"];return i&&"none"!==i?i.replace(/translate\(\D*\d+[^,]*,\D*\d+[^,]*\)\s*/g,""):""})),n.style.position="absolute",n.style.left="0px",n.style.top="0px",n.style.zIndex="999999",n.classList.add("dnd-poly-drag-image"),n.classList.add("dnd-poly-icon"),this._=n,!this.P)if(this.o.dragImageOffset)this.P={x:this.o.dragImageOffset.x,y:this.o.dragImageOffset.y};else if(this.o.dragImageCenterOnTouch){var e=getComputedStyle(i);this.P={x:0-parseInt(e.marginLeft,10),y:0-parseInt(e.marginTop,10)}}else{var r=i.getBoundingClientRect();e=getComputedStyle(i);this.P={x:r.left-this.I.clientX-parseInt(e.marginLeft,10)+r.width/2,y:r.top-this.I.clientY-parseInt(e.marginTop,10)+r.height/2}}return v(this._,this.F,this.L,this.P,this.o.dragImageCenterOnTouch),document.body.appendChild(this._),this.V=window.setInterval(function(){t.X||(t.X=!0,t.Y(),t.X=!1)},this.o.iterationInterval),!0},t.prototype.T=function(){this.V&&(clearInterval(this.V),this.V=null),u("touchmove",this.j),u("touchend",this.k),u("touchcancel",this.k),this._&&(this._.parentNode.removeChild(this._),this._=null),this.l(this.o,this.m,this.v)},t.prototype.S=function(t){var i=this;if(!1!==f(t,this.I.identifier)){if(this.m=t,0===this.v){var s=void 0;if(this.o.dragStartConditionOverride)try{s=this.o.dragStartConditionOverride(t)}catch(t){s=!1}else s=1===t.touches.length;return s?void(!0===this.O()&&(this.h.preventDefault(),t.preventDefault())):void this.T()}if(t.preventDefault(),d("client",t,this.M),d("page",t,this.F),this.o.dragImageTranslateOverride)try{var n=!1;if(this.o.dragImageTranslateOverride(t,{x:this.M.x,y:this.M.y},this.p,function(t,s){i._&&(n=!0,i.M.x+=t,i.M.y+=s,i.F.x+=t,i.F.y+=s,v(i._,i.F,i.L,i.P,i.o.dragImageCenterOnTouch))}),n)return}catch(t){}v(this._,this.F,this.L,this.P,this.o.dragImageCenterOnTouch)}},t.prototype.A=function(t){if(!1!==f(t,this.I.identifier)){if(this.o.dragImageTranslateOverride)try{this.o.dragImageTranslateOverride(void 0,void 0,void 0,function(){})}catch(t){}0!==this.v?(t.preventDefault(),this.v="touchcancel"===t.type?3:2):this.T()}},t.prototype.Y=function(){var t=this,n=this.C;this.D.mode=3,this.N.dropEffect=h[0];var e=m("drag",this.u,this.m,this.D,this.N);if(e&&(this.C=h[0]),e||2===this.v||3===this.v)return this.q(this.v)?void function(t,i,n,h){var e=getComputedStyle(t);if("hidden"!==e.visibility&&"none"!==e.display){i.classList.add(s);var r=getComputedStyle(i),o=parseFloat(r.transitionDuration);if(isNaN(o)||0===o)h();else{var u=t.getBoundingClientRect(),a={x:u.left,y:u.top};a.x+=document.body.scrollLeft||document.documentElement.scrollLeft,a.y+=document.body.scrollTop||document.documentElement.scrollTop,a.x-=parseInt(e.marginLeft,10),a.y-=parseInt(e.marginTop,10);var c=parseFloat(r.transitionDelay),f=Math.round(1e3*(o+c));v(i,a,n,void 0,!1),setTimeout(h,f)}}else h()}(this.u,this._,this.L,function(){t.B()}):void this.B();var o=this.o.elementFromPoint(this.M.x,this.M.y),u=this.g;o!==this.p&&o!==this.g&&(this.p=o,null!==this.g&&(this.D.mode=3,this.N.dropEffect=h[0],m("dragexit",this.g,this.m,this.D,this.N,!1)),null===this.p?this.g=this.p:(this.D.mode=3,this.N.dropEffect=g(this.D.effectAllowed,this.u),m("dragenter",this.p,this.m,this.D,this.N)?(this.g=this.p,this.C=y(this.N.effectAllowed,this.N.dropEffect)):this.p!==document.body&&(this.g=document.body))),u!==this.g&&r(u)&&(this.D.mode=3,this.N.dropEffect=h[0],m("dragleave",u,this.m,this.D,this.N,!1,this.g)),r(this.g)&&(this.D.mode=3,this.N.dropEffect=g(this.D.effectAllowed,this.u),!1===m("dragover",this.g,this.m,this.D,this.N)?this.C=h[0]:this.C=y(this.N.effectAllowed,this.N.dropEffect)),n!==this.C&&this._.classList.remove(i+n);var a=i+this.C;this._.classList.add(a)},t.prototype.q=function(t){var i=this.C===h[0]||null===this.g||3===t;return i?r(this.g)&&(this.D.mode=3,this.N.dropEffect=h[0],m("dragleave",this.g,this.m,this.D,this.N,!1)):r(this.g)&&(this.D.mode=1,this.N.dropEffect=this.C,!0===m("drop",this.g,this.m,this.D,this.N)?this.C=this.N.dropEffect:this.C=h[0]),i},t.prototype.B=function(){this.D.mode=3,this.N.dropEffect=this.C,m("dragend",this.u,this.m,this.D,this.N,!1),this.v=2,this.T()},t}(),x={iterationInterval:150,tryFindDraggableTarget:function(t){var i=t.target;do{if(!1!==i.draggable&&i.getAttribute&&"true"===i.getAttribute("draggable"))return i}while((i=i.parentNode)&&i!==document.body)},dragImageSetup:function(t){var i=t.cloneNode(!0);return function t(i,s){if(1===i.nodeType){for(var n=getComputedStyle(i),h=0;h<n.length;h++){var e=n[h];s.style.setProperty(e,n.getPropertyValue(e),n.getPropertyPriority(e))}if(s.style.pointerEvents="none",s.removeAttribute("id"),s.removeAttribute("class"),s.removeAttribute("draggable"),"CANVAS"===s.nodeName){var r=i,o=s,u=r.getContext("2d").getImageData(0,0,r.width,r.height);o.getContext("2d").putImageData(u,0,0)}}if(i.hasChildNodes())for(h=0;h<i.childNodes.length;h++)t(i.childNodes[h],s.childNodes[h])}(t,i),i},elementFromPoint:function(t,i){return document.elementFromPoint(t,i)}};function I(t){if(!b){var i=x.tryFindDraggableTarget(t);if(i)try{b=new w(t,x,i,S)}catch(i){throw S(x,t,3),i}}}function j(t){var i=t.target,s=function(t){h.off(),e.off(),r.off(),clearTimeout(n)},n=window.setTimeout(function(){h.off(),e.off(),r.off(),I(t)},x.holdToDrag),h=a(i,"touchend",s),e=a(i,"touchcancel",s),r=a(window,"scroll",s,!0)}function S(t,i,s){if(0===s&&t.defaultActionOverride)try{t.defaultActionOverride(i),i.defaultPrevented}catch(t){}b=null}t.polyfill=function(t){if(t&&Object.keys(t).forEach(function(i){x[i]=t[i]}),!x.forceApply){var i=(s={dragEvents:"ondragstart"in document.documentElement,draggable:"draggable"in document.documentElement,userAgentSupportingNativeDnD:void 0},n=!!window.chrome||/chrome/i.test(navigator.userAgent),s.userAgentSupportingNativeDnD=!(/iPad|iPhone|iPod|Android/.test(navigator.userAgent)||n&&"ontouchstart"in document.documentElement),s);if(i.userAgentSupportingNativeDnD&&i.draggable&&i.dragEvents)return!1}var s,n;return x.holdToDrag?o("touchstart",j,!1):o("touchstart",I,!1),!0},Object.defineProperty(t,"__esModule",{value:!0})});
-//# sourceMappingURL=index.min.js.map
-
-/***/ }),
-
-/***/ "./node_modules/mobile-drag-drop/scroll-behaviour.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/mobile-drag-drop/scroll-behaviour.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-(function (global, factory) {
-	 true ? factory(exports) :
-	undefined;
-}(this, (function (exports) { 'use strict';
-
-function isTopLevelEl(el) {
-    return (el === document.body || el === document.documentElement);
-}
-function getElementViewportOffset(el, axis) {
-    var offset;
-    if (isTopLevelEl(el)) {
-        offset = (axis === 0) ? el.clientLeft : el.clientTop;
-    }
-    else {
-        var bounds = el.getBoundingClientRect();
-        offset = (axis === 0) ? bounds.left : bounds.top;
-    }
-    return offset;
-}
-function getElementViewportSize(el, axis) {
-    var size;
-    if (isTopLevelEl(el)) {
-        size = (axis === 0) ? window.innerWidth : window.innerHeight;
-    }
-    else {
-        size = (axis === 0) ? el.clientWidth : el.clientHeight;
-    }
-    return size;
-}
-function getSetElementScroll(el, axis, scroll) {
-    var prop = (axis === 0) ? "scrollLeft" : "scrollTop";
-    var isTopLevel = isTopLevelEl(el);
-    if (arguments.length === 2) {
-        if (isTopLevel) {
-            return document.body[prop] || document.documentElement[prop];
-        }
-        return el[prop];
-    }
-    if (isTopLevel) {
-        document.documentElement[prop] += scroll;
-        document.body[prop] += scroll;
-    }
-    else {
-        el[prop] += scroll;
-    }
-}
-function isScrollable(el) {
-    var cs = getComputedStyle(el);
-    if (el.scrollHeight > el.clientHeight && (cs.overflowY === "scroll" || cs.overflowY === "auto")) {
-        return true;
-    }
-    if (el.scrollWidth > el.clientWidth && (cs.overflowX === "scroll" || cs.overflowX === "auto")) {
-        return true;
-    }
-    return false;
-}
-function findScrollableParent(el) {
-    do {
-        if (!el) {
-            return undefined;
-        }
-        if (isScrollable(el)) {
-            return el;
-        }
-        if (el === document.documentElement) {
-            return null;
-        }
-    } while (el = el.parentNode);
-    return null;
-}
-function determineScrollIntention(currentCoordinate, size, threshold) {
-    if (currentCoordinate < threshold) {
-        return -1;
-    }
-    else if (size - currentCoordinate < threshold) {
-        return 1;
-    }
-    return 0;
-}
-function determineDynamicVelocity(scrollIntention, currentCoordinate, size, threshold) {
-    if (scrollIntention === -1) {
-        return Math.abs(currentCoordinate - threshold);
-    }
-    else if (scrollIntention === 1) {
-        return Math.abs(size - currentCoordinate - threshold);
-    }
-    return 0;
-}
-function isScrollEndReached(axis, scrollIntention, scrollBounds) {
-    var currentScrollOffset = (axis === 0) ? (scrollBounds.scrollX) : (scrollBounds.scrollY);
-    if (scrollIntention === 1) {
-        var maxScrollOffset = (axis === 0) ? (scrollBounds.scrollWidth - scrollBounds.width) : (scrollBounds.scrollHeight -
-            scrollBounds.height);
-        return currentScrollOffset >= maxScrollOffset;
-    }
-    else if (scrollIntention === -1) {
-        return (currentScrollOffset <= 0);
-    }
-    return true;
-}
-var _options = {
-    threshold: 75,
-    velocityFn: function (velocity, threshold) {
-        var multiplier = velocity / threshold;
-        var easeInCubic = multiplier * multiplier * multiplier;
-        return easeInCubic * threshold;
-    }
-};
-var _scrollIntentions = {
-    horizontal: 0,
-    vertical: 0
-};
-var _dynamicVelocity = {
-    x: 0,
-    y: 0
-};
-var _scrollAnimationFrameId;
-var _currentCoordinates;
-var _hoveredElement;
-var _scrollableParent;
-var _translateDragImageFn;
-function handleDragImageTranslateOverride(event, currentCoordinates, hoveredElement, translateDragImageFn) {
-    _currentCoordinates = currentCoordinates;
-    _translateDragImageFn = translateDragImageFn;
-    if (_hoveredElement !== hoveredElement) {
-        _hoveredElement = hoveredElement;
-        _scrollableParent = findScrollableParent(_hoveredElement);
-    }
-    var performScrollAnimation = updateScrollIntentions(_currentCoordinates, _scrollableParent, _options.threshold, _scrollIntentions, _dynamicVelocity);
-    if (performScrollAnimation) {
-        scheduleScrollAnimation();
-    }
-    else if (!!_scrollAnimationFrameId) {
-        window.cancelAnimationFrame(_scrollAnimationFrameId);
-        _scrollAnimationFrameId = null;
-    }
-}
-function scheduleScrollAnimation() {
-    if (!!_scrollAnimationFrameId) {
-        return;
-    }
-    _scrollAnimationFrameId = window.requestAnimationFrame(scrollAnimation);
-}
-function scrollAnimation() {
-    var scrollDiffX = 0, scrollDiffY = 0, isTopLevel = isTopLevelEl(_scrollableParent);
-    if (_scrollIntentions.horizontal !== 0) {
-        scrollDiffX = Math.round(_options.velocityFn(_dynamicVelocity.x, _options.threshold) * _scrollIntentions.horizontal);
-        getSetElementScroll(_scrollableParent, 0, scrollDiffX);
-    }
-    if (_scrollIntentions.vertical !== 0) {
-        scrollDiffY = Math.round(_options.velocityFn(_dynamicVelocity.y, _options.threshold) * _scrollIntentions.vertical);
-        getSetElementScroll(_scrollableParent, 1, scrollDiffY);
-    }
-    if (isTopLevel) {
-        _translateDragImageFn(scrollDiffX, scrollDiffY);
-    }
-    else {
-        _translateDragImageFn(0, 0);
-    }
-    _scrollAnimationFrameId = null;
-    if (updateScrollIntentions(_currentCoordinates, _scrollableParent, _options.threshold, _scrollIntentions, _dynamicVelocity)) {
-        scheduleScrollAnimation();
-    }
-}
-function updateScrollIntentions(currentCoordinates, scrollableParent, threshold, scrollIntentions, dynamicVelocity) {
-    if (!currentCoordinates || !scrollableParent) {
-        return false;
-    }
-    var scrollableParentBounds = {
-        x: getElementViewportOffset(scrollableParent, 0),
-        y: getElementViewportOffset(scrollableParent, 1),
-        width: getElementViewportSize(scrollableParent, 0),
-        height: getElementViewportSize(scrollableParent, 1),
-        scrollX: getSetElementScroll(scrollableParent, 0),
-        scrollY: getSetElementScroll(scrollableParent, 1),
-        scrollWidth: scrollableParent.scrollWidth,
-        scrollHeight: scrollableParent.scrollHeight
-    };
-    var currentCoordinatesOffset = {
-        x: currentCoordinates.x - scrollableParentBounds.x,
-        y: currentCoordinates.y - scrollableParentBounds.y
-    };
-    scrollIntentions.horizontal = determineScrollIntention(currentCoordinatesOffset.x, scrollableParentBounds.width, threshold);
-    scrollIntentions.vertical = determineScrollIntention(currentCoordinatesOffset.y, scrollableParentBounds.height, threshold);
-    if (scrollIntentions.horizontal && isScrollEndReached(0, scrollIntentions.horizontal, scrollableParentBounds)) {
-        scrollIntentions.horizontal = 0;
-    }
-    else if (scrollIntentions.horizontal) {
-        dynamicVelocity.x = determineDynamicVelocity(scrollIntentions.horizontal, currentCoordinatesOffset.x, scrollableParentBounds.width, threshold);
-    }
-    if (scrollIntentions.vertical && isScrollEndReached(1, scrollIntentions.vertical, scrollableParentBounds)) {
-        scrollIntentions.vertical = 0;
-    }
-    else if (scrollIntentions.vertical) {
-        dynamicVelocity.y = determineDynamicVelocity(scrollIntentions.vertical, currentCoordinatesOffset.y, scrollableParentBounds.height, threshold);
-    }
-    return !!(scrollIntentions.horizontal || scrollIntentions.vertical);
-}
-var scrollBehaviourDragImageTranslateOverride = handleDragImageTranslateOverride;
-
-exports.scrollBehaviourDragImageTranslateOverride = scrollBehaviourDragImageTranslateOverride;
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
-//# sourceMappingURL=scroll-behaviour.js.map
-
-
-/***/ }),
-
 /***/ "./node_modules/zone.js/dist/zone.js":
 /*!*******************************************!*\
   !*** ./node_modules/zone.js/dist/zone.js ***!
@@ -257,7 +27,6 @@ Object.defineProperty(exports, '__esModule', { value: true });
  * found in the LICENSE file at https://angular.io/license
  */
 var Zone$1 = (function (global) {
-    var FUNCTION = 'function';
     var performance = global['performance'];
     function mark(name) {
         performance && performance['mark'] && performance['mark'](name);
@@ -266,12 +35,26 @@ var Zone$1 = (function (global) {
         performance && performance['measure'] && performance['measure'](name, label);
     }
     mark('Zone');
+    var checkDuplicate = global[('__zone_symbol__forceDuplicateZoneCheck')] === true;
     if (global['Zone']) {
-        throw new Error('Zone already loaded.');
+        // if global['Zone'] already exists (maybe zone.js was already loaded or
+        // some other lib also registered a global object named Zone), we may need
+        // to throw an error, but sometimes user may not want this error.
+        // For example,
+        // we have two web pages, page1 includes zone.js, page2 doesn't.
+        // and the 1st time user load page1 and page2, everything work fine,
+        // but when user load page2 again, error occurs because global['Zone'] already exists.
+        // so we add a flag to let user choose whether to throw this error or not.
+        // By default, if existing Zone is from zone.js, we will not throw the error.
+        if (checkDuplicate || typeof global['Zone'].__symbol__ !== 'function') {
+            throw new Error('Zone already loaded.');
+        }
+        else {
+            return global['Zone'];
+        }
     }
     var Zone = /** @class */ (function () {
         function Zone(parent, zoneSpec) {
-            this._properties = null;
             this._parent = parent;
             this._name = zoneSpec ? zoneSpec.name || 'unnamed' : '<root>';
             this._properties = zoneSpec && zoneSpec.properties || {};
@@ -314,7 +97,9 @@ var Zone$1 = (function (global) {
         });
         Zone.__load_patch = function (name, fn) {
             if (patches.hasOwnProperty(name)) {
-                throw Error('Already loaded patch: ' + name);
+                if (checkDuplicate) {
+                    throw Error('Already loaded patch: ' + name);
+                }
             }
             else if (!global['__Zone_disable_' + name]) {
                 var perfName = 'Zone:' + name;
@@ -358,7 +143,7 @@ var Zone$1 = (function (global) {
             return this._zoneDelegate.fork(this, zoneSpec);
         };
         Zone.prototype.wrap = function (callback, source) {
-            if (typeof callback !== FUNCTION) {
+            if (typeof callback !== 'function') {
                 throw new Error('Expecting function got: ' + callback);
             }
             var _callback = this._zoneDelegate.intercept(this, callback, source);
@@ -368,9 +153,6 @@ var Zone$1 = (function (global) {
             };
         };
         Zone.prototype.run = function (callback, applyThis, applyArgs, source) {
-            if (applyThis === void 0) { applyThis = undefined; }
-            if (applyArgs === void 0) { applyArgs = null; }
-            if (source === void 0) { source = null; }
             _currentZoneFrame = { parent: _currentZoneFrame, zone: this };
             try {
                 return this._zoneDelegate.invoke(this, callback, applyThis, applyArgs, source);
@@ -381,8 +163,6 @@ var Zone$1 = (function (global) {
         };
         Zone.prototype.runGuarded = function (callback, applyThis, applyArgs, source) {
             if (applyThis === void 0) { applyThis = null; }
-            if (applyArgs === void 0) { applyArgs = null; }
-            if (source === void 0) { source = null; }
             _currentZoneFrame = { parent: _currentZoneFrame, zone: this };
             try {
                 try {
@@ -406,10 +186,7 @@ var Zone$1 = (function (global) {
             // https://github.com/angular/zone.js/issues/778, sometimes eventTask
             // will run in notScheduled(canceled) state, we should not try to
             // run such kind of task but just return
-            // we have to define an variable here, if not
-            // typescript compiler will complain below
-            var isNotScheduled = task.state === notScheduled;
-            if (isNotScheduled && task.type === eventTask) {
+            if (task.state === notScheduled && (task.type === eventTask || task.type === macroTask)) {
                 return;
             }
             var reEntryGuard = task.state != running;
@@ -420,7 +197,7 @@ var Zone$1 = (function (global) {
             _currentZoneFrame = { parent: _currentZoneFrame, zone: this };
             try {
                 if (task.type == macroTask && task.data && !task.data.isPeriodic) {
-                    task.cancelFn = null;
+                    task.cancelFn = undefined;
                 }
                 try {
                     return this._zoneDelegate.invokeTask(this, task, applyThis, applyArgs);
@@ -456,8 +233,7 @@ var Zone$1 = (function (global) {
                 var newZone = this;
                 while (newZone) {
                     if (newZone === task.zone) {
-                        throw Error("can not reschedule task to " + this
-                            .name + " which is descendants of the original zone " + task.zone.name);
+                        throw Error("can not reschedule task to " + this.name + " which is descendants of the original zone " + task.zone.name);
                     }
                     newZone = newZone.parent;
                 }
@@ -487,7 +263,7 @@ var Zone$1 = (function (global) {
             return task;
         };
         Zone.prototype.scheduleMicroTask = function (source, callback, data, customSchedule) {
-            return this.scheduleTask(new ZoneTask(microTask, source, callback, data, customSchedule, null));
+            return this.scheduleTask(new ZoneTask(microTask, source, callback, data, customSchedule, undefined));
         };
         Zone.prototype.scheduleMacroTask = function (source, callback, data, customSchedule, customCancel) {
             return this.scheduleTask(new ZoneTask(macroTask, source, callback, data, customSchedule, customCancel));
@@ -528,16 +304,14 @@ var Zone$1 = (function (global) {
     }());
     var DELEGATE_ZS = {
         name: '',
-        onHasTask: function (delegate, _, target, hasTaskState) {
-            return delegate.hasTask(target, hasTaskState);
-        },
+        onHasTask: function (delegate, _, target, hasTaskState) { return delegate.hasTask(target, hasTaskState); },
         onScheduleTask: function (delegate, _, target, task) {
             return delegate.scheduleTask(target, task);
         },
-        onInvokeTask: function (delegate, _, target, task, applyThis, applyArgs) { return delegate.invokeTask(target, task, applyThis, applyArgs); },
-        onCancelTask: function (delegate, _, target, task) {
-            return delegate.cancelTask(target, task);
-        }
+        onInvokeTask: function (delegate, _, target, task, applyThis, applyArgs) {
+            return delegate.invokeTask(target, task, applyThis, applyArgs);
+        },
+        onCancelTask: function (delegate, _, target, task) { return delegate.cancelTask(target, task); }
     };
     var ZoneDelegate = /** @class */ (function () {
         function ZoneDelegate(zone, parentDelegate, zoneSpec) {
@@ -565,8 +339,8 @@ var Zone$1 = (function (global) {
                 zoneSpec && (zoneSpec.onHandleError ? this.zone : parentDelegate.zone);
             this._scheduleTaskZS =
                 zoneSpec && (zoneSpec.onScheduleTask ? zoneSpec : parentDelegate._scheduleTaskZS);
-            this._scheduleTaskDlgt =
-                zoneSpec && (zoneSpec.onScheduleTask ? parentDelegate : parentDelegate._scheduleTaskDlgt);
+            this._scheduleTaskDlgt = zoneSpec &&
+                (zoneSpec.onScheduleTask ? parentDelegate : parentDelegate._scheduleTaskDlgt);
             this._scheduleTaskCurrZone =
                 zoneSpec && (zoneSpec.onScheduleTask ? this.zone : parentDelegate.zone);
             this._invokeTaskZS =
@@ -621,8 +395,7 @@ var Zone$1 = (function (global) {
                 callback;
         };
         ZoneDelegate.prototype.invoke = function (targetZone, callback, applyThis, applyArgs, source) {
-            return this._invokeZS ?
-                this._invokeZS.onInvoke(this._invokeDlgt, this._invokeCurrZone, targetZone, callback, applyThis, applyArgs, source) :
+            return this._invokeZS ? this._invokeZS.onInvoke(this._invokeDlgt, this._invokeCurrZone, targetZone, callback, applyThis, applyArgs, source) :
                 callback.apply(applyThis, applyArgs);
         };
         ZoneDelegate.prototype.handleError = function (targetZone, error) {
@@ -654,8 +427,7 @@ var Zone$1 = (function (global) {
             return returnTask;
         };
         ZoneDelegate.prototype.invokeTask = function (targetZone, task, applyThis, applyArgs) {
-            return this._invokeTaskZS ?
-                this._invokeTaskZS.onInvokeTask(this._invokeTaskDlgt, this._invokeTaskCurrZone, targetZone, task, applyThis, applyArgs) :
+            return this._invokeTaskZS ? this._invokeTaskZS.onInvokeTask(this._invokeTaskDlgt, this._invokeTaskCurrZone, targetZone, task, applyThis, applyArgs) :
                 task.callback.apply(applyThis, applyArgs);
         };
         ZoneDelegate.prototype.cancelTask = function (targetZone, task) {
@@ -675,7 +447,7 @@ var Zone$1 = (function (global) {
             // hasTask should not throw error so other ZoneDelegate
             // can still trigger hasTask callback
             try {
-                return this._hasTaskZS &&
+                this._hasTaskZS &&
                     this._hasTaskZS.onHasTask(this._hasTaskDlgt, this._hasTaskCurrZone, targetZone, isEmpty);
             }
             catch (err) {
@@ -765,14 +537,12 @@ var Zone$1 = (function (global) {
                 }
             }
             else {
-                throw new Error(this.type + " '" + this.source + "': can not transition to '" + toState + "', expecting state '" + fromState1 + "'" + (fromState2 ?
-                    ' or \'' + fromState2 + '\'' :
-                    '') + ", was '" + this._state + "'.");
+                throw new Error(this.type + " '" + this.source + "': can not transition to '" + toState + "', expecting state '" + fromState1 + "'" + (fromState2 ? ' or \'' + fromState2 + '\'' : '') + ", was '" + this._state + "'.");
             }
         };
         ZoneTask.prototype.toString = function () {
             if (this.data && typeof this.data.handleId !== 'undefined') {
-                return this.data.handleId;
+                return this.data.handleId.toString();
             }
             else {
                 return Object.prototype.toString.call(this);
@@ -813,7 +583,13 @@ var Zone$1 = (function (global) {
                 }
             }
             if (nativeMicroTaskQueuePromise) {
-                nativeMicroTaskQueuePromise[symbolThen](drainMicroTaskQueue);
+                var nativeThen = nativeMicroTaskQueuePromise[symbolThen];
+                if (!nativeThen) {
+                    // native Promise is not patchable, we need to use `then` directly
+                    // issue 1078
+                    nativeThen = nativeMicroTaskQueuePromise['then'];
+                }
+                nativeThen.call(nativeMicroTaskQueuePromise, drainMicroTaskQueue);
             }
             else {
                 global[symbolSetTimeout](drainMicroTaskQueue, 0);
@@ -860,12 +636,13 @@ var Zone$1 = (function (global) {
         patchEventTarget: function () { return []; },
         patchOnProperties: noop,
         patchMethod: function () { return noop; },
-        bindArguments: function () { return null; },
+        bindArguments: function () { return []; },
+        patchThen: function () { return noop; },
         setNativePromise: function (NativePromise) {
             // sometimes NativePromise.resolve static function
             // is not ready yet, (such as core-js/es6.promise)
             // so we need to check here.
-            if (NativePromise && typeof NativePromise.resolve === FUNCTION) {
+            if (NativePromise && typeof NativePromise.resolve === 'function') {
                 nativeMicroTaskQueuePromise = NativePromise.resolve(0);
             }
         },
@@ -881,6 +658,16 @@ var Zone$1 = (function (global) {
     return global['Zone'] = Zone;
 })(typeof window !== 'undefined' && window || typeof self !== 'undefined' && self || global);
 
+var __values = (undefined && undefined.__values) || function (o) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
+    if (m) return m.call(o);
+    return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+};
 Zone.__load_patch('ZoneAwarePromise', function (global, Zone, api) {
     var ObjectGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
     var ObjectDefineProperty = Object.defineProperty;
@@ -1023,7 +810,7 @@ Zone.__load_patch('ZoneAwarePromise', function (global, Zone, api) {
                 var queue = promise[symbolValue];
                 promise[symbolValue] = value;
                 if (promise[symbolFinally] === symbolFinally) {
-                    // the promise is generated by Promise.prototype.finally          
+                    // the promise is generated by Promise.prototype.finally
                     if (state === RESOLVED) {
                         // the state is resolved, should ignore the value
                         // and use parent promise value
@@ -1107,7 +894,9 @@ Zone.__load_patch('ZoneAwarePromise', function (global, Zone, api) {
                     chainPromise[symbolParentPromiseState] = promiseState;
                 }
                 // should not pass value to finally callback
-                var value = zone.run(delegate, undefined, isFinallyPromise && delegate !== forwardRejection && delegate !== forwardResolution ? [] : [parentPromiseValue]);
+                var value = zone.run(delegate, undefined, isFinallyPromise && delegate !== forwardRejection && delegate !== forwardResolution ?
+                    [] :
+                    [parentPromiseValue]);
                 resolvePromise(chainPromise, true, value);
             }
             catch (error) {
@@ -1142,6 +931,7 @@ Zone.__load_patch('ZoneAwarePromise', function (global, Zone, api) {
             return resolvePromise(new this(null), REJECTED, error);
         };
         ZoneAwarePromise.race = function (values) {
+            var e_1, _a;
             var resolve;
             var reject;
             var promise = new this(function (res, rej) {
@@ -1154,40 +944,70 @@ Zone.__load_patch('ZoneAwarePromise', function (global, Zone, api) {
             function onReject(error) {
                 promise && (promise =  false || reject(error));
             }
-            for (var _i = 0, values_1 = values; _i < values_1.length; _i++) {
-                var value = values_1[_i];
-                if (!isThenable(value)) {
-                    value = this.resolve(value);
+            try {
+                for (var values_1 = __values(values), values_1_1 = values_1.next(); !values_1_1.done; values_1_1 = values_1.next()) {
+                    var value = values_1_1.value;
+                    if (!isThenable(value)) {
+                        value = this.resolve(value);
+                    }
+                    value.then(onResolve, onReject);
                 }
-                value.then(onResolve, onReject);
+            }
+            catch (e_1_1) { e_1 = { error: e_1_1 }; }
+            finally {
+                try {
+                    if (values_1_1 && !values_1_1.done && (_a = values_1.return)) _a.call(values_1);
+                }
+                finally { if (e_1) throw e_1.error; }
             }
             return promise;
         };
         ZoneAwarePromise.all = function (values) {
+            var e_2, _a;
             var resolve;
             var reject;
             var promise = new this(function (res, rej) {
                 resolve = res;
                 reject = rej;
             });
-            var count = 0;
+            // Start at 2 to prevent prematurely resolving if .then is called immediately.
+            var unresolvedCount = 2;
+            var valueIndex = 0;
             var resolvedValues = [];
-            for (var _i = 0, values_2 = values; _i < values_2.length; _i++) {
-                var value = values_2[_i];
+            var _loop_2 = function (value) {
                 if (!isThenable(value)) {
-                    value = this.resolve(value);
+                    value = this_1.resolve(value);
                 }
-                value.then((function (index) { return function (value) {
-                    resolvedValues[index] = value;
-                    count--;
-                    if (!count) {
+                var curValueIndex = valueIndex;
+                value.then(function (value) {
+                    resolvedValues[curValueIndex] = value;
+                    unresolvedCount--;
+                    if (unresolvedCount === 0) {
                         resolve(resolvedValues);
                     }
-                }; })(count), reject);
-                count++;
+                }, reject);
+                unresolvedCount++;
+                valueIndex++;
+            };
+            var this_1 = this;
+            try {
+                for (var values_2 = __values(values), values_2_1 = values_2.next(); !values_2_1.done; values_2_1 = values_2.next()) {
+                    var value = values_2_1.value;
+                    _loop_2(value);
+                }
             }
-            if (!count)
+            catch (e_2_1) { e_2 = { error: e_2_1 }; }
+            finally {
+                try {
+                    if (values_2_1 && !values_2_1.done && (_a = values_2.return)) _a.call(values_2);
+                }
+                finally { if (e_2) throw e_2.error; }
+            }
+            // Make the unresolvedCount zero-based again.
+            unresolvedCount -= 2;
+            if (unresolvedCount === 0) {
                 resolve(resolvedValues);
+            }
             return promise;
         };
         ZoneAwarePromise.prototype.then = function (onFulfilled, onRejected) {
@@ -1283,29 +1103,110 @@ Zone.__load_patch('ZoneAwarePromise', function (global, Zone, api) {
         };
         Ctor[symbolThenPatched] = true;
     }
-    function zoneify(fn) {
-        return function () {
-            var resultPromise = fn.apply(this, arguments);
-            if (resultPromise instanceof ZoneAwarePromise) {
-                return resultPromise;
-            }
-            var ctor = resultPromise.constructor;
-            if (!ctor[symbolThenPatched]) {
-                patchThen(ctor);
-            }
-            return resultPromise;
-        };
-    }
+    api.patchThen = patchThen;
     if (NativePromise) {
         patchThen(NativePromise);
-        var fetch_1 = global['fetch'];
-        if (typeof fetch_1 == 'function') {
-            global['fetch'] = zoneify(fetch_1);
-        }
     }
     // This is not part of public API, but it is useful for tests, so we expose it.
     Promise[Zone.__symbol__('uncaughtPromiseErrors')] = _uncaughtPromiseErrors;
     return ZoneAwarePromise;
+});
+
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+Zone.__load_patch('fetch', function (global, Zone, api) {
+    var fetch = global['fetch'];
+    var ZoneAwarePromise = global.Promise;
+    var symbolThenPatched = api.symbol('thenPatched');
+    var fetchTaskScheduling = api.symbol('fetchTaskScheduling');
+    var fetchTaskAborting = api.symbol('fetchTaskAborting');
+    if (typeof fetch !== 'function') {
+        return;
+    }
+    var OriginalAbortController = global['AbortController'];
+    var supportAbort = typeof OriginalAbortController === 'function';
+    var abortNative = null;
+    if (supportAbort) {
+        global['AbortController'] = function () {
+            var abortController = new OriginalAbortController();
+            var signal = abortController.signal;
+            signal.abortController = abortController;
+            return abortController;
+        };
+        abortNative = api.patchMethod(OriginalAbortController.prototype, 'abort', function (delegate) { return function (self, args) {
+            if (self.task) {
+                return self.task.zone.cancelTask(self.task);
+            }
+            return delegate.apply(self, args);
+        }; });
+    }
+    var placeholder = function () { };
+    global['fetch'] = function () {
+        var _this = this;
+        var args = Array.prototype.slice.call(arguments);
+        var options = args.length > 1 ? args[1] : null;
+        var signal = options && options.signal;
+        return new Promise(function (res, rej) {
+            var task = Zone.current.scheduleMacroTask('fetch', placeholder, args, function () {
+                var fetchPromise;
+                var zone = Zone.current;
+                try {
+                    zone[fetchTaskScheduling] = true;
+                    fetchPromise = fetch.apply(_this, args);
+                }
+                catch (error) {
+                    rej(error);
+                    return;
+                }
+                finally {
+                    zone[fetchTaskScheduling] = false;
+                }
+                if (!(fetchPromise instanceof ZoneAwarePromise)) {
+                    var ctor = fetchPromise.constructor;
+                    if (!ctor[symbolThenPatched]) {
+                        api.patchThen(ctor);
+                    }
+                }
+                fetchPromise.then(function (resource) {
+                    if (task.state !== 'notScheduled') {
+                        task.invoke();
+                    }
+                    res(resource);
+                }, function (error) {
+                    if (task.state !== 'notScheduled') {
+                        task.invoke();
+                    }
+                    rej(error);
+                });
+            }, function () {
+                if (!supportAbort) {
+                    rej('No AbortController supported, can not cancel fetch');
+                    return;
+                }
+                if (signal && signal.abortController && !signal.aborted &&
+                    typeof signal.abortController.abort === 'function' && abortNative) {
+                    try {
+                        Zone.current[fetchTaskAborting] = true;
+                        abortNative.call(signal.abortController);
+                    }
+                    finally {
+                        Zone.current[fetchTaskAborting] = false;
+                    }
+                }
+                else {
+                    rej('cancel fetch need a AbortController.signal');
+                }
+            });
+            if (signal && signal.abortController) {
+                signal.abortController.task = task;
+            }
+        });
+    };
 });
 
 /**
@@ -1423,9 +1324,23 @@ var wrapFn = function (event) {
     }
     var target = this || event.target || _global;
     var listener = target[eventNameSymbol];
-    var result = listener && listener.apply(this, arguments);
-    if (result != undefined && !result) {
-        event.preventDefault();
+    var result;
+    if (isBrowser && target === internalWindow && event.type === 'error') {
+        // window.onerror have different signiture
+        // https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror#window.onerror
+        // and onerror callback will prevent default when callback return true
+        var errorEvent = event;
+        result = listener &&
+            listener.call(this, errorEvent.message, errorEvent.filename, errorEvent.lineno, errorEvent.colno, errorEvent.error);
+        if (result === true) {
+            event.preventDefault();
+        }
+    }
+    else {
+        result = listener && listener.apply(this, arguments);
+        if (result != undefined && !result) {
+            event.preventDefault();
+        }
     }
     return result;
 };
@@ -1441,6 +1356,10 @@ function patchProperty(obj, prop, prototype) {
     // if the descriptor not exists or is not configurable
     // just return
     if (!desc || !desc.configurable) {
+        return;
+    }
+    var onPropPatchedSymbol = zoneSymbol('on' + prop + 'patched');
+    if (obj.hasOwnProperty(onPropPatchedSymbol) && obj[onPropPatchedSymbol]) {
         return;
     }
     // A property descriptor cannot have getter/setter and be writable
@@ -1520,6 +1439,7 @@ function patchProperty(obj, prop, prototype) {
         return null;
     };
     ObjectDefineProperty(obj, prop, desc);
+    obj[onPropPatchedSymbol] = true;
 }
 function patchOnProperties(obj, properties, prototype) {
     if (properties) {
@@ -1610,6 +1530,31 @@ function patchClass(className) {
         }
     }
 }
+function copySymbolProperties(src, dest) {
+    if (typeof Object.getOwnPropertySymbols !== 'function') {
+        return;
+    }
+    var symbols = Object.getOwnPropertySymbols(src);
+    symbols.forEach(function (symbol) {
+        var desc = Object.getOwnPropertyDescriptor(src, symbol);
+        Object.defineProperty(dest, symbol, {
+            get: function () {
+                return src[symbol];
+            },
+            set: function (value) {
+                if (desc && (!desc.writable || typeof desc.set !== 'function')) {
+                    // if src[symbol] is not writable or not have a setter, just return
+                    return;
+                }
+                src[symbol] = value;
+            },
+            enumerable: desc ? desc.enumerable : true,
+            configurable: desc ? desc.configurable : true
+        });
+    });
+}
+var shouldCopySymbolProperties = false;
+
 function patchMethod(target, name, patchFn) {
     var proto = target;
     while (proto && !proto.hasOwnProperty(name)) {
@@ -1620,7 +1565,7 @@ function patchMethod(target, name, patchFn) {
         proto = target;
     }
     var delegateName = zoneSymbol(name);
-    var delegate;
+    var delegate = null;
     if (proto && !(delegate = proto[delegateName])) {
         delegate = proto[delegateName] = proto[name];
         // check whether proto[name] is writable
@@ -1632,6 +1577,9 @@ function patchMethod(target, name, patchFn) {
                 return patchDelegate_1(this, arguments);
             };
             attachOriginToPatched(proto[name], delegate);
+            if (shouldCopySymbolProperties) {
+                copySymbolProperties(delegate, proto[name]);
+            }
         }
     }
     return delegate;
@@ -1650,7 +1598,7 @@ function patchMacroTask(obj, funcName, metaCreator) {
     setNative = patchMethod(obj, funcName, function (delegate) { return function (self, args) {
         var meta = metaCreator(self, args);
         if (meta.cbIdx >= 0 && typeof args[meta.cbIdx] === 'function') {
-            return scheduleMacroTaskWithCurrentZone(meta.name, args[meta.cbIdx], meta, scheduleTask, null);
+            return scheduleMacroTaskWithCurrentZone(meta.name, args[meta.cbIdx], meta, scheduleTask);
         }
         else {
             // cause an error by calling it directly.
@@ -1664,6 +1612,17 @@ function attachOriginToPatched(patched, original) {
 }
 var isDetectedIEOrEdge = false;
 var ieOrEdge = false;
+function isIE() {
+    try {
+        var ua = internalWindow.navigator.userAgent;
+        if (ua.indexOf('MSIE ') !== -1 || ua.indexOf('Trident/') !== -1) {
+            return true;
+        }
+    }
+    catch (error) {
+    }
+    return false;
+}
 function isIEOrEdge() {
     if (isDetectedIEOrEdge) {
         return ieOrEdge;
@@ -1745,6 +1704,21 @@ Zone.__load_patch('toString', function (global) {
  * @fileoverview
  * @suppress {missingRequire}
  */
+var passiveSupported = false;
+if (typeof window !== 'undefined') {
+    try {
+        var options = Object.defineProperty({}, 'passive', {
+            get: function () {
+                passiveSupported = true;
+            }
+        });
+        window.addEventListener('test', options, options);
+        window.removeEventListener('test', options, options);
+    }
+    catch (err) {
+        passiveSupported = false;
+    }
+}
 // an identifier to tell ZoneTask do not create a new invoke closure
 var OPTIMIZED_ZONE_EVENT_TASK_DATA = {
     useG: true
@@ -1880,6 +1854,7 @@ function patchEventTarget(_global, apis, patchOptions) {
         if (proto[zoneSymbolAddEventListener]) {
             return false;
         }
+        var eventNameToString = patchOptions && patchOptions.eventNameToString;
         // a shared global taskData to pass data for scheduleEventTask
         // so we do not need to create a new object just for pass some data
         var taskData = {};
@@ -1895,12 +1870,24 @@ function patchEventTarget(_global, apis, patchOptions) {
             nativePrependEventListener = proto[zoneSymbol(patchOptions.prepend)] =
                 proto[patchOptions.prepend];
         }
-        var customScheduleGlobal = function () {
+        function checkIsPassive(task) {
+            if (!passiveSupported && typeof taskData.options !== 'boolean' &&
+                typeof taskData.options !== 'undefined' && taskData.options !== null) {
+                // options is a non-null non-undefined object
+                // passive is not supported
+                // don't pass options as object
+                // just pass capture as a boolean
+                task.options = !!taskData.options.capture;
+                taskData.options = task.options;
+            }
+        }
+        var customScheduleGlobal = function (task) {
             // if there is already a task for the eventName + capture,
             // just return, because we use the shared globalZoneAwareCallback here.
             if (taskData.isExisting) {
                 return;
             }
+            checkIsPassive(task);
             return nativeAddEventListener.call(taskData.target, taskData.eventName, taskData.capture ? globalZoneAwareCaptureCallback : globalZoneAwareCallback, taskData.options);
         };
         var customCancelGlobal = function (task) {
@@ -1941,6 +1928,7 @@ function patchEventTarget(_global, apis, patchOptions) {
             return nativeRemoveEventListener.call(task.target, task.eventName, task.capture ? globalZoneAwareCaptureCallback : globalZoneAwareCallback, task.options);
         };
         var customScheduleNonGlobal = function (task) {
+            checkIsPassive(task);
             return nativeAddEventListener.call(taskData.target, taskData.eventName, task.invoke, taskData.options);
         };
         var customSchedulePrepend = function (task) {
@@ -1963,8 +1951,13 @@ function patchEventTarget(_global, apis, patchOptions) {
             if (prepend === void 0) { prepend = false; }
             return function () {
                 var target = this || _global;
+                var eventName = arguments[0];
                 var delegate = arguments[1];
                 if (!delegate) {
+                    return nativeListener.apply(this, arguments);
+                }
+                if (isNode && eventName === 'uncaughtException') {
+                    // don't patch uncaughtException of nodejs to prevent endless loop
                     return nativeListener.apply(this, arguments);
                 }
                 // don't create the bind delegate function for handleEvent
@@ -1980,7 +1973,6 @@ function patchEventTarget(_global, apis, patchOptions) {
                 if (validateHandler && !validateHandler(nativeListener, delegate, target, arguments)) {
                     return;
                 }
-                var eventName = arguments[0];
                 var options = arguments[2];
                 if (blackListedEvents) {
                     // check black list
@@ -2010,8 +2002,8 @@ function patchEventTarget(_global, apis, patchOptions) {
                 var symbolEventName;
                 if (!symbolEventNames) {
                     // the code is duplicate, but I just want to get some better performance
-                    var falseEventName = eventName + FALSE_STR;
-                    var trueEventName = eventName + TRUE_STR;
+                    var falseEventName = (eventNameToString ? eventNameToString(eventName) : eventName) + FALSE_STR;
+                    var trueEventName = (eventNameToString ? eventNameToString(eventName) : eventName) + TRUE_STR;
                     var symbol = ZONE_SYMBOL_PREFIX + falseEventName;
                     var symbolCapture = ZONE_SYMBOL_PREFIX + trueEventName;
                     zoneSymbolEventNames$1[eventName] = {};
@@ -2046,7 +2038,8 @@ function patchEventTarget(_global, apis, patchOptions) {
                     source = targetSource[eventName];
                 }
                 if (!source) {
-                    source = constructorName + addSource + eventName;
+                    source = constructorName + addSource +
+                        (eventNameToString ? eventNameToString(eventName) : eventName);
                 }
                 // do not create a new object as task.data to pass those things
                 // just use the global shared one
@@ -2061,7 +2054,7 @@ function patchEventTarget(_global, apis, patchOptions) {
                 taskData.capture = capture;
                 taskData.eventName = eventName;
                 taskData.isExisting = isExisting;
-                var data = useGlobalCallback ? OPTIMIZED_ZONE_EVENT_TASK_DATA : null;
+                var data = useGlobalCallback ? OPTIMIZED_ZONE_EVENT_TASK_DATA : undefined;
                 // keep taskData into data to allow onScheduleEventTask to access the task information
                 if (data) {
                     data.taskData = taskData;
@@ -2079,7 +2072,11 @@ function patchEventTarget(_global, apis, patchOptions) {
                 if (once) {
                     options.once = true;
                 }
-                task.options = options;
+                if (!(!passiveSupported && typeof task.options === 'boolean')) {
+                    // if not support passive, and we pass an option object
+                    // to addEventListener, we should save the options to task
+                    task.options = options;
+                }
                 task.target = target;
                 task.capture = capture;
                 task.eventName = eventName;
@@ -2164,7 +2161,7 @@ function patchEventTarget(_global, apis, patchOptions) {
             var target = this || _global;
             var eventName = arguments[0];
             var listeners = [];
-            var tasks = findEventTasks(target, eventName);
+            var tasks = findEventTasks(target, eventNameToString ? eventNameToString(eventName) : eventName);
             for (var i = 0; i < tasks.length; i++) {
                 var task = tasks[i];
                 var delegate = task.originalDelegate ? task.originalDelegate : task.callback;
@@ -2320,9 +2317,9 @@ function patchTimer(window, setName, cancelName, nameSuffix) {
         patchMethod(window, setName, function (delegate) { return function (self, args) {
             if (typeof args[0] === 'function') {
                 var options = {
-                    handleId: null,
                     isPeriodic: nameSuffix === 'Interval',
-                    delay: (nameSuffix === 'Timeout' || nameSuffix === 'Interval') ? args[1] || 0 : null,
+                    delay: (nameSuffix === 'Timeout' || nameSuffix === 'Interval') ? args[1] || 0 :
+                        undefined,
                     args: args
                 };
                 var task = scheduleMacroTaskWithCurrentZone(setName, args[0], options, scheduleTask, clearTask);
@@ -2437,7 +2434,7 @@ function propertyPatch() {
     };
     Object.getOwnPropertyDescriptor = function (obj, prop) {
         var desc = _getOwnPropertyDescriptor(obj, prop);
-        if (isUnconfigurable(obj, prop)) {
+        if (desc && isUnconfigurable(obj, prop)) {
             desc.configurable = false;
         }
         return desc;
@@ -2665,10 +2662,10 @@ var globalEventHandlersEventNames = [
     'wheel'
 ];
 var documentEventNames = [
-    'afterscriptexecute', 'beforescriptexecute', 'DOMContentLoaded', 'fullscreenchange',
+    'afterscriptexecute', 'beforescriptexecute', 'DOMContentLoaded', 'freeze', 'fullscreenchange',
     'mozfullscreenchange', 'webkitfullscreenchange', 'msfullscreenchange', 'fullscreenerror',
     'mozfullscreenerror', 'webkitfullscreenerror', 'msfullscreenerror', 'readystatechange',
-    'visibilitychange'
+    'visibilitychange', 'resume'
 ];
 var windowEventNames = [
     'absolutedeviceorientation',
@@ -2780,7 +2777,7 @@ var websocketEventNames = ['close', 'error', 'open', 'message'];
 var workerEventNames = ['error', 'message'];
 var eventNames = globalEventHandlersEventNames.concat(webglEventNames, formEventNames, detailEventNames, documentEventNames, windowEventNames, htmlElementEventNames, ieElementEventNames);
 function filterProperties(target, onProperties, ignoreProperties) {
-    if (!ignoreProperties) {
+    if (!ignoreProperties || ignoreProperties.length === 0) {
         return onProperties;
     }
     var tip = ignoreProperties.filter(function (ip) { return ip.target === target; });
@@ -2805,13 +2802,14 @@ function propertyDescriptorPatch(api, _global) {
     }
     var supportsWebSocket = typeof WebSocket !== 'undefined';
     if (canPatchViaPropertyDescriptor()) {
-        var ignoreProperties = _global.__Zone_ignore_on_properties;
+        var ignoreProperties = _global['__Zone_ignore_on_properties'];
         // for browsers that we can patch the descriptor:  Chrome & Firefox
         if (isBrowser) {
             var internalWindow = window;
+            var ignoreErrorProperties = isIE ? [{ target: internalWindow, ignoreProperties: ['error'] }] : [];
             // in IE/Edge, onProp not exist in window object, but in WindowPrototype
             // so we need to pass WindowPrototype to check onProp exist or not
-            patchFilteredProperties(internalWindow, eventNames.concat(['messageerror']), ignoreProperties, ObjectGetPrototypeOf(internalWindow));
+            patchFilteredProperties(internalWindow, eventNames.concat(['messageerror']), ignoreProperties ? ignoreProperties.concat(ignoreErrorProperties) : ignoreProperties, ObjectGetPrototypeOf(internalWindow));
             patchFilteredProperties(Document.prototype, eventNames, ignoreProperties);
             if (typeof internalWindow['SVGElement'] !== 'undefined') {
                 patchFilteredProperties(internalWindow['SVGElement'].prototype, eventNames, ignoreProperties);
@@ -2833,9 +2831,9 @@ function propertyDescriptorPatch(api, _global) {
             }
         }
         patchFilteredProperties(XMLHttpRequest.prototype, XMLHttpRequestEventNames, ignoreProperties);
-        var XMLHttpRequestEventTarget = _global['XMLHttpRequestEventTarget'];
-        if (XMLHttpRequestEventTarget) {
-            patchFilteredProperties(XMLHttpRequestEventTarget && XMLHttpRequestEventTarget.prototype, XMLHttpRequestEventNames, ignoreProperties);
+        var XMLHttpRequestEventTarget_1 = _global['XMLHttpRequestEventTarget'];
+        if (XMLHttpRequestEventTarget_1) {
+            patchFilteredProperties(XMLHttpRequestEventTarget_1 && XMLHttpRequestEventTarget_1.prototype, XMLHttpRequestEventNames, ignoreProperties);
         }
         if (typeof IDBIndex !== 'undefined') {
             patchFilteredProperties(IDBIndex.prototype, IDBIndexEventNames, ignoreProperties);
@@ -3050,16 +3048,16 @@ function patchEvent(global, api) {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-function registerElementPatch(_global) {
-    if ((!isBrowser && !isMix) || !('registerElement' in _global.document)) {
+function patchCallbacks(target, targetName, method, callbacks) {
+    var symbol = Zone.__symbol__(method);
+    if (target[symbol]) {
         return;
     }
-    var _registerElement = document.registerElement;
-    var callbacks = ['createdCallback', 'attachedCallback', 'detachedCallback', 'attributeChangedCallback'];
-    document.registerElement = function (name, opts) {
+    var nativeDelegate = target[symbol] = target[method];
+    target[method] = function (name, opts, options) {
         if (opts && opts.prototype) {
             callbacks.forEach(function (callback) {
-                var source = 'Document.registerElement::' + callback;
+                var source = targetName + "." + method + "::" + callback;
                 var prototype = opts.prototype;
                 if (prototype.hasOwnProperty(callback)) {
                     var descriptor = ObjectGetOwnPropertyDescriptor(prototype, callback);
@@ -3067,7 +3065,7 @@ function registerElementPatch(_global) {
                         descriptor.value = wrapWithCurrentZone(descriptor.value, source);
                         _redefineProperty(opts.prototype, callback, descriptor);
                     }
-                    else {
+                    else if (prototype[callback]) {
                         prototype[callback] = wrapWithCurrentZone(prototype[callback], source);
                     }
                 }
@@ -3076,9 +3074,23 @@ function registerElementPatch(_global) {
                 }
             });
         }
-        return _registerElement.call(document, name, opts);
+        return nativeDelegate.call(target, name, opts, options);
     };
-    attachOriginToPatched(document.registerElement, _registerElement);
+    attachOriginToPatched(target[method], nativeDelegate);
+}
+function registerElementPatch(_global) {
+    if ((!isBrowser && !isMix) || !('registerElement' in _global.document)) {
+        return;
+    }
+    var callbacks = ['createdCallback', 'attachedCallback', 'detachedCallback', 'attributeChangedCallback'];
+    patchCallbacks(document, 'Document', 'registerElement', callbacks);
+}
+function patchCustomElements(_global) {
+    if ((!isBrowser && !isMix) || !('customElements' in _global)) {
+        return;
+    }
+    var callbacks = ['connectedCallback', 'disconnectedCallback', 'adoptedCallback', 'attributeChangedCallback'];
+    patchCallbacks(_global.customElements, 'customElements', 'define', callbacks);
 }
 
 /**
@@ -3141,7 +3153,10 @@ Zone.__load_patch('EventTarget', function (global, Zone, api) {
 Zone.__load_patch('on_property', function (global, Zone, api) {
     propertyDescriptorPatch(api, global);
     propertyPatch();
+});
+Zone.__load_patch('customElements', function (global, Zone, api) {
     registerElementPatch(global);
+    patchCustomElements(global);
 });
 Zone.__load_patch('canvas', function (global) {
     var HTMLCanvasElement = global['HTMLCanvasElement'];
@@ -3160,6 +3175,7 @@ Zone.__load_patch('XHR', function (global, Zone) {
     var XHR_LISTENER = zoneSymbol('xhrListener');
     var XHR_SCHEDULED = zoneSymbol('xhrScheduled');
     var XHR_URL = zoneSymbol('xhrURL');
+    var XHR_ERROR_BEFORE_SCHEDULED = zoneSymbol('xhrErrorBeforeScheduled');
     function patchXHR(window) {
         var XMLHttpRequestPrototype = XMLHttpRequest.prototype;
         function findPendingTask(target) {
@@ -3168,9 +3184,9 @@ Zone.__load_patch('XHR', function (global, Zone) {
         var oriAddListener = XMLHttpRequestPrototype[ZONE_SYMBOL_ADD_EVENT_LISTENER];
         var oriRemoveListener = XMLHttpRequestPrototype[ZONE_SYMBOL_REMOVE_EVENT_LISTENER];
         if (!oriAddListener) {
-            var XMLHttpRequestEventTarget = window['XMLHttpRequestEventTarget'];
-            if (XMLHttpRequestEventTarget) {
-                var XMLHttpRequestEventTargetPrototype = XMLHttpRequestEventTarget.prototype;
+            var XMLHttpRequestEventTarget_1 = window['XMLHttpRequestEventTarget'];
+            if (XMLHttpRequestEventTarget_1) {
+                var XMLHttpRequestEventTargetPrototype = XMLHttpRequestEventTarget_1.prototype;
                 oriAddListener = XMLHttpRequestEventTargetPrototype[ZONE_SYMBOL_ADD_EVENT_LISTENER];
                 oriRemoveListener = XMLHttpRequestEventTargetPrototype[ZONE_SYMBOL_REMOVE_EVENT_LISTENER];
             }
@@ -3178,9 +3194,10 @@ Zone.__load_patch('XHR', function (global, Zone) {
         var READY_STATE_CHANGE = 'readystatechange';
         var SCHEDULED = 'scheduled';
         function scheduleTask(task) {
-            XMLHttpRequest[XHR_SCHEDULED] = false;
             var data = task.data;
             var target = data.target;
+            target[XHR_SCHEDULED] = false;
+            target[XHR_ERROR_BEFORE_SCHEDULED] = false;
             // remove existing event listener
             var listener = target[XHR_LISTENER];
             if (!oriAddListener) {
@@ -3194,8 +3211,35 @@ Zone.__load_patch('XHR', function (global, Zone) {
                 if (target.readyState === target.DONE) {
                     // sometimes on some browsers XMLHttpRequest will fire onreadystatechange with
                     // readyState=4 multiple times, so we need to check task state here
-                    if (!data.aborted && XMLHttpRequest[XHR_SCHEDULED] && task.state === SCHEDULED) {
-                        task.invoke();
+                    if (!data.aborted && target[XHR_SCHEDULED] && task.state === SCHEDULED) {
+                        // check whether the xhr has registered onload listener
+                        // if that is the case, the task should invoke after all
+                        // onload listeners finish.
+                        var loadTasks = target['__zone_symbol__loadfalse'];
+                        if (loadTasks && loadTasks.length > 0) {
+                            var oriInvoke_1 = task.invoke;
+                            task.invoke = function () {
+                                // need to load the tasks again, because in other
+                                // load listener, they may remove themselves
+                                var loadTasks = target['__zone_symbol__loadfalse'];
+                                for (var i = 0; i < loadTasks.length; i++) {
+                                    if (loadTasks[i] === task) {
+                                        loadTasks.splice(i, 1);
+                                    }
+                                }
+                                if (!data.aborted && task.state === SCHEDULED) {
+                                    oriInvoke_1.call(task);
+                                }
+                            };
+                            loadTasks.push(task);
+                        }
+                        else {
+                            task.invoke();
+                        }
+                    }
+                    else if (!data.aborted && target[XHR_SCHEDULED] === false) {
+                        // error occurs when xhr.send()
+                        target[XHR_ERROR_BEFORE_SCHEDULED] = true;
                     }
                 }
             };
@@ -3205,7 +3249,7 @@ Zone.__load_patch('XHR', function (global, Zone) {
                 target[XHR_TASK] = task;
             }
             sendNative.apply(target, data.args);
-            XMLHttpRequest[XHR_SCHEDULED] = true;
+            target[XHR_SCHEDULED] = true;
             return task;
         }
         function placeholderCallback() { }
@@ -3222,24 +3266,32 @@ Zone.__load_patch('XHR', function (global, Zone) {
             return openNative.apply(self, args);
         }; });
         var XMLHTTPREQUEST_SOURCE = 'XMLHttpRequest.send';
+        var fetchTaskAborting = zoneSymbol('fetchTaskAborting');
+        var fetchTaskScheduling = zoneSymbol('fetchTaskScheduling');
         var sendNative = patchMethod(XMLHttpRequestPrototype, 'send', function () { return function (self, args) {
+            if (Zone.current[fetchTaskScheduling] === true) {
+                // a fetch is scheduling, so we are using xhr to polyfill fetch
+                // and because we already schedule macroTask for fetch, we should
+                // not schedule a macroTask for xhr again
+                return sendNative.apply(self, args);
+            }
             if (self[XHR_SYNC]) {
                 // if the XHR is sync there is no task to schedule, just execute the code.
                 return sendNative.apply(self, args);
             }
             else {
-                var options = {
-                    target: self,
-                    url: self[XHR_URL],
-                    isPeriodic: false,
-                    delay: null,
-                    args: args,
-                    aborted: false
-                };
-                return scheduleMacroTaskWithCurrentZone(XMLHTTPREQUEST_SOURCE, placeholderCallback, options, scheduleTask, clearTask);
+                var options = { target: self, url: self[XHR_URL], isPeriodic: false, args: args, aborted: false };
+                var task = scheduleMacroTaskWithCurrentZone(XMLHTTPREQUEST_SOURCE, placeholderCallback, options, scheduleTask, clearTask);
+                if (self && self[XHR_ERROR_BEFORE_SCHEDULED] === true && !options.aborted &&
+                    task.state === SCHEDULED) {
+                    // xhr request throw error when send
+                    // we should invoke task instead of leaving a scheduled
+                    // pending macroTask
+                    task.invoke();
+                }
             }
         }; });
-        var abortNative = patchMethod(XMLHttpRequestPrototype, 'abort', function () { return function (self) {
+        var abortNative = patchMethod(XMLHttpRequestPrototype, 'abort', function () { return function (self, args) {
             var task = findPendingTask(self);
             if (task && typeof task.type == 'string') {
                 // If the XHR has already completed, do nothing.
@@ -3250,6 +3302,10 @@ Zone.__load_patch('XHR', function (global, Zone) {
                     return;
                 }
                 task.zone.cancelTask(task);
+            }
+            else if (Zone.current[fetchTaskAborting] === true) {
+                // the abort is called from fetch polyfill, we need to call native abort of XHR.
+                return abortNative.apply(self, args);
             }
             // Otherwise, we are trying to abort an XHR which has not yet been sent, so there is no
             // task
@@ -3311,10 +3367,6 @@ Zone.__load_patch('PromiseRejectionEvent', function (global, Zone) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var zone_js_dist_zone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! zone.js/dist/zone */ "./node_modules/zone.js/dist/zone.js");
 /* harmony import */ var zone_js_dist_zone__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(zone_js_dist_zone__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var mobile_drag_drop__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobile-drag-drop */ "./node_modules/mobile-drag-drop/index.min.js");
-/* harmony import */ var mobile_drag_drop__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(mobile_drag_drop__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var mobile_drag_drop_scroll_behaviour__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobile-drag-drop/scroll-behaviour */ "./node_modules/mobile-drag-drop/scroll-behaviour.js");
-/* harmony import */ var mobile_drag_drop_scroll_behaviour__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(mobile_drag_drop_scroll_behaviour__WEBPACK_IMPORTED_MODULE_2__);
 /**
  * This file includes polyfills needed by Angular and is loaded before the app.
  * You can add your own extra polyfills to this file.
@@ -3391,16 +3443,10 @@ __webpack_require__.r(__webpack_exports__);
  * Zone JS is required by default for Angular itself.
  */
  // Included with Angular CLI.
-
 // optional import of scroll behaviour
-
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
-Object(mobile_drag_drop__WEBPACK_IMPORTED_MODULE_1__["polyfill"])({
-    // use this to make use of the scroll behaviour
-    dragImageTranslateOverride: mobile_drag_drop_scroll_behaviour__WEBPACK_IMPORTED_MODULE_2__["scrollBehaviourDragImageTranslateOverride"]
-});
 window.addEventListener("touchmove", function () {
     // workaround to make scroll prevent work in iOS Safari > 10
 });

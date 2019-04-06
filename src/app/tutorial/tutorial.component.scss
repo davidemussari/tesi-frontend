@@ -42,3 +42,8 @@
 .bottoneEliminaPassaggio{
 	margin-top: 48px;
 }
+
+
+@media (max-width: 900px){
+	    .card-block,.card-header{padding: 7px;}
+}
