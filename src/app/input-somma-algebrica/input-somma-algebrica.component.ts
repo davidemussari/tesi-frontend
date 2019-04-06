@@ -31,7 +31,7 @@ default(){
 
 
 controlloAssociativa(){
-	this.sommaAlgebricaCorretta = this.sommaAlgebrica.match(/^[\d\+\-\ ]+$/) !== null && eval(this.sommaAlgebrica) == eval(this.valoreSpostato) + eval(this.valoreSovrapposto);
+	this.sommaAlgebricaCorretta = this.sommaAlgebrica.match(/^[\d]+$/) !== null && eval(this.sommaAlgebrica) == eval(this.valoreSpostato) + eval(this.valoreSovrapposto);
 	if(this.sommaAlgebricaCorretta){
 		if(this.passaggi[this.passaggi.length-1].length == 3){
 			this.passaggi.push(this.sommaAlgebrica);

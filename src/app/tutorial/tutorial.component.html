@@ -78,11 +78,18 @@
 					</div>
 					<div class="card customPlaceholder" *cdkDragPlaceholder></div>
 			</div>
+			
+			<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1" *ngIf="isArray(riga) && numeroRiga!=0 && ultimo">
+					<button type="button" class="btn btn-icon bottoneEliminaPassaggio" (click)="eliminaPassaggio()">
+						<clr-icon shape="trash" class="is-solid"></clr-icon>
+					</button>
+			</div>
 			<!--Questo div serve per far riconosce la fine della riga dei passaggi (altrimento se si fa drop dopo l'ultima card viene sempre chiesto di sommare con l'ultimo valore-->
 			<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1" cdkDrag></div>
 			
 			
 			
+
 			<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1">
 				<div class="card card-block risultatoCorretto" *ngIf="!isArray(riga)"><p class="card-text">{{riga}}</p>
 				</div>

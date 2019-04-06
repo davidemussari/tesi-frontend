@@ -73,4 +73,8 @@ export class TutorialComponent implements OnInit {
 			this.modaleAssociativa = true;
 		}
 	}
+	
+	eliminaPassaggio(){
+		this.passaggi.pop();
+	}
 }
