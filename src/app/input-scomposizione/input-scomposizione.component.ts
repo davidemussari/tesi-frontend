@@ -18,7 +18,7 @@ export class InputScomposizioneComponent implements OnInit {
 	public decomposizioneCorretta: boolean = true; /*Variabile necessaria per avere alert di errore*/
 	
 	controlloDecomposizione(): void{
-		this.decomposizioneCorretta = this.decomposizione.match(/^[+-0123456789 ]+$/g) !== null && this.numeroScomposto == eval(this.decomposizione);
+		this.decomposizioneCorretta = this.decomposizione.match(/^[\d\+\-\ ]+$/) !== null && this.numeroScomposto == eval(this.decomposizione);
 		if(this.decomposizioneCorretta){
 			var temp : string[] = [];
 			var passaggio = this.decomposizione.replace(/\+/gi, ",+,").replace(/\-/gi, ",-,").split(',');

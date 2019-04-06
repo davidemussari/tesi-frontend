@@ -10,7 +10,7 @@ styleUrls: ['./tutorial.component.scss']
 })
 export class TutorialComponent implements OnInit {
 
-	public step: number = 1;
+	public step: number = 0;
 	public modaleScomposizione: boolean = false;
 	public modaleAssociativa: boolean = false;
 	public numeroScomposto: number = 0;
@@ -48,12 +48,12 @@ export class TutorialComponent implements OnInit {
 	}
 
 	avanti(ev)  :  void {
-		if(this.step < 4)
+		if(this.step < 2)
 			this.step += 1;
 	}
 
 	indietro(ev)  :  void {
-		if(this.step > 1)
+		if(this.step >= 0)
 			this.step += -1;
 	}
 

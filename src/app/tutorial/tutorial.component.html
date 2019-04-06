@@ -1,21 +1,22 @@
 <div class="progress success">
-	<progress max="3" [value]="step-1"></progress>
+	<progress max="2" [value]="step"></progress>
 </div>
 
 <button class="btn btn-primary" (click)="indietro()">Indietro</button>
 <button class="btn btn-success" (click)="avanti()">Avanti</button>
 
-<div *ngIf="step==1">
+<div *ngIf="step==0">
 	<h1>Osservazioni</h1>
 
 	<p>Vi prego di non badare troppo alla forma grafica: ci penseremo a tempo debito (ossia, so che non è granché).
-	
-	Per ora è statica, poi penseremo a come formare gli esercizi.
+	</p>
+	<p>
+	Per ora l'esercizio è unico: penseremo poi a come formare gli esercizi.
 	</p>
 </div>
 
 
-<div *ngIf="step==2">
+<div *ngIf="step==1">
 	<h1>Esempio</h1>
 	<p>Questo è l'esempio da cui si parte.</p>
 	<p>Notare che nell'angolo in alto a destra, nelle impostazioni, è possibile decidere se visualizzare tutti i passaggi o soltanto l'ultimo. Potrebbe
@@ -50,7 +51,7 @@
 </div>
 
 
-<div *ngIf="step==3">
+<div *ngIf="step==2">
 	<h1>Le proprietà dissociativa e associativa</h1>
 
 	<p>Cliccara o toccare su di uno dei numeri oppure trascinare su un altro numero dalla mano</p>
@@ -69,8 +70,14 @@
 					</div>
 					<div class="card customPlaceholder" *cdkDragPlaceholder></div>
 			</div>
+			<!--Questo div serve per far riconosce la fine della riga dei passaggi (altrimento se si fa drop dopo l'ultima card viene sempre chiesto di sommare con l'ultimo valore-->
+			<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1" cdkDrag></div>
+			
+			
+			
 			<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1">
-				<div class="card" *ngIf="!isArray(riga)"><p class="card-text">{{riga}}</p></div>
+				<div class="card card-block risultatoCorretto" *ngIf="!isArray(riga)"><p class="card-text">{{riga}}</p>
+				</div>
 			</div>
 		</div>
 		
