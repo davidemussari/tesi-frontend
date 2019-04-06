@@ -53,7 +53,7 @@ export class TutorialComponent implements OnInit {
 	}
 
 	indietro(ev)  :  void {
-		if(this.step >= 0)
+		if(this.step > 0)
 			this.step += -1;
 	}
 
