@@ -21,8 +21,8 @@ export class TutorialComponent implements OnInit {
 	public visualizzaPassaggi: boolean = true;
 	public eventoDrop: any;
 	
-	@ViewChild(InputScomposizioneComponent) scomposizioneChild:InputScomposizioneComponent;
-	@ViewChild(InputSommaAlgebricaComponent) associativaChild:InputSommaAlgebricaComponent;
+	@ViewChild(InputScomposizioneComponent, {static: true}) scomposizioneChild:InputScomposizioneComponent;
+	@ViewChild(InputSommaAlgebricaComponent, {static: true}) associativaChild:InputSommaAlgebricaComponent;
 	
 	ngAfterViewInit() {
 		this.scomposizioneChild.controlloDecomposizione();
