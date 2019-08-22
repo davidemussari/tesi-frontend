@@ -15,35 +15,40 @@ import { SottrazioneComponent } from './sottrazione/sottrazione.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
 import { InputScomposizioneComponent } from './input-scomposizione/input-scomposizione.component';
 
-import { ImpostazioniGlobaliService } from './impostazioni-globali.service';
+import { ImpostazioniGlobaliService } from './services/impostazioni-globali.service';
 import { InputSommaAlgebricaComponent } from './input-somma-algebrica/input-somma-algebrica.component';
+import { UserApiService } from './services/user-api.service';
+import { HttpModule } from '@angular/http';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
-	{ path: 'tutorial', component: TutorialComponent },
-  { path: 'allenamento/addizione', component: AddizioneComponent },
-  { path: 'allenamento/sottrazione', component: SottrazioneComponent },
+    { path: 'tutorial', component: TutorialComponent },
+    { path: 'allenamento/addizione', component: AddizioneComponent },
+    { path: 'allenamento/sottrazione', component: SottrazioneComponent },
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AddizioneComponent,
-    SottrazioneComponent,
-    TutorialComponent,
-    InputScomposizioneComponent,
-    InputSommaAlgebricaComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ClarityModule,
-    BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes),
-	FormsModule,
-	NoopAnimationsModule,
-	DragDropModule
-  ],
-  providers: [ImpostazioniGlobaliService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        AddizioneComponent,
+        SottrazioneComponent,
+        TutorialComponent,
+        InputScomposizioneComponent,
+        InputSommaAlgebricaComponent,
+        LoginComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ClarityModule,
+        BrowserAnimationsModule,
+        RouterModule.forRoot(appRoutes),
+        FormsModule,
+        NoopAnimationsModule,
+        DragDropModule,
+        HttpModule
+    ],
+    providers: [ImpostazioniGlobaliService, UserApiService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { User } from '../models/user';
+import { UserApiService } from '../services/user-api.service';
 
 
 interface MyObj {
@@ -7,24 +9,29 @@ interface MyObj {
 }
 
 @Component({
-  selector: 'app-addizione',
-  templateUrl: './addizione.component.html',
-  styleUrls: ['./addizione.component.scss']
+    selector: 'app-addizione',
+    templateUrl: './addizione.component.html',
+    styleUrls: ['./addizione.component.scss']
 })
 export class AddizioneComponent implements OnInit {
 
-  constructor() { }
+    users: User[];
 
-  ngOnInit() { }
 
-  drag (ev, val) :  void {
-    ev.dataTransfer.setData("text/plain", ev.target.id);
-    ev.dataTransfer.setData("valore", val);
-  }
+    constructor(private userService: UserApiService) { }
+    
+    ngOnInit() {
+        this.userService.getUsers().then(u => this.users = u);
+    }
 
-  drop(ev)  :  void {
-  var data = ev.dataTransfer.getData("text");
-}
+    drag(ev, val): void {
+        ev.dataTransfer.setData("text/plain", ev.target.id);
+        ev.dataTransfer.setData("valore", val);
+    }
+
+    drop(ev): void {
+        var data = ev.dataTransfer.getData("text");
+    }
 
 
 }
