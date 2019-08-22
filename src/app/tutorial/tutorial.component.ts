@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { InputScomposizioneComponent } from '../input-scomposizione/input-scomposizione.component';
 import { InputSommaAlgebricaComponent } from '../input-somma-algebrica/input-somma-algebrica.component';
-import { ImpostazioniGlobaliService } from '../impostazioni-globali.service';
+import { ImpostazioniGlobaliService } from '../services/impostazioni-globali.service';
 
 @Component({
 selector: 'app-tutorial',
