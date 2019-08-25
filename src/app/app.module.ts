@@ -47,7 +47,11 @@ const appRoutes: Routes = [
         FormsModule,
         NoopAnimationsModule,
         DragDropModule,
+<<<<<<< HEAD
         HttpClientModule
+=======
+        HttpModule
+>>>>>>> d7a069485a245b57553f973c24b5c460090f39d0
     ],
     providers: [ImpostazioniGlobaliService, UserApiService],
     bootstrap: [AppComponent]

@@ -6,9 +6,11 @@ import { Subject } from 'rxjs';
 })
 export class ImpostazioniGlobaliService {
 
+
     constructor() { }
 
     public visualizzaPassaggi = true;
+
     public visualizzaPassaggiChange: Subject<boolean> = new Subject<boolean>();
 
     visualizzaPassaggiSetter() {

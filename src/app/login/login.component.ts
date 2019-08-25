@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
     private form = {
         username: '',
         password: ''
-    };
+    }; 
     private usernameOrPasswdValid = true;
     private userApiService: UserApiService;
     private user: User = new User();
