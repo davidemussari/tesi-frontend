@@ -19,7 +19,6 @@ import { InputScomposizioneComponent } from './input-scomposizione/input-scompos
 import { ImpostazioniGlobaliService } from './services/impostazioni-globali.service';
 import { InputSommaAlgebricaComponent } from './input-somma-algebrica/input-somma-algebrica.component';
 import { UserApiService } from './services/user-api.service';
-import { HttpModule } from '@angular/http';
 import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
@@ -47,11 +46,7 @@ const appRoutes: Routes = [
         FormsModule,
         NoopAnimationsModule,
         DragDropModule,
-<<<<<<< HEAD
         HttpClientModule
-=======
-        HttpModule
->>>>>>> d7a069485a245b57553f973c24b5c460090f39d0
     ],
     providers: [ImpostazioniGlobaliService, UserApiService],
     bootstrap: [AppComponent]
