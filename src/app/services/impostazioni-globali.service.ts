@@ -6,7 +6,9 @@ import { Subject } from 'rxjs';
 })
 export class ImpostazioniGlobaliService {
 
-    public visualizzaPassaggi: boolean = true;
+    constructor() { }
+
+    public visualizzaPassaggi = true;
     public visualizzaPassaggiChange: Subject<boolean> = new Subject<boolean>();
 
     visualizzaPassaggiSetter() {
@@ -14,6 +16,4 @@ export class ImpostazioniGlobaliService {
         this.visualizzaPassaggi = !this.visualizzaPassaggi;
         this.visualizzaPassaggiChange.next(this.visualizzaPassaggi);
     }
-
-    constructor() { }
 }
