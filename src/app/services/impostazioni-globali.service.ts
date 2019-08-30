@@ -6,12 +6,9 @@ import { Subject } from 'rxjs';
 })
 export class ImpostazioniGlobaliService {
 
-
-    constructor() { }
-
     public visualizzaPassaggi = true;
-
     public visualizzaPassaggiChange: Subject<boolean> = new Subject<boolean>();
+    public isStudente: Boolean = null;
 
     visualizzaPassaggiSetter() {
         // 		Serve per cambiare il valore e sollevare un evento che, tutti e soli gli abbonati, recepiranno

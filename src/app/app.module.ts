@@ -17,6 +17,7 @@ import { TutorialComponent } from './tutorial/tutorial.component';
 import { InputScomposizioneComponent } from './input-scomposizione/input-scomposizione.component';
 
 import { ImpostazioniGlobaliService } from './services/impostazioni-globali.service';
+import {IsloggedService} from './services/islogged.service';
 import { InputSommaAlgebricaComponent } from './input-somma-algebrica/input-somma-algebrica.component';
 import { UserApiService } from './services/user-api.service';
 import { LoginComponent } from './login/login.component';
@@ -48,7 +49,7 @@ const appRoutes: Routes = [
         DragDropModule,
         HttpClientModule
     ],
-    providers: [ImpostazioniGlobaliService, UserApiService],
+    providers: [ImpostazioniGlobaliService, UserApiService, IsloggedService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

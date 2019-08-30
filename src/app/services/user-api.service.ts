@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { User } from '../models/User';
 
 @Injectable()
 export class UserApiService {
 
-    public static ulrServerBackEnd: String = 'http://localhost:8080/';
+    public static ulrServerBackEnd: String = 'http://192.168.1.103:8080/';
 
     constructor(private http: HttpClient) { }
 
     postLogin(param: any) {
-        return this.http.post(UserApiService.ulrServerBackEnd + 'login', param).pipe(
+        return this.http.post<User>(UserApiService.ulrServerBackEnd + 'login', param).pipe(
             catchError(this.handleError)
         );
     }
