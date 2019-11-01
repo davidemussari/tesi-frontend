@@ -34,4 +34,5 @@ export class AppComponent {
         variabile aggiornato costantemente (sara' lui a scatenare l'evento)*/
         this._impostazioniGlobali.visualizzaPassaggiSetter();
     }
+
 }
