@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import { InputScomposizioneComponent } from '../input-scomposizione/input-scomposizione.component';
 import { InputSommaAlgebricaComponent } from '../input-somma-algebrica/input-somma-algebrica.component';
 import { ImpostazioniGlobaliService } from '../services/impostazioni-globali.service';
+
 
 @Component({
 	selector: 'app-tutorial',
@@ -21,7 +23,7 @@ export class TutorialComponent implements OnInit {
 	public visualizzaPassaggi: boolean = true;
 	public eventoDrop: any;
 
-	@ViewChild(InputScomposizioneComponent, { static: true }) scomposizioneChild: InputScomposizioneComponent;
+	@ViewChild(InputScomposizioneComponent, { static: false }) scomposizioneChild: InputScomposizioneComponent;
 	@ViewChild(InputSommaAlgebricaComponent, { static: true }) associativaChild: InputSommaAlgebricaComponent;
 
 	ngAfterViewInit() {
@@ -33,7 +35,7 @@ export class TutorialComponent implements OnInit {
 
 	ngOnInit() {
 
-		// 		Questa e' l'iscrizione all'evento scatenato dal servizio
+		// Questa e' l'iscrizione all'evento scatenato dal servizio
 		this._impostazioniGlobali.visualizzaPassaggiChange.subscribe(() => {
 			this.visualizzaPassaggi = this._impostazioniGlobali.visualizzaPassaggi;
 		})

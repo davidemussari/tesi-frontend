@@ -22,6 +22,9 @@ import { InputSommaAlgebricaComponent } from './input-somma-algebrica/input-somm
 import { UserApiService } from './services/user-api.service';
 import { LoginComponent } from './login/login.component';
 
+import { SignaturePadModule } from 'angular2-signaturepad';
+
+
 const appRoutes: Routes = [
     { path: 'tutorial', component: TutorialComponent },
     { path: 'allenamento/addizione', component: AddizioneComponent },
@@ -47,7 +50,8 @@ const appRoutes: Routes = [
         FormsModule,
         NoopAnimationsModule,
         DragDropModule,
-        HttpClientModule
+        HttpClientModule,
+        SignaturePadModule
     ],
     providers: [ImpostazioniGlobaliService, UserApiService, IsloggedService],
     bootstrap: [AppComponent]

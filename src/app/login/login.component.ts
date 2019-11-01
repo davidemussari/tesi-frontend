@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
-        var userNull: User = new User();
+        const userNull: User = new User();
         this._isLoggedService.updateUtenteLoggato(userNull);
         this.user = userNull;
     }
