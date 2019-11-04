@@ -21,6 +21,7 @@ import {IsloggedService} from './services/islogged.service';
 import { InputSommaAlgebricaComponent } from './input-somma-algebrica/input-somma-algebrica.component';
 import { UserApiService } from './services/user-api.service';
 import { LoginComponent } from './login/login.component';
+import { RighePassaggiComponent } from './righe-passaggi/righe-passaggi.component';
 
 const appRoutes: Routes = [
     { path: 'tutorial', component: TutorialComponent },
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
         TutorialComponent,
         InputScomposizioneComponent,
         InputSommaAlgebricaComponent,
-        LoginComponent
+        LoginComponent,
+        RighePassaggiComponent
     ],
     imports: [
         BrowserModule,

@@ -1,9 +1,8 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { SignaturePad } from 'angular2-signaturepad/signature-pad';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { InputScomposizioneComponent } from '../input-scomposizione/input-scomposizione.component';
 import { InputSommaAlgebricaComponent } from '../input-somma-algebrica/input-somma-algebrica.component';
 import { ImpostazioniGlobaliService } from '../services/impostazioni-globali.service';
-
 
 @Component({
 	selector: 'app-tutorial',
@@ -13,25 +12,20 @@ import { ImpostazioniGlobaliService } from '../services/impostazioni-globali.ser
 export class TutorialComponent implements OnInit {
 
 	public step: number = 0;
-	public modaleScomposizione: boolean = false;
+	public paginaScomposizione: boolean = false;
 	public modaleAssociativa: boolean = false;
 	public numeroScomposto: number = 0;
 	public indiceNumeroScomposto: number = 0;
-	public valoreSovrapposto: number = 0;
-	public valoreSpostato: number = 0;
 	public passaggi: Array<any> = [['12', '+', '17']];
 	public visualizzaPassaggi: boolean = true;
-	public eventoDrop: any;
-
-	@ViewChild(InputScomposizioneComponent, { static: false }) scomposizioneChild: InputScomposizioneComponent;
-	@ViewChild(InputSommaAlgebricaComponent, { static: true }) associativaChild: InputSommaAlgebricaComponent;
+	public visualizzaHeaderCard: boolean = false;
 
 	ngAfterViewInit() {
-		this.scomposizioneChild.controlloDecomposizione();
-		this.associativaChild.controlloAssociativa();
 	}
 
-	constructor(private _impostazioniGlobali: ImpostazioniGlobaliService) { }
+	constructor(private _impostazioniGlobali: ImpostazioniGlobaliService) {	}
+	
+	submit(){}
 
 	ngOnInit() {
 
@@ -39,44 +33,5 @@ export class TutorialComponent implements OnInit {
 		this._impostazioniGlobali.visualizzaPassaggiChange.subscribe(() => {
 			this.visualizzaPassaggi = this._impostazioniGlobali.visualizzaPassaggi;
 		})
-	}
-
-	controlloDecomposizione() {
-		this.scomposizioneChild.controlloDecomposizione();
-	}
-
-	controlloAssociativa() {
-		this.associativaChild.controlloAssociativa();
-	}
-
-	avanti(ev): void {
-		if (this.step < 2)
-			this.step += 1;
-	}
-
-	indietro(ev): void {
-		if (this.step > 0)
-			this.step += -1;
-	}
-
-	cliccabile(str: string): boolean {
-		return !isNaN(parseInt(str));
-	}
-
-	isArray(elemento: any) {
-		return Array.isArray(elemento);
-	}
-
-	drop(event: any): void {
-		if (event.isPointerOverContainer && this.cliccabile(this.passaggi[this.passaggi.length - 1][event.currentIndex]) && this.cliccabile(this.passaggi[this.passaggi.length - 1][event.previousIndex]) && event.currentIndex != event.previousIndex) {
-			this.eventoDrop = event;
-			this.valoreSovrapposto = this.passaggi[this.passaggi.length - 1][event.currentIndex];
-			this.valoreSpostato = this.passaggi[this.passaggi.length - 1][event.previousIndex];
-			this.modaleAssociativa = true;
-		}
-	}
-
-	eliminaPassaggio() {
-		this.passaggi.pop();
 	}
 }

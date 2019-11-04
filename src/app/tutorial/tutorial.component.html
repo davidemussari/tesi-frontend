@@ -1,57 +1,48 @@
-<div class="progress success">
-	<progress max="2" [value]="step"></progress>
-</div>
+<h1 *ngIf="!paginaScomposizione">FAQ</h1>
+<clr-accordion *ngIf="!paginaScomposizione">
+  <clr-accordion-panel>
+    <clr-accordion-title>Opzioni (incona in alto a destra)</clr-accordion-title>
+    <clr-accordion-content *clrIfExpanded>
+    
+    Nell'angolo in alto a destra, tramite l'icona,
+    è possibile decidere se visualizzare tutti i passaggi o soltanto l'ultimo.
+    Potrebbe essere utile, per esempio, per dispositivi di piccole dimensioni.
+    
+    </clr-accordion-content>
+  </clr-accordion-panel>
 
-<button class="btn btn-primary" (click)="indietro($event)" [disabled]="step == 0">Fase precedente</button>
-<button class="btn btn-success" (click)="avanti($event)" [disabled]="step == 2">Fase successiva</button>
+  <clr-accordion-panel >
+    <clr-accordion-title>La scomposizione</clr-accordion-title>
+    <clr-accordion-content [(clrIfExpanded)]="provenienteDaScomposizione">È sufficiente cliccare o toccare i numeri, per
+    poter decomporre. <br> Provare con la breve espressione qui di seguito. <br>
+    Il pulsante con l'icona con il cestino serve ad eliminare la scomposizione.
+	    <app-righe-passaggi
+	    	[(passaggi)]="passaggi"
+	    	[visualizzaHeaderCard] = "visualizzaHeaderCard"
+	    	[(paginaAssociativa)] = "paginaAssociativa"
+	    	[(paginaScomposizione)] = "paginaScomposizione"
+	    	[(numeroScomposto)] = "numeroScomposto"
+	    	[(indiceNumeroScomposto)] = "indiceNumeroScomposto"
+	    ></app-righe-passaggi>
+    </clr-accordion-content>
+  </clr-accordion-panel>
 
-<div *ngIf="step==0">
-	<h1>Osservazioni</h1>
-
-	<p>Vi prego di non badare troppo alla forma grafica: ci penseremo a tempo debito (ossia, so che non è granché).
-	</p>
-	<p>
-	Per ora l'esercizio è unico: penseremo poi a come formare gli esercizi.
-	</p>
-</div>
-
-
-<div *ngIf="step==1">
-	<h1>Esempio</h1>
-	<p>Questo è l'esempio da cui si parte.</p>
-	<p>Notare che nell'angolo in alto a destra, nelle impostazioni, è possibile decidere se visualizzare tutti i passaggi o soltanto l'ultimo. Potrebbe
-	essere utile, per esempio, in base alle dimensioni del dispositivo o in base a qualche altra condizione che magari ci verrà in mente.</p>
-
-	<div class="clr-row" >
-		<div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
-		<div>
-			<div class="card">
-			<div class="card-block"><p class="card-text">12</p></div>
-			</div>
-			</div>
-		</div>
-
-
-		<div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
-		<div id="B2">
-			<div class="card">
-			<div class="card-block"><p class="card-text">+</p></div>
-			</div>
-		</div>
-		</div>
-
-		<div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
-		<div>
-			<div class="card">
-			<div class="card-block"><p class="card-text">17</p></div>
-			</div>
-		</div>
-		</div>
-	</div>
-</div>
+  <clr-accordion-panel>
+    <clr-accordion-title>Item 3</clr-accordion-title>
+    <clr-accordion-content *clrIfExpanded>Content 3</clr-accordion-content>
+  </clr-accordion-panel>
+</clr-accordion>
 
 
-<div *ngIf="step==2">
+<app-input-scomposizione *ngIf="paginaScomposizione"
+	[numeroScomposto] = 'numeroScomposto'
+	[indiceNumeroScomposto] = 'indiceNumeroScomposto'
+	[(passaggi)] = 'passaggi'
+	[(paginaScomposizione)] = 'paginaScomposizione'
+></app-input-scomposizione>
+
+<!-- 
+<div *ngIf="step==2 && !modaleScomposizione">
 	<h1>Le proprietà dissociativa e associativa</h1>
 	
 	<clr-alert [clrAlertType]="'info'" *ngIf="passaggi.length > 1">
@@ -84,7 +75,7 @@
 						<clr-icon shape="trash" class="is-solid"></clr-icon>
 					</button>
 			</div>
-			<!--Questo div serve per far riconosce la fine della riga dei passaggi (altrimento se si fa drop dopo l'ultima card viene sempre chiesto di sommare con l'ultimo valore-->
+			Questo div serve per far riconosce la fine della riga dei passaggi (altrimento se si fa drop dopo l'ultima card viene sempre chiesto di sommare con l'ultimo valore
 			<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1" cdkDrag></div>
 			
 			
@@ -99,10 +90,10 @@
 	</div>
 	
 	
-	<clr-modal [(clrModalOpen)]="modaleScomposizione">
-		<h3 class="modal-title">Proprietà dissociativa</h3>
+	<div *ngIf="modaleScomposizione" class="clr-row">
+		<h3>Proprietà dissociativa</h3>
 		
-		<div class="modal-body">
+		<div class="clr-col-3 clr-col-sm-2 clr-col-md-1 clr-col-lg-2 clr-col-xl-1">
 			<p>Qui si potrà poi scrivere a mano, ma per ora utiliziamo la tastiera</p>
 			<app-input-scomposizione
 				[numeroScomposto] = 'numeroScomposto'
@@ -110,11 +101,11 @@
 				[(passaggi)] = 'passaggi'
 				[(modaleScomposizione)] = 'modaleScomposizione'></app-input-scomposizione>
 		</div>
-		<div class="modal-footer">
+		<div>
 			<button type="button" class="btn btn-outline" (click)="modaleScomposizione = false">Annulla</button>
 			<button type="button" class="btn btn-primary" (click)="controlloDecomposizione()">Ok</button>
 		</div>
-	</clr-modal>
+	</div>
 	
 	<clr-modal [(clrModalOpen)]="modaleAssociativa">
 		<h3 class="modal-title">Proprietà associativa</h3>
@@ -134,3 +125,4 @@
 		</div>
 	</clr-modal>
 </div>
+ -->

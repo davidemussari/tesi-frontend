@@ -1,12 +1,63 @@
-<form clrForm>
-	<clr-input-container [ngClass]="{'clr-error': !decomposizioneCorretta }" autocomplete=off>
-		<label>{{numeroScomposto}} = </label>
-		<input clrInput  [(ngModel)]="decomposizione" required (keyup.enter)="controlloDecomposizione()" name="inputScomposizione" autocomplete=off autofocus/>
-		<clr-control-helper>Sono ammessi soltanto numeri, spazi ed i segni di addizione e sottrazione. Inoltre la decomposizione deve continuare a valere {{numeroScomposto}}</clr-control-helper>
-		<clr-control-error>Sono ammessi soltanto numeri, spazi ed i segni di addizione e sottrazione. Inoltre la decomposizione deve continuare a valere {{numeroScomposto}}</clr-control-error>
-	</clr-input-container>
-</form>
-<!--  
-	<signature-pad [options]="signaturePadOptions"></signature-pad>
--->
-<div id="editor" #tref></div>
+<h3>Decomposizione</h3>
+<p>Scrivere la decomposizione: è possibile usare la scrittura a mano, qui nel riquadro,
+o scegliere di utilizzare la tastiera con l'apposito pulsante.<br></p>
+
+<div class="alert alert-danger" role="alert" *ngIf="!decomposizioneCorretta">
+	<div class="alert-items">
+	    <div class="alert-item static">
+	        <div class="alert-icon-wrapper">
+	            <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+	        </div>
+	        <span class="alert-text">
+	            Sono ammessi soltanto numeri, spazi ed i segni di addizione e sottrazione.
+	            Inoltre la decomposizione deve continuare a valere: {{numeroScomposto}}
+	        </span>
+	    </div>
+	</div>
+</div>
+
+
+<clr-tabs>
+	<clr-tab>
+        <button clrTabLink><clr-icon shape="note"></clr-icon> Scrittura</button>
+        <clr-tab-content *clrIfActive>
+        <div class="clr-row padding10">
+			<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1">
+			<p class="p2 textRight">{{numeroScomposto}} = </p>
+			</div>
+			<div class="clr-col">
+				<div id="editor" #tref touch-action="none"></div>
+			</div>
+		</div>
+		<div class="clr-row">
+			<button type="button" class="btn btn-outline" (click)="annulla()">
+				<clr-icon shape="window-close"></clr-icon> Annulla
+			</button>
+			<button type="button" class="btn btn-primary" (click)="datiScritti()">
+				<clr-icon shape="check"></clr-icon> Ok
+			</button>
+		</div>
+        </clr-tab-content>
+    </clr-tab>
+    <clr-tab>
+        <button clrTabLink><clr-icon shape="keyboard"></clr-icon> Tastiera</button>
+        <clr-tab-content *clrIfActive>
+        	<form clrForm>
+				<clr-input-container [ngClass]="{'clr-error': !decomposizioneCorretta }" autocomplete=off>
+					<label class="textRight">{{numeroScomposto}} = </label>
+					<input clrInput  [(ngModel)]="decomposizione" required (keyup.enter)="controlloDecomposizione()" name="inputScomposizione" autocomplete=off autofocus/>
+					<clr-control-helper>Sono ammessi soltanto numeri, spazi ed i segni di addizione e sottrazione. Inoltre la decomposizione deve continuare a valere {{numeroScomposto}}</clr-control-helper>
+					<clr-control-error>Sono ammessi soltanto numeri, spazi ed i segni di addizione e sottrazione. Inoltre la decomposizione deve continuare a valere {{numeroScomposto}}</clr-control-error>
+				</clr-input-container>
+			</form>
+			<button type="button" class="btn btn-outline" (click)="annulla()">
+				<clr-icon shape="window-close"></clr-icon> Annulla
+			</button>
+			<button type="button" class="btn btn-primary" (click)="controlloDecomposizione()">
+				<clr-icon shape="check"></clr-icon> Ok
+			</button>
+        </clr-tab-content>
+    </clr-tab>
+</clr-tabs>
+
+
