@@ -7,8 +7,8 @@ import { User } from '../models/User';
 @Injectable()
 export class UserApiService {
 
-    //public static ulrServerBackEnd: String = 'http://192.168.1.103:8080/';
-    public static ulrServerBackEnd: String = 'http://localhost:8080/';
+    public static ulrServerBackEnd: String = 'http://192.168.1.103:8080/';
+    //public static ulrServerBackEnd: String = 'http://localhost:8080/';
 
     constructor(private http: HttpClient) { }
 
