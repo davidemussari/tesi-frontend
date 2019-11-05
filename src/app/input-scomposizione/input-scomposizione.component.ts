@@ -78,6 +78,7 @@ export class InputScomposizioneComponent implements OnInit {
 			this.paginaScomposizione = false; // fa chiudere la modale
 			this.paginaScomposizioneChange.emit(this.paginaScomposizione);
 			this.decomposizione = '';
+			
 		}
 	}
 
