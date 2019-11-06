@@ -26,16 +26,30 @@ o scegliere di utilizzare la tastiera con l'apposito pulsante.<br></p>
 			<p class="p2 textRight">{{numeroScomposto}} = </p>
 			</div>
 			<div class="clr-col">
-				<div id="editor" #tref touch-action="none"></div>
+				<div>{{result}}</div>
+				<div class="spacer"></div>
+				<div id="editor" #editor touch-action="none"></div>
 			</div>
 		</div>
 		<div class="clr-row">
-			<button type="button" class="btn btn-outline" (click)="annulla()">
+			<div class="btn-group btn-primary btn-icon">
+				    <button id="clear" #clear class="btn" [disabled]="foglioBianco">
+				        <clr-icon shape="check" title="clear"></clr-icon> Cancella
+				    </button>
+				    <button id="undo" #undo class="btn" [disabled]="foglioBianco">
+				        <clr-icon shape="undo" title="undo"></clr-icon> Indietro
+				    </button>
+				    <button id="redo" #redo class="btn" [disabled]="foglioBianco">
+				        <clr-icon shape="redo" title="redo"></clr-icon> Ripeti
+				    </button>
+				    <button type="button" class="btn btn-outline" (click)="annulla()">
 				<clr-icon shape="window-close"></clr-icon> Annulla
 			</button>
-			<button type="button" class="btn btn-primary" (click)="datiScritti()">
+			<button type="button" class="btn btn-primary"
+			(click)="convert()">
 				<clr-icon shape="check"></clr-icon> Ok
 			</button>
+				</div>
 		</div>
         </clr-tab-content>
     </clr-tab>

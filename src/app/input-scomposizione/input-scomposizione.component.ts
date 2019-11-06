@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, HostListener } from '@angular/core';
 import { UserApiService } from '../services/user-api.service';
 
 import { AfterViewInit,  ElementRef, ViewEncapsulation} from '@angular/core';
@@ -21,23 +21,83 @@ export class InputScomposizioneComponent implements OnInit {
 	@Input() passaggi;
 	@Output() passaggiChange = new EventEmitter();
 	
-	@ViewChild("tref", {read: ElementRef, static: false}) domEditor: ElementRef;
+	@ViewChild("editor", {read: ElementRef, static: false}) domEditor: ElementRef;
+	@ViewChild("clear", {read: ElementRef, static: false}) domClear: ElementRef;
+	@ViewChild("undo", {read: ElementRef, static: false}) domUndo: ElementRef;
+	@ViewChild("redo", {read: ElementRef, static: false}) domRedo: ElementRef;
+	@ViewChild("convert", {read: ElementRef, static: false}) domConvert: ElementRef;
+	
 	private editor: any;
+	private foglioBianco: boolean = true;
+	private buttonExportActive: boolean = false;
+	private result: string = '';
 	
 	public decomposizione:string = '';
 	public decomposizioneCorretta: boolean = true; /*
 													 * Variabile necessaria per
 													 * avere alert di errore
 													 */
+	@HostListener('changed') changed() {
+		this.foglioBianco = false;
+		this.buttonExportActive = true;
+	  }
+	
+	convert(){
+		this.editor.convert();
+		this.datiScritti()
+	}
+	
+	@HostListener('exported', ['$event']) exported(event: any) {
+		var exports = event.detail.exports;
+        //if (exports && exports['application/x-latex']) {
+        	this.buttonExportActive = false;
+        	this.result = exports['application/x-latex'];
+       // } else if (exports && exports['application/mathml+xml']) {
+       // 	this.buttonExportActive = false;
+       // 	this.result = exports['application/mathml+xml'];
+       // } else if (exports && exports['application/mathofficeXML']) {
+      //  	this.buttonExportActive = false;
+       // 	this.result = exports['application/mathofficeXML'];
+      //  } else {
+       // 	this.buttonExportActive = true;
+      //  	this.result = '';
+      //  }
+	  }
+	
 	ngAfterViewInit() : void {
-		console.log(this.domEditor.nativeElement);
+		//Tentativo di MATH come da risposta
+		
+		var editorNativeElement = this.domEditor.nativeElement;
+	    
+	    this.editor = Myscript.register(editorNativeElement, {
+	    	recognitionParams: {
+	    		type: 'MATH',
+		    	protocol: 'WEBSOCKET',
+		    	apiVersion: 'V4',
+		    	server: {
+		    		scheme: 'https',
+		    		host: 'webdemoapi.myscript.com',
+		    		applicationKey: 'f1355ec8-c74a-4da9-8d63-691ab05952eb',
+		    		hmacKey: '752acf37-5a45-481b-9361-fcb32cd7f6a1',
+		    	},
+		    	v4: {
+		            math: {
+		              mimeTypes: ['application/x-latex', 'application/vnd.myscript.jiix']
+		            },
+		            export: {
+		              jiix: {
+		                strokes: true
+		              }
+		            }
+		    	}
+	    	}
+	    });
+		
+		/*
+		 * Tipo Testo
 	    this.editor = Myscript.register(this.domEditor.nativeElement, {
 	    	recognitionParams: {
-	    		text: {
-		    		configuration: {
-		    			customResources: ['0123456789+-'],
-		    		},
-		    	},
+	    		type: 'TEXT',
 		    	protocol: 'WEBSOCKET',
 		    	apiVersion: 'V4',
 		    	server: {
@@ -48,12 +108,12 @@ export class InputScomposizioneComponent implements OnInit {
 		    	},
 	    	},
 	    });
-	    console.log(this.editor);
+	    */
 	}
 	
 	datiScritti(){
 		var str = this.editor.exports;
-		this.decomposizione = str["text/plain"];	
+		this.decomposizione = this.result;	
 		this.controlloDecomposizione();
 	}
 	
