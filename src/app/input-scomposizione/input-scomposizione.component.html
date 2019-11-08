@@ -21,35 +21,22 @@ o scegliere di utilizzare la tastiera con l'apposito pulsante.<br></p>
 	<clr-tab>
         <button clrTabLink><clr-icon shape="note"></clr-icon> Scrittura</button>
         <clr-tab-content *clrIfActive>
+        <p>Per cancellare uno o più segni grafici, è sufficiente barrarli una o più volte.</p>
+        <div class="clr-row">
+        	<p class="p2 textRight">{{numeroScomposto}} = {{result}}</p>
+        </div>
         <div class="clr-row padding10">
-			<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1">
-			<p class="p2 textRight">{{numeroScomposto}} = </p>
-			</div>
-			<div class="clr-col">
-				<div>{{result}}</div>
-				<div class="spacer"></div>
 				<div id="editor" #editor touch-action="none"></div>
-			</div>
 		</div>
 		<div class="clr-row">
 			<div class="btn-group btn-primary btn-icon">
-				    <button id="clear" #clear class="btn" [disabled]="foglioBianco">
-				        <clr-icon shape="check" title="clear"></clr-icon> Cancella
-				    </button>
-				    <button id="undo" #undo class="btn" [disabled]="foglioBianco">
-				        <clr-icon shape="undo" title="undo"></clr-icon> Indietro
-				    </button>
-				    <button id="redo" #redo class="btn" [disabled]="foglioBianco">
-				        <clr-icon shape="redo" title="redo"></clr-icon> Ripeti
-				    </button>
-				    <button type="button" class="btn btn-outline" (click)="annulla()">
-				<clr-icon shape="window-close"></clr-icon> Annulla
-			</button>
-			<button type="button" class="btn btn-primary"
-			(click)="convert()">
-				<clr-icon shape="check"></clr-icon> Ok
-			</button>
-				</div>
+				<button type="button" class="btn btn-outline" (click)="annulla()">
+					<clr-icon shape="window-close"></clr-icon> Annulla
+				</button>
+				<button type="button" class="btn btn-primary" (click)="convert()">
+					<clr-icon shape="check"></clr-icon> Ok
+				</button>
+			</div>
 		</div>
         </clr-tab-content>
     </clr-tab>

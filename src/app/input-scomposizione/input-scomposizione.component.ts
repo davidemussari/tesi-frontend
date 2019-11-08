@@ -22,14 +22,8 @@ export class InputScomposizioneComponent implements OnInit {
 	@Output() passaggiChange = new EventEmitter();
 	
 	@ViewChild("editor", {read: ElementRef, static: false}) domEditor: ElementRef;
-	@ViewChild("clear", {read: ElementRef, static: false}) domClear: ElementRef;
-	@ViewChild("undo", {read: ElementRef, static: false}) domUndo: ElementRef;
-	@ViewChild("redo", {read: ElementRef, static: false}) domRedo: ElementRef;
-	@ViewChild("convert", {read: ElementRef, static: false}) domConvert: ElementRef;
 	
 	private editor: any;
-	private foglioBianco: boolean = true;
-	private buttonExportActive: boolean = false;
 	private result: string = '';
 	
 	public decomposizione:string = '';
@@ -37,11 +31,6 @@ export class InputScomposizioneComponent implements OnInit {
 													 * Variabile necessaria per
 													 * avere alert di errore
 													 */
-	@HostListener('changed') changed() {
-		this.foglioBianco = false;
-		this.buttonExportActive = true;
-	  }
-	
 	convert(){
 		this.editor.convert();
 		this.datiScritti()
@@ -49,23 +38,12 @@ export class InputScomposizioneComponent implements OnInit {
 	
 	@HostListener('exported', ['$event']) exported(event: any) {
 		var exports = event.detail.exports;
-        //if (exports && exports['application/x-latex']) {
         	this.buttonExportActive = false;
         	this.result = exports['application/x-latex'];
-       // } else if (exports && exports['application/mathml+xml']) {
-       // 	this.buttonExportActive = false;
-       // 	this.result = exports['application/mathml+xml'];
-       // } else if (exports && exports['application/mathofficeXML']) {
-      //  	this.buttonExportActive = false;
-       // 	this.result = exports['application/mathofficeXML'];
-      //  } else {
-       // 	this.buttonExportActive = true;
-      //  	this.result = '';
-      //  }
 	  }
 	
+	
 	ngAfterViewInit() : void {
-		//Tentativo di MATH come da risposta
 		
 		var editorNativeElement = this.domEditor.nativeElement;
 	    
@@ -82,7 +60,8 @@ export class InputScomposizioneComponent implements OnInit {
 		    	},
 		    	v4: {
 		            math: {
-		              mimeTypes: ['application/x-latex', 'application/vnd.myscript.jiix']
+		              mimeTypes: ['application/x-latex', 'application/vnd.myscript.jiix'],
+		              customGrammarContent: "symbol = 0 1 2 3 4 5 6 7 8 9 + -\ncharacter ::= identity(symbol)\nexpression ::= identity(character) | hpair(expression, expression)\nstart(expression)"
 		            },
 		            export: {
 		              jiix: {
@@ -92,23 +71,6 @@ export class InputScomposizioneComponent implements OnInit {
 		    	}
 	    	}
 	    });
-		
-		/*
-		 * Tipo Testo
-	    this.editor = Myscript.register(this.domEditor.nativeElement, {
-	    	recognitionParams: {
-	    		type: 'TEXT',
-		    	protocol: 'WEBSOCKET',
-		    	apiVersion: 'V4',
-		    	server: {
-		    		scheme: 'https',
-		    		host: 'webdemoapi.myscript.com',
-		    		applicationKey: 'f1355ec8-c74a-4da9-8d63-691ab05952eb',
-		    		hmacKey: '752acf37-5a45-481b-9361-fcb32cd7f6a1',
-		    	},
-	    	},
-	    });
-	    */
 	}
 	
 	datiScritti(){
@@ -150,6 +112,7 @@ export class InputScomposizioneComponent implements OnInit {
 		this.paginaScomposizione = false;
 		this.paginaScomposizioneChange.emit(this.paginaScomposizione);
 		this.decomposizione = '';
+		this.editor.clear();
 	}
 	
 	ngOnInit() {
