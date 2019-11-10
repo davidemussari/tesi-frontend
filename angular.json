@@ -24,8 +24,7 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/app/sottoinsiemeMyscript/sottoinsiemeMyscript.res"
+              "src/assets"
             ],
             "styles": [
               "node_modules/@clr/icons/clr-icons.min.css",
