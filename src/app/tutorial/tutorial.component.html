@@ -1,5 +1,5 @@
 <h1 *ngIf="!paginaScomposizione">FAQ</h1>
-<clr-accordion *ngIf="!paginaScomposizione">
+<clr-accordion *ngIf="!paginaScomposizione && !paginaAssociativa">
   <clr-accordion-panel>
     <clr-accordion-title>Opzioni (incona in alto a destra)</clr-accordion-title>
     <clr-accordion-content *clrIfExpanded>
@@ -13,23 +13,41 @@
 
   <clr-accordion-panel >
     <clr-accordion-title>La scomposizione</clr-accordion-title>
-    <clr-accordion-content [(clrIfExpanded)]="provenienteDaScomposizione">È sufficiente cliccare o toccare i numeri, per
-    poter decomporre. <br> Provare con la breve espressione qui di seguito. <br>
+    <clr-accordion-content>È sufficiente cliccare o toccare i numeri, per
+    poter decomporre. Provare con la breve espressione qui di seguito. <br>
     Il pulsante con l'icona con il cestino serve ad eliminare la scomposizione.
 	    <app-righe-passaggi
 	    	[(passaggi)]="passaggi"
-	    	[visualizzaHeaderCard] = "visualizzaHeaderCard"
+	    	[visualizzaHeaderCard] = "false"
 	    	[(paginaAssociativa)] = "paginaAssociativa"
 	    	[(paginaScomposizione)] = "paginaScomposizione"
 	    	[(numeroScomposto)] = "numeroScomposto"
 	    	[(indiceNumeroScomposto)] = "indiceNumeroScomposto"
+	    	[(valoreSovrapposto)] = 'valoreSovrapposto'
+			[(valoreSpostato)] = 'valoreSpostato'
+			[(eventoDrop)] = 'eventoDrop'
 	    ></app-righe-passaggi>
     </clr-accordion-content>
   </clr-accordion-panel>
 
   <clr-accordion-panel>
-    <clr-accordion-title>Item 3</clr-accordion-title>
-    <clr-accordion-content *clrIfExpanded>Content 3</clr-accordion-content>
+    <clr-accordion-title>La somma</clr-accordion-title>
+    <clr-accordion-content *clrIfExpanded>
+    	Trascinare un numero su di un altro numero prendendolo dall'icona della mano.
+    	Se non c'è l'icona con la mano, è perché non è stata fatta almeno una scomposizione.
+   
+    	<app-righe-passaggi
+	    	[(passaggi)]="passaggi"
+	    	[visualizzaHeaderCard] = "true"
+	    	[(paginaAssociativa)] = "paginaAssociativa"
+	    	[(paginaScomposizione)] = "paginaScomposizione"
+	    	[(numeroScomposto)] = "numeroScomposto"
+	    	[(indiceNumeroScomposto)] = "indiceNumeroScomposto"
+	    	[(valoreSovrapposto)] = 'valoreSovrapposto'
+			[(valoreSpostato)] = 'valoreSpostato'
+			[(eventoDrop)] = 'eventoDrop'
+	    ></app-righe-passaggi>
+    </clr-accordion-content>
   </clr-accordion-panel>
 </clr-accordion>
 
@@ -40,6 +58,14 @@
 	[(passaggi)] = 'passaggi'
 	[(paginaScomposizione)] = 'paginaScomposizione'
 ></app-input-scomposizione>
+
+<app-input-somma-algebrica *ngIf="paginaAssociativa"
+	[valoreSovrapposto] = 'valoreSovrapposto'
+	[valoreSpostato] = 'valoreSpostato'
+	[eventoDrop] = 'eventoDrop'
+	[(passaggi)] = 'passaggi'
+	[(paginaAssociativa)] = 'paginaAssociativa'
+></app-input-somma-algebrica>
 
 <!-- 
 <div *ngIf="step==2 && !modaleScomposizione">

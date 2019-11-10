@@ -10,6 +10,7 @@ export class RighePassaggiComponent implements OnInit {
 	
 	@Input() visualizzaHeaderCard: boolean = true;
 	@Input() paginaAssociativa: boolean = false;
+	@Output() paginaAssociativaChange = new EventEmitter();
 	@Input() passaggi;
 	@Output() passaggiChange = new EventEmitter();
 	@Input() paginaScomposizione: boolean = false;
@@ -18,11 +19,14 @@ export class RighePassaggiComponent implements OnInit {
 	@Output() numeroScompostoChange = new EventEmitter();
 	@Input() indiceNumeroScomposto;
 	@Output() indiceNumeroScompostoChange = new EventEmitter();
+	@Input() valoreSovrapposto: number = 0;
+	@Output() valoreSovrappostoChange = new EventEmitter();
+	@Input() valoreSpostato: number = 0;
+	@Output() valoreSpostatoChange = new EventEmitter();
 	
 	public visualizzaPassaggi: boolean = true;
-	public eventoDrop: any;
-	public valoreSovrapposto: number = 0;
-	public valoreSpostato: number = 0;
+	@Input() eventoDrop: any;
+	@Output() eventoDropChange = new EventEmitter();
 
 	constructor(private _impostazioniGlobali: ImpostazioniGlobaliService) {}
 	
@@ -37,11 +41,17 @@ export class RighePassaggiComponent implements OnInit {
 	}
 	
 	drop(event: any): void {
+		if(this.passaggi[this.passaggi.length - 1].length > 3)
+			event.currentIndex = event.currentIndex-1;
 		if (event.isPointerOverContainer && this.cliccabile(this.passaggi[this.passaggi.length - 1][event.currentIndex]) && this.cliccabile(this.passaggi[this.passaggi.length - 1][event.previousIndex]) && event.currentIndex != event.previousIndex) {
 			this.eventoDrop = event;
+			this.eventoDropChange.emit(this.eventoDrop);
 			this.valoreSovrapposto = this.passaggi[this.passaggi.length - 1][event.currentIndex];
+			this.valoreSovrappostoChange.emit(this.valoreSovrapposto);
 			this.valoreSpostato = this.passaggi[this.passaggi.length - 1][event.previousIndex];
+			this.valoreSpostatoChange.emit(this.valoreSpostato);
 			this.paginaAssociativa = true;
+			this.paginaAssociativaChange.emit(this.paginaAssociativa);
 		}
 	}
 

@@ -1,8 +1,62 @@
-<form clrForm>
-	<clr-input-container [ngClass]="{'clr-error': !sommaAlgebricaCorretta }" autocomplete=off>
-		<label>{{valoreSpostato}} + {{valoreSovrapposto}} = </label>
-		<input clrInput  [(ngModel)]="sommaAlgebrica" required (keyup.enter)="controlloAssociativa()" name="inputSommaAlgebrica" autocomplete=off autofocus/>
-		<clr-control-helper>Sono ammessi soltanto numeri. Forse la somma algebrica non è corretta.</clr-control-helper>
-		<clr-control-error>Sono ammessi soltanto numeri. Forse la somma algebrica non è corretta.</clr-control-error>
-	</clr-input-container>
-</form>
+<h3>Somma algebrica</h3>
+<p>Scrivere il valore della somma algebrica:
+è possibile usare la scrittura a mano, qui nel riquadro,
+o scegliere di utilizzare la tastiera con l'apposito pulsante.<br></p>
+
+<div class="alert alert-danger" role="alert" *ngIf="!sommaAlgebricaCorretta">
+	<div class="alert-items">
+	    <div class="alert-item static">
+	        <div class="alert-icon-wrapper">
+	            <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+	        </div>
+	        <span class="alert-text">
+	            Sono ammessi soltanto numeri. Forse la somma algebrica non è corretta.
+	        </span>
+	    </div> 
+	</div>
+</div>
+
+
+<clr-tabs>
+	<clr-tab>
+        <button clrTabLink><clr-icon shape="note"></clr-icon> Scrittura</button>
+        <clr-tab-content *clrIfActive>
+        <p>Per cancellare uno o più segni grafici, è sufficiente barrarli una o più volte.</p>
+        <div class="clr-row">
+        	<p class="p2 textRight">{{valoreSpostato}} + {{valoreSovrapposto}} = {{result}}</p>
+        </div>
+        <div class="clr-row padding10">
+				<div id="editor" #editor touch-action="none"></div>
+		</div>
+		<div class="clr-row">
+			<div class="btn-group btn-primary btn-icon">
+				<button type="button" class="btn btn-outline" (click)="annulla()">
+					<clr-icon shape="window-close"></clr-icon> Annulla
+				</button>
+				<button type="button" class="btn btn-primary" (click)="convert()">
+					<clr-icon shape="check"></clr-icon> Ok
+				</button>
+			</div>
+		</div>
+        </clr-tab-content>
+    </clr-tab>
+    <clr-tab>
+        <button clrTabLink><clr-icon shape="keyboard"></clr-icon> Tastiera</button>
+        <clr-tab-content *clrIfActive>
+        	<form clrForm>
+				<clr-input-container [ngClass]="{'clr-error': !sommaAlgebricaCorretta }" autocomplete=off>
+					<label class="textRight">{{valoreSpostato}} + {{valoreSovrapposto}} =  </label>
+					<input clrInput  [(ngModel)]="sommaAlgebrica" required (keyup.enter)="controlloAssociativa()" name="inputSommaAlgebrica" autocomplete=off autofocus/>
+					<clr-control-helper>Sono ammessi soltanto numeri. Forse la somma algebrica non è corretta.</clr-control-helper>
+					<clr-control-error>Sono ammessi soltanto numeri. Forse la somma algebrica non è corretta.</clr-control-error>
+				</clr-input-container>
+			</form>
+			<button type="button" class="btn btn-outline" (click)="annulla()">
+				<clr-icon shape="window-close"></clr-icon> Annulla
+			</button>
+			<button type="button" class="btn btn-primary" (click)="controlloAssociativa()">
+				<clr-icon shape="check"></clr-icon> Ok
+			</button>
+        </clr-tab-content>
+    </clr-tab>
+</clr-tabs>

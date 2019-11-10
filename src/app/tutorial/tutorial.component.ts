@@ -13,12 +13,14 @@ export class TutorialComponent implements OnInit {
 
 	public step: number = 0;
 	public paginaScomposizione: boolean = false;
-	public modaleAssociativa: boolean = false;
+	public paginaAssociativa: boolean = false;
 	public numeroScomposto: number = 0;
 	public indiceNumeroScomposto: number = 0;
 	public passaggi: Array<any> = [['12', '+', '17']];
 	public visualizzaPassaggi: boolean = true;
-	public visualizzaHeaderCard: boolean = false;
+	public valoreSovrapposto: string = '';
+	public valoreSpostato: string = '';
+	public eventoDrop: any;
 
 	ngAfterViewInit() {
 	}
