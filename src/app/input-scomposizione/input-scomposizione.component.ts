@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, HostListener } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, HostListener,
+	AfterViewInit,  ElementRef, ViewEncapsulation} from '@angular/core';
 import { UserApiService } from '../services/user-api.service';
 
-import { AfterViewInit,  ElementRef, ViewEncapsulation} from '@angular/core';
 import * as Myscript from 'myscript';
+
 
 
 @Component({
@@ -38,10 +39,8 @@ export class InputScomposizioneComponent implements OnInit {
 	
 	@HostListener('exported', ['$event']) exported(event: any) {
 		var exports = event.detail.exports;
-        	this.buttonExportActive = false;
-        	this.result = exports['application/x-latex'];
+        this.result = exports['application/x-latex'];
 	  }
-	
 	
 	ngAfterViewInit() : void {
 		
@@ -60,7 +59,7 @@ export class InputScomposizioneComponent implements OnInit {
 		    	},
 		    	v4: {
 		            math: {
-		              mimeTypes: ['application/x-latex', 'application/vnd.myscript.jiix'],
+		              mimeTypes: ['application/x-latex'],
 		              customGrammarContent: "symbol = 0 1 2 3 4 5 6 7 8 9 + -\ncharacter ::= identity(symbol)\nexpression ::= identity(character) | hpair(expression, expression)\nstart(expression)"
 		            },
 		            export: {
@@ -74,7 +73,6 @@ export class InputScomposizioneComponent implements OnInit {
 	}
 	
 	datiScritti(){
-		var str = this.editor.exports;
 		this.decomposizione = this.result;	
 		this.controlloDecomposizione();
 	}

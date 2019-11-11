@@ -4,6 +4,8 @@
 	margin: auto;
 	min-width: 500px;
 	border: 1px #ccc solid;
+	touch-action: none;
+	-ms-touch-action: none;
 }
 
 .textRight{

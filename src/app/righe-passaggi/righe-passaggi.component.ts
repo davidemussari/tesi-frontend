@@ -41,8 +41,6 @@ export class RighePassaggiComponent implements OnInit {
 	}
 	
 	drop(event: any): void {
-		if(this.passaggi[this.passaggi.length - 1].length > 3)
-			event.currentIndex = event.currentIndex-1;
 		if (event.isPointerOverContainer && this.cliccabile(this.passaggi[this.passaggi.length - 1][event.currentIndex]) && this.cliccabile(this.passaggi[this.passaggi.length - 1][event.previousIndex]) && event.currentIndex != event.previousIndex) {
 			this.eventoDrop = event;
 			this.eventoDropChange.emit(this.eventoDrop);
