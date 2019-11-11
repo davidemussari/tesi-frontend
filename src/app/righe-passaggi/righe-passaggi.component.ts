@@ -8,7 +8,7 @@ import { ImpostazioniGlobaliService } from '../services/impostazioni-globali.ser
 })
 export class RighePassaggiComponent implements OnInit {
 	
-	@Input() visualizzaHeaderCard: boolean = true;
+	@Input() visualizzaHeaderCard: boolean = false;
 	@Input() paginaAssociativa: boolean = false;
 	@Output() paginaAssociativaChange = new EventEmitter();
 	@Input() passaggi;
