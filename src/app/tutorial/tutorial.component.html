@@ -49,7 +49,24 @@
 	    ></app-righe-passaggi>
     </clr-accordion-content>
   </clr-accordion-panel>
-</clr-accordion>
+
+	<clr-accordion-panel>
+	    <clr-accordion-title>Alcuni esempi risolti</clr-accordion-title>
+	    <clr-accordion-content *clrIfExpanded>
+	    	Trascinare un numero su di un altro numero prendendolo dall'icona della mano.
+	    	Se non c'è l'icona con la mano, è perché non è stata fatta almeno una scomposizione.
+	   
+	    	<app-righe-passaggi
+		    	[(passaggi)]="esempio1"
+		    ></app-righe-passaggi>
+		    <br>
+		    Eccone un altro.
+		    <app-righe-passaggi
+		    	[(passaggi)]="esempio2"
+		    ></app-righe-passaggi>
+	    </clr-accordion-content>
+	  </clr-accordion-panel>
+	</clr-accordion>
 
 
 <app-input-scomposizione *ngIf="paginaScomposizione"
@@ -66,89 +83,3 @@
 	[(passaggi)] = 'passaggi'
 	[(paginaAssociativa)] = 'paginaAssociativa'
 ></app-input-somma-algebrica>
-
-<!-- 
-<div *ngIf="step==2 && !modaleScomposizione">
-	<h1>Le proprietà dissociativa e associativa</h1>
-	
-	<clr-alert [clrAlertType]="'info'" *ngIf="passaggi.length > 1">
-		<clr-alert-item>
-			<span class="alert-text">
-				Continuare a decomporre i numeri toccandoli o cliccandoli oppure sommarli trascinandoli, dalla mano, uno sull'altro.
-			</span>
-		</clr-alert-item>
-	</clr-alert>
-
-	<p *ngIf="passaggi.length == 1">Cliccare o toccare su di uno dei numeri.</p>
-	<div *ngFor="let riga of passaggi; index as numeroRiga; last as ultimo">
-		<div class="clr-row" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
-			<div class="clr-col-3 clr-col-sm-2 clr-col-md-1 clr-col-lg-2 clr-col-xl-1"
-				*ngFor="let carattere of riga; index as j;">
-					<div *ngIf="visualizzaPassaggi? true : ultimo" class="card"
-						[ngClass]="{clickable: ultimo && cliccabile(carattere)}"
-						cdkDrag
-						[cdkDragDisabled]="!(ultimo && cliccabile(carattere) && numeroRiga!=0)">
-						<div class="card-header" cdkDragHandle *ngIf="ultimo && cliccabile(carattere) && numeroRiga!=0"><clr-icon shape="cursor-hand-grab"></clr-icon></div>
-						<div class="card-block"
-						(click)="modaleScomposizione=ultimo&&cliccabile(carattere);
-						numeroScomposto = carattere; indiceNumeroScomposto = j"><p class="card-text">{{carattere}}</p></div>
-					</div>
-					<div class="card customPlaceholder" *cdkDragPlaceholder></div>
-			</div>
-			
-			<div class="clr-col-3 clr-col-sm-2 clr-col-md-1 clr-col-lg-2 clr-col-xl-1" *ngIf="isArray(riga) && numeroRiga!=0 && ultimo">
-					<button type="button" class="btn btn-icon bottoneEliminaPassaggio" (click)="eliminaPassaggio()">
-						<clr-icon shape="trash" class="is-solid"></clr-icon>
-					</button>
-			</div>
-			Questo div serve per far riconosce la fine della riga dei passaggi (altrimento se si fa drop dopo l'ultima card viene sempre chiesto di sommare con l'ultimo valore
-			<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1" cdkDrag></div>
-			
-			
-			
-
-			<div class="clr-col-3 clr-col-sm-2 clr-col-md-1 clr-col-lg-2 clr-col-xl-1">
-				<div class="card card-block risultatoCorretto" *ngIf="!isArray(riga)"><p class="card-text">{{riga}}</p>
-				</div>
-			</div>
-		</div>
-		
-	</div>
-	
-	
-	<div *ngIf="modaleScomposizione" class="clr-row">
-		<h3>Proprietà dissociativa</h3>
-		
-		<div class="clr-col-3 clr-col-sm-2 clr-col-md-1 clr-col-lg-2 clr-col-xl-1">
-			<p>Qui si potrà poi scrivere a mano, ma per ora utiliziamo la tastiera</p>
-			<app-input-scomposizione
-				[numeroScomposto] = 'numeroScomposto'
-				[indiceNumeroScomposto] = 'indiceNumeroScomposto'
-				[(passaggi)] = 'passaggi'
-				[(modaleScomposizione)] = 'modaleScomposizione'></app-input-scomposizione>
-		</div>
-		<div>
-			<button type="button" class="btn btn-outline" (click)="modaleScomposizione = false">Annulla</button>
-			<button type="button" class="btn btn-primary" (click)="controlloDecomposizione()">Ok</button>
-		</div>
-	</div>
-	
-	<clr-modal [(clrModalOpen)]="modaleAssociativa">
-		<h3 class="modal-title">Proprietà associativa</h3>
-		
-		<div class="modal-body">
-			<p>Qui si potrà poi scrivere a mano, ma per ora utiliziamo la tastiera</p>
-			<app-input-somma-algebrica
-				[valoreSovrapposto] = 'valoreSovrapposto'
-				[valoreSpostato] = 'valoreSpostato'
-				[eventoDrop] = 'eventoDrop'
-				[(passaggi)] = 'passaggi'
-				[(modaleAssociativa)] = 'modaleAssociativa'></app-input-somma-algebrica>
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-outline" (click)="modaleAssociativa = false">Annulla</button>
-			<button type="button" class="btn btn-primary" (click)="controlloAssociativa()">Ok</button>
-		</div>
-	</clr-modal>
-</div>
- -->

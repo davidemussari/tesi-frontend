@@ -17,6 +17,16 @@ export class TutorialComponent implements OnInit {
 	public numeroScomposto: number = 0;
 	public indiceNumeroScomposto: number = 0;
 	public passaggi: Array<any> = [['12', '+', '17']];
+	public esempio1: Array<any> = [['12', '+', '17'],
+		['10', '+', '2', '+', '17'],
+		['10', '+', '19'],
+		'29'];
+	public esempio2: Array<any> = [['12', '+', '17'],
+		['12', '+', '20', '-', '3'],
+		['32', '-', '3'],
+		['30', '+', '2', '-', '3'],
+		['30', '-', '1'],
+		'29'];
 	public visualizzaPassaggi: boolean = true;
 	public valoreSovrapposto: string = '';
 	public valoreSpostato: string = '';
