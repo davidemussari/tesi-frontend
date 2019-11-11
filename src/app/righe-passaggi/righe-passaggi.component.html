@@ -2,7 +2,7 @@
 	<div class="clr-row clr-align-items-end" cdkDropList cdkDropListOrientation="horizontal"
 		(cdkDropListDropped)="drop($event)">
 		<div class="clr-col-3 clr-col-sm-2 clr-col-md-1 clr-col-lg-2 clr-col-xl-1"
-			*ngFor="let carattere of riga; index as j;">
+			*ngFor="let carattere of (isArray(riga)? riga : []); index as j;">
 			<div *ngIf="visualizzaPassaggi? true : ultimo" class="card"
 				[ngClass]="{clickable: ultimo && cliccabile(carattere)}" cdkDrag
 				[cdkDragDisabled]="!(ultimo && cliccabile(carattere) && numeroRiga!=0 && visualizzaHeaderCard)">
