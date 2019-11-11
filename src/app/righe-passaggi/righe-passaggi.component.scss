@@ -47,3 +47,8 @@
 @media (max-width: 900px){
 	    .card-block,.card-header{padding: 7px;}
 }
+
+.card-block{
+	touch-action: none;
+	-ms-touch-action: none;
+}
