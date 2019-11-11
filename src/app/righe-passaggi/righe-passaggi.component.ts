@@ -44,10 +44,21 @@ export class RighePassaggiComponent implements OnInit {
 		if (event.isPointerOverContainer && this.cliccabile(this.passaggi[this.passaggi.length - 1][event.currentIndex]) && this.cliccabile(this.passaggi[this.passaggi.length - 1][event.previousIndex]) && event.currentIndex != event.previousIndex) {
 			this.eventoDrop = event;
 			this.eventoDropChange.emit(this.eventoDrop);
-			this.valoreSovrapposto = this.passaggi[this.passaggi.length - 1][event.currentIndex];
-			this.valoreSovrappostoChange.emit(this.valoreSovrapposto);
-			this.valoreSpostato = this.passaggi[this.passaggi.length - 1][event.previousIndex];
+			
+			var tempSpostato = this.passaggi[this.passaggi.length - 1][event.previousIndex];
+			if(event.previousIndex > 0 &&
+					this.passaggi[this.passaggi.length - 1][event.previousIndex-1] == '-')
+					tempSpostato = -tempSpostato;
+			this.valoreSpostato = tempSpostato;
 			this.valoreSpostatoChange.emit(this.valoreSpostato);
+			
+			var tempSovrapposto = this.passaggi[this.passaggi.length - 1][event.currentIndex];
+			if(event.currentIndex > 0 &&
+					this.passaggi[this.passaggi.length - 1][event.currentIndex-1] == '-')
+					tempSovrapposto = -tempSovrapposto;
+			this.valoreSovrapposto =  tempSovrapposto;
+			this.valoreSovrappostoChange.emit(this.valoreSovrapposto);
+			
 			this.paginaAssociativa = true;
 			this.paginaAssociativaChange.emit(this.paginaAssociativa);
 		}

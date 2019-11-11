@@ -22,6 +22,7 @@ import { InputSommaAlgebricaComponent } from './input-somma-algebrica/input-somm
 import { UserApiService } from './services/user-api.service';
 import { LoginComponent } from './login/login.component';
 import { RighePassaggiComponent } from './righe-passaggi/righe-passaggi.component';
+import { SommaAlgebricaFiltroPipe } from './pipe/somma-algebrica-filtro.pipe';
 
 const appRoutes: Routes = [
     { path: 'tutorial', component: TutorialComponent },
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
         InputScomposizioneComponent,
         InputSommaAlgebricaComponent,
         LoginComponent,
-        RighePassaggiComponent
+        RighePassaggiComponent,
+        SommaAlgebricaFiltroPipe
     ],
     imports: [
         BrowserModule,

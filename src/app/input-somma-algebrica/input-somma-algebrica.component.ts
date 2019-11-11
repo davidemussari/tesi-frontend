@@ -51,7 +51,7 @@ export class InputSommaAlgebricaComponent implements OnInit {
 		    	v4: {
 		            math: {
 		              mimeTypes: ['application/x-latex'],
-		              customGrammarContent: "symbol = 0 1 2 3 4 5 6 7 8 9\ncharacter ::= identity(symbol)\nexpression ::= identity(character) | hpair(expression, expression)\nstart(expression)"
+		              customGrammarContent: "symbol = 0 1 2 3 4 5 6 7 8 9 -\ncharacter ::= identity(symbol)\nexpression ::= identity(character) | hpair(expression, expression)\nstart(expression)"
 		            },
 		            export: {
 		              jiix: {
@@ -79,7 +79,10 @@ export class InputSommaAlgebricaComponent implements OnInit {
 	}
 	
 	controlloAssociativa(){
-		this.sommaAlgebricaCorretta = this.sommaAlgebrica.match(/^[\d]+$/) !== null && eval(this.sommaAlgebrica) == eval(this.valoreSpostato) + eval(this.valoreSovrapposto);
+		if (this.sommaAlgebrica.substring(0,1) == '-')
+			this.sommaAlgebricaCorretta = this.sommaAlgebrica.substring(1,).match(/^[\d]+$/) !== null && eval(this.sommaAlgebrica) == eval(this.valoreSpostato) + eval(this.valoreSovrapposto);
+		else
+			this.sommaAlgebricaCorretta = this.sommaAlgebrica.match(/^[\d]+$/) !== null && eval(this.sommaAlgebrica) == eval(this.valoreSpostato) + eval(this.valoreSovrapposto);
 		if(this.sommaAlgebricaCorretta){
 			if(this.passaggi[this.passaggi.length-1].length == 3){
 				this.passaggi.push(this.sommaAlgebrica);
