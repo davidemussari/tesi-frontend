@@ -8,6 +8,7 @@ import { ImpostazioniGlobaliService } from '../services/impostazioni-globali.ser
 })
 export class RighePassaggiComponent implements OnInit {
 	
+	public visualizzaPassaggi: boolean = true;
 	@Input() visualizzaHeaderCard: boolean = false;
 	@Input() paginaAssociativa: boolean = false;
 	@Output() paginaAssociativaChange = new EventEmitter();
@@ -23,8 +24,6 @@ export class RighePassaggiComponent implements OnInit {
 	@Output() valoreSovrappostoChange = new EventEmitter();
 	@Input() valoreSpostato: number = 0;
 	@Output() valoreSpostatoChange = new EventEmitter();
-	
-	public visualizzaPassaggi: boolean = true;
 	@Input() eventoDrop: any;
 	@Output() eventoDropChange = new EventEmitter();
 
@@ -82,5 +81,4 @@ export class RighePassaggiComponent implements OnInit {
 		this.paginaScomposizioneChange.emit(this.paginaScomposizione);
 		
 	}
-
 }

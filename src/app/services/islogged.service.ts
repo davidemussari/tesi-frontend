@@ -11,11 +11,11 @@ import { User } from '../models/User';
 })
 export class IsloggedService implements CanActivate {
 
-  constructor(private _router: Router) { }
-
   private utenteLoggatoObservable = new Subject<User>();
   utenteLoggatoOsservable$ = this.utenteLoggatoObservable.asObservable();
   private utenteLoggato = new User();
+  
+  constructor(private _router: Router) { }
 
   getUtenteLoggato():User {
     return this.utenteLoggato;

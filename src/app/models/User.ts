@@ -5,7 +5,6 @@ export class User {
     tipoUtente: any;
     passwd: string;
 
-
     constructor() {
         this.nome = null;
         this.cognome = null;
@@ -13,6 +12,4 @@ export class User {
         this.passwd = null;
         this.tipoUtente = null;
     }
-
-
 }

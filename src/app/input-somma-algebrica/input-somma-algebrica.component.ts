@@ -27,8 +27,6 @@ export class InputSommaAlgebricaComponent implements OnInit {
 													 * Variabile necessaria per
 													 * avere alert di errore
 													 */
-	
-
 	constructor() { }
 	
 	ngOnInit() {}

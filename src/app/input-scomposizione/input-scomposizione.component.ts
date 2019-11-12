@@ -4,8 +4,6 @@ import { UserApiService } from '../services/user-api.service';
 
 import * as Myscript from 'myscript';
 
-
-
 @Component({
 selector: 'app-input-scomposizione',
 templateUrl: './input-scomposizione.component.html',
