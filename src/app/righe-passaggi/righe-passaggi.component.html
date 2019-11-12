@@ -41,33 +41,3 @@
 	</div>
 
 </div>
-
-
-<!-- 
-<div *ngFor="let riga of passaggi; index as numeroRiga; last as ultimo">
-	<div class="clr-row">
-		<div
-			class="clr-col-3 clr-col-sm-2 clr-col-md-1 clr-col-lg-2 clr-col-xl-1"
-			*ngFor="let carattere of riga; index as j;">
-			<div *ngIf="visualizzaPassaggi? true : ultimo" class="card"
-				[ngClass]="{clickable: ultimo && cliccabile(carattere)}">
-				<div class="card-header"
-					*ngIf="ultimo && cliccabile(carattere) && numeroRiga!=0"></div>
-				<div class="card-block"
-					(click)="paginaScomposizione = ultimo && cliccabile(carattere);
-				numeroScomposto = carattere; indiceNumeroScomposto = j">
-					<p class="card-text">{{carattere}}</p>
-				</div>
-			</div>
-		</div>
-		<div
-			class="clr-col-3 clr-col-sm-2 clr-col-md-1 clr-col-lg-2 clr-col-xl-1"
-			*ngIf="isArray(riga) && numeroRiga!=0 && ultimo">
-			<button type="button" class="btn btn-icon bottoneEliminaPassaggio"
-				(click)="eliminaPassaggio()">
-				<clr-icon shape="trash" class="is-solid"></clr-icon>
-			</button>
-		</div>
-	</div>
-</div>
- -->
