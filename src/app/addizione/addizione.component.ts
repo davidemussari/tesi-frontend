@@ -1,12 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ImpostazioniGlobaliService } from '../services/impostazioni-globali.service';
 
-import { UserApiService } from '../services/user-api.service';
-
-
-interface MyObj {
-    value: string;
-    id: number;
-}
 
 @Component({
     selector: 'app-addizione',
@@ -14,20 +8,24 @@ interface MyObj {
     styleUrls: ['./addizione.component.scss']
 })
 export class AddizioneComponent implements OnInit {
+	
+	public paginaScomposizione: boolean = false;
+	public paginaAssociativa: boolean = false;
+	public numeroScomposto: number = 0;
+	public indiceNumeroScomposto: number = 0;
+	public passaggi: Array<any> = [['12', '+', '17']];
+	public visualizzaPassaggi: boolean = true;
+	public valoreSovrapposto: string = '';
+	public valoreSpostato: string = '';
+	public eventoDrop: any;
 
-    constructor(private userService: UserApiService) { }
-
-    ngOnInit() { }
-
-    drag(ev, val): void {
-        ev.dataTransfer.setData("text/plain", ev.target.id);
-        ev.dataTransfer.setData("valore", val);
-    }
-
-    drop(ev): void {
-        var data = ev.dataTransfer.getData("text");
-    }
-
-
+	constructor(private _impostazioniGlobali: ImpostazioniGlobaliService) {	}
+	
+	ngOnInit() {
+		// Questa e' l'iscrizione all'evento scatenato dal servizio
+		this._impostazioniGlobali.visualizzaPassaggiChange.subscribe(() => {
+			this.visualizzaPassaggi = this._impostazioniGlobali.visualizzaPassaggi;
+		})
+	}
 }
 

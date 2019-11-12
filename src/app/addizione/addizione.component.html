@@ -1,101 +1,30 @@
-
-<!--
-
-<div class="clr-row riga1" >
-<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1" cdkDropList (cdkDropListDropped)="drop($event)">
-  <div
-    id="AA" cdkDrag >
-    <div class="card clickable" >
-      <div class="card-block"><p class="card-text">17</p></div>
-    </div>
-  </div>
-</div>
-<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1" cdkDropList (cdkDropListDropped)="drop($event)">
-  <div
-    id="BB" cdkDrag (cdkDropListDropped)="drop($event)">
-    <a class="card clickable" >
-      <div class="card-block"><p class="card-text">+</p></div>
-    </a>
-  </div>
-</div>
-<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1" cdkDropList (cdkDropListDropped)="drop($event)">
-  <div
-    id="CC" cdkDrag (cdkDropListDropped)="drop($event)">
-    <a class="card clickable" >
-      <div class="card-block"><p class="card-text">12</p></div>
-    </a>
-  </div>
-</div>
+<div class="clr-row" *ngIf="!paginaScomposizione && !paginaAssociativa">
+	<div class="clr-col-10 clr-col-sm-10 clr-col-md-10 clr-col-lg-10 clr-col-xl-10">
+		<app-righe-passaggi
+		  	[(passaggi)]="passaggi"
+		  	[visualizzaHeaderCard] = "true"
+		  	[(paginaAssociativa)] = "paginaAssociativa"
+		  	[(paginaScomposizione)] = "paginaScomposizione"
+		  	[(numeroScomposto)] = "numeroScomposto"
+		  	[(indiceNumeroScomposto)] = "indiceNumeroScomposto"
+		  	[(valoreSovrapposto)] = 'valoreSovrapposto'
+			[(valoreSpostato)] = 'valoreSpostato'
+			[(eventoDrop)] = 'eventoDrop'
+		></app-righe-passaggi>
+	</div>
 </div>
 
+<app-input-scomposizione *ngIf="paginaScomposizione"
+	[numeroScomposto] = 'numeroScomposto'
+	[indiceNumeroScomposto] = 'indiceNumeroScomposto'
+	[(passaggi)] = 'passaggi'
+	[(paginaScomposizione)] = 'paginaScomposizione'
+></app-input-scomposizione>
 
--->
-
-<!-- QUESTO FUNZIONA CON DRAG & DROP DI ANGULAR MATERIAL
-<div class="clr-row riga1" cdkDropListGroup>
-  <div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1">
-    <div cdkDropList id="B1" (cdkDropListDropped)="drop($event)" cdkDropListOrientation="vertical" cdkDragHandleDisabled="true">
-      <div class="card" cdkDragBoundary=".riga1" cdkDragLockAxis="x" cdkDrag>
-        <div class="card-block"><p class="card-text">12</p></div>
-      </div>
-      <div *cdkDragPreview>
-      <div class="card" cdkDragBoundary=".riga1" cdkDragLockAxis="x" cdkDrag>
-        <div class="card-block"><p class="card-text">12 + 17</p></div>
-      </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1">
-    <div id="B2">
-      <div class="card">
-        <div class="card-block"><p class="card-text">+</p></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1">
-    <div cdkDropList id="B3" (cdkDropListDropped)="drop($event)" cdkDropListOrientation="horizontal">
-      <div class="card" cdkDragBoundary=".riga1" cdkDragLockAxis="x" cdkDrag>
-        <div class="card-block"><p class="card-text">17</p></div>
-      </div>
-    </div>
-  </div>
-</div>
-
--->
-<div class="clr-row" *ngFor="let user of users">
-    {{user.firstname}} -- {{user.lastname}} -- {{user.country}} -- {{user.age}}
-</div>
-
-
-<!--
-
-
-<div class="clr-row riga1" >
-  <div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1">
-    <div>
-      <div class="card" draggable="true" (dragstart)="drag($event, 12)" id="riga1_1" (drop)="drop($event)">
-        <div class="card-block"><p class="card-text">12</p></div>
-      </div>
-      </div>
-    </div>
-
-
-  <div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1">
-    <div id="B2">
-      <div class="card">
-        <div class="card-block"><p class="card-text">+</p></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1">
-    <div>
-      <div class="card" (dragstart)="drag($event,17)" id="riga1_3" (drop)="drop($event)" (dragenter)="false" (dragover)="false">
-        <div class="card-block"><p class="card-text">17</p></div>
-      </div>
-    </div>
-  </div>
-  </div>
--->
+<app-input-somma-algebrica *ngIf="paginaAssociativa"
+	[valoreSovrapposto] = 'valoreSovrapposto'
+	[valoreSpostato] = 'valoreSpostato'
+	[eventoDrop] = 'eventoDrop'
+	[(passaggi)] = 'passaggi'
+	[(paginaAssociativa)] = 'paginaAssociativa'
+></app-input-somma-algebrica>
