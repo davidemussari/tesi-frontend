@@ -12,7 +12,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddizioneComponent } from './addizione/addizione.component';
-import { SottrazioneComponent } from './sottrazione/sottrazione.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
 import { InputScomposizioneComponent } from './input-scomposizione/input-scomposizione.component';
 
@@ -26,15 +25,13 @@ import { SommaAlgebricaFiltroPipe } from './pipe/somma-algebrica-filtro.pipe';
 
 const appRoutes: Routes = [
     { path: 'tutorial', component: TutorialComponent },
-    { path: 'allenamento/addizione', component: AddizioneComponent },
-    { path: 'allenamento/sottrazione', component: SottrazioneComponent },
+    { path: 'addizione', component: AddizioneComponent },
 ];
 
 @NgModule({
     declarations: [
         AppComponent,
         AddizioneComponent,
-        SottrazioneComponent,
         TutorialComponent,
         InputScomposizioneComponent,
         InputSommaAlgebricaComponent,

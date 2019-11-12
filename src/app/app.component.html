@@ -26,7 +26,7 @@
 		</button>
 		<clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
 		<div class="dropdown-header toggle-switch">
-			<input type="checkbox" id="toggle_1" (change)="cambia()"
+			<input clrToggle type="checkbox" id="toggle_1" (change)="cambia()"
 			[checked]="visualizzaPassaggi">
 			<label for="toggle_1">Visualizza passaggi</label>
 		</div>
@@ -51,121 +51,26 @@
 	<!-- Barra laterale di navigazione -->
 	<clr-vertical-nav [clrVerticalNavCollapsible]="true">
 		<a clrVerticalNavLink
-				routerLink="./tutorial"
-				routerLinkActive="active">
-				<clr-icon clrVerticalNavIcon shape="happy-face" class="is-solid"></clr-icon>
-				Tutorial
+			routerLink="./tutorial"
+			routerLinkActive="active">
+			<clr-icon clrVerticalNavIcon shape="happy-face" class="is-solid"></clr-icon>
+			Tutorial
 		</a>
-		<!--<clr-vertical-nav-group routerLinkActive="active">
-			<clr-icon clrVerticalNavIcon shape="bicycle" class="is-solid"></clr-icon>
-				Allenamento
-			<clr-vertical-nav-group-children>-->
-				<a clrVerticalNavLink
-				routerLink="./allenamento/addizione"
-				routerLinkActive="active">
-				<clr-icon shape="plus-circle" class="is-solid"></clr-icon>
-				Addizione <br>
-			    </a>
-			<!-- <a clrVerticalNavLink
-				routerLink="./allenamento/sottrazione"
-				routerLinkActive="active">-->
-<!-- 				<clr-icon shape="minus-circle" class="is-solid"></clr-icon> -->
-<!-- 				Sottrazione -->
-				<!--</a>-->
-			<!--</clr-vertical-nav-group-children>
-		</clr-vertical-nav-group>
-		<clr-vertical-nav-group routerLinkActive="active">
-			<clr-icon clrVerticalNavIcon shape="assign-user" class="is-solid"></clr-icon>
-				Verifica
-			<clr-vertical-nav-group-children>-->
-			<!-- <a clrVerticalNavLink
-				routerLink="./verifica/addizione"
-				routerLinkActive="active" disabled>-->
-					<!--<clr-icon shape="plus-circle" class="is-solid"></clr-icon>
-				Addizione<br>-->
-				<!--</a>-->
-				<!--<a clrVerticalNavLink
-				routerLink="./verifica/sottrazione"
-				routerLinkActive="active" disabled>-->
-					<!--<clr-icon shape="minus-circle" class="is-solid"></clr-icon>
-				Sottrazione-->
-			<!-- </a>-->
-			<!--</clr-vertical-nav-group-children>
-		</clr-vertical-nav-group>-->
+		<a clrVerticalNavLink
+			routerLink="./addizione"
+			routerLinkActive="active">
+			<clr-icon clrVerticalNavIcon shape="plus-circle" class="is-solid"></clr-icon>
+			Addizione
+	    </a>
+	    <a clrVerticalNavLink
+			routerLink="./elenco_esercizi"
+			routerLinkActive="active">
+			<clr-icon clrVerticalNavIcon shape="tree-view" class="is-solid"></clr-icon>
+			Esercizi svolti
+	    </a>
+	    
+
+
+	    
 	</clr-vertical-nav>
 </div> <!--Fine del contenuto della pagina e della vertical nav-->
-
-
-
-
-
-<!--
-
-
-	<clr-wizard-page>
-		<ng-template clrPageTitle>La somma</ng-template>
-		<p>Sia la scomposizione: 12 = 10 + 2</p>
-		<button class="btn btn-sm btn-danger" (click)="value_1='';value_2='';value_3='';">Reset</button>
-		<div class="clr-row riga1" >
-		
-
-		
-			<div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
-			<div class="card"	[dndDraggable]="{'id':'riga1_1','valore':10}"
-					[dndEffectAllowed]="'all'"
-					[dndDisableIf]="false"
-					dndDropzone
-					(dndDragover)="onDragover($event)"
-					(dndDrop)="drop($event,'riga1_1')"
-					dndDragoverClass="custom-drag-over-card">
-				<div class="card-block"><p class="card-text">10{{value_1}}</p></div>
-			</div>
-			</div>
-			<div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
-			<div id="B2">
-				<div class="card">
-				<div class="card-block"><p class="card-text">+</p></div>
-				</div>
-
-			</div>
-			</div>
-			<div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
-			<div class="card"	[dndDraggable]="{'id':'riga1_2','valore':2}"
-					[dndEffectAllowed]="'all'"
-					[dndDisableIf]="false"
-					dndDropzone
-					(dndDragover)="onDragover($event)"
-					(dndDrop)="drop($event,'riga1_2')"
-					dndDragoverClass="custom-drag-over-card">
-				<div class="card-block"><p class="card-text">2{{value_2}}</p></div>
-			</div>
-			</div>
-
-			<div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
-			<div id="B2">
-				<div class="card">
-				<div class="card-block"><p class="card-text">+</p></div>
-				</div>
-			</div>
-			</div>
-
-			<div class="clr-col-2 clr-col-sm-2 clr-col-md-2 clr-col-lg-1 clr-col-xl-3">
-			<div class="card"	[dndDraggable]="{'id':'riga1_3','valore':17}"
-					[dndEffectAllowed]="'all'"
-					[dndDisableIf]="false"
-					dndDropzone
-					(dndDragover)="onDragover($event)"
-					(dndDrop)="drop($event,'riga1_3')"
-					dndDragoverClass="custom-drag-over-card">
-				<div class="card-block"><p class="card-text">17 {{value_3}}</p></div>
-			</div>
-			</div>
-	
-			
-			
-		</div>
-		
-		
-	</clr-wizard-page>
-</clr-wizard>
--->

@@ -28,7 +28,7 @@ export class AppComponent {
                 this.user = ut;
             });
     }
-
+    
     cambia() {
         /*Chiama il setter del servizio in cui è allocato il valore della
         variabile aggiornato costantemente (sara' lui a scatenare l'evento)*/

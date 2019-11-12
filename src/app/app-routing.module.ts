@@ -4,9 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { TutorialComponent } from './tutorial/tutorial.component';
 import { LoginComponent } from './login/login.component';
 import { IsloggedService } from './services/islogged.service';
+import { AddizioneComponent } from './addizione/addizione.component';
 
 const routes: Routes = [
     {path: 'tutorial', component: TutorialComponent, canActivate: [IsloggedService]},
+    {path: 'addizione', component: AddizioneComponent, canActivate: [IsloggedService]},
     {path: 'login', component: LoginComponent},
     {path: '', redirectTo: 'login', pathMatch: 'full'},
     {path: '**', redirectTo: 'login'}
