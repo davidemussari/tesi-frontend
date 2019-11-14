@@ -2,7 +2,7 @@ export class Esercizio {
     
 	public id: number;
     public tipologia: number;
-    public testoEsercizio: Array<string>;
+    public testoEsercizio: any;
 
     constructor() {
         this.id = null;
