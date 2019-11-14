@@ -8,7 +8,7 @@ import { User } from '../models/User';
 export class UserApiService {
 
     public static ulrServerBackEnd: String = 'http://192.168.1.103:8080/';
-    //public static ulrServerBackEnd: String = 'http://10.42.0.1:8080/';
+    //public static ulrServerBackEnd: String = 'http://172.16.92.84:8080/';
 
     constructor(private http: HttpClient) { }
 
@@ -18,15 +18,6 @@ export class UserApiService {
         );
     }
     
-    postImgRiconoscere(param: any) {
-        return this.http.post<string>(UserApiService.ulrServerBackEnd + 'upload', param, {
-            headers: new HttpHeaders({
-                'Content-Type': 'image/png' ,
-              })}).pipe(
-            catchError(this.handleError)
-        );
-    }
-
     handleError(error) {
         let errorMessage = '';
         if (error.error instanceof ErrorEvent) {
