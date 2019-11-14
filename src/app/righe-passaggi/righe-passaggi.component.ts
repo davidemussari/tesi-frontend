@@ -26,6 +26,7 @@ export class RighePassaggiComponent implements OnInit {
 	@Output() valoreSpostatoChange = new EventEmitter();
 	@Input() eventoDrop: any;
 	@Output() eventoDropChange = new EventEmitter();
+	@Output() EventoNuovoEsercizio = new EventEmitter<string>();
 
 	constructor(private _impostazioniGlobali: ImpostazioniGlobaliService) {}
 	
@@ -70,6 +71,10 @@ export class RighePassaggiComponent implements OnInit {
 	
 	isArray(elemento: any) {
 		return Array.isArray(elemento);
+	}
+	
+	nuovoEsercizio(){
+		this.EventoNuovoEsercizio.emit('nuovoEsercizio');
 	}
 	
 	paginaScomposizioneSet(visualizzarePaginaScomposizione, nScomposto, indexNumeroScomposto){

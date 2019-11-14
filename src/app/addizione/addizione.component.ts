@@ -28,7 +28,7 @@ export class AddizioneComponent implements OnInit {
 		this.eserciziApiService = _eserciziApiService;
 	}
 	
-	ngOnInit() {
+	nuovoEsercizio(){
 		this.eserciziApiService.esercizioCasuale(1).subscribe((response: Esercizio) => {
 	        if (response) {
 	        	var splited = response.testoEsercizio.match(/\+|[^\+]+/g);
@@ -38,7 +38,11 @@ export class AddizioneComponent implements OnInit {
 	        	this.esercizio = response;
 	        }
 	    });
+	}
+	
+	ngOnInit() {
 		
+		this.nuovoEsercizio();
 		// Questa e' l'iscrizione all'evento scatenato dal servizio
 		this._impostazioniGlobali.visualizzaPassaggiChange.subscribe(() => {
 			this.visualizzaPassaggi = this._impostazioniGlobali.visualizzaPassaggi;
