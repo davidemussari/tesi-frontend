@@ -19,6 +19,7 @@ export class AddizioneComponent implements OnInit {
 	public valoreSovrapposto: string = '';
 	public valoreSpostato: string = '';
 	public eventoDrop: any;
+	private spinner: boolean = true;
 	
 	private eserciziApiService: EserciziApiService;
 	private tipologia: string = 'addizione';
@@ -29,6 +30,7 @@ export class AddizioneComponent implements OnInit {
 	}
 	
 	nuovoEsercizio(){
+		this.spinner = true;
 		this.eserciziApiService.esercizioCasuale(1).subscribe((response: Esercizio) => {
 	        if (response) {
 	        	var splited = response.testoEsercizio.match(/\+|[^\+]+/g);
@@ -36,6 +38,7 @@ export class AddizioneComponent implements OnInit {
 	        	response.testoEsercizio.push(splited);
 	        	//notare la forma Shakespiriana della Regex: essere o non essere
 	        	this.esercizio = response;
+	        	this.spinner = false;
 	        }
 	    });
 	}
