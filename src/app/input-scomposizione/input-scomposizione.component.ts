@@ -25,7 +25,7 @@ export class InputScomposizioneComponent implements OnInit {
 	private editor: any;
 	private result: string = '';
 	
-	public decomposizione:string = '';
+	public decomposizione: string = '';
 	public decomposizioneCorretta: boolean = true; /*
 													 * Variabile necessaria per
 													 * avere alert di errore

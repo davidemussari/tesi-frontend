@@ -16,12 +16,13 @@ import { TutorialComponent } from './tutorial/tutorial.component';
 import { InputScomposizioneComponent } from './input-scomposizione/input-scomposizione.component';
 
 import { ImpostazioniGlobaliService } from './services/impostazioni-globali.service';
-import {IsloggedService} from './services/islogged.service';
+import { IsloggedService } from './services/islogged.service';
 import { InputSommaAlgebricaComponent } from './input-somma-algebrica/input-somma-algebrica.component';
 import { UserApiService } from './services/user-api.service';
 import { LoginComponent } from './login/login.component';
 import { RighePassaggiComponent } from './righe-passaggi/righe-passaggi.component';
 import { SommaAlgebricaFiltroPipe } from './pipe/somma-algebrica-filtro.pipe';
+import { VariabiliGlobaliService } from './services/variabili-globali.service';
 
 const appRoutes: Routes = [
     { path: 'tutorial', component: TutorialComponent },
@@ -50,7 +51,12 @@ const appRoutes: Routes = [
         DragDropModule,
         HttpClientModule
     ],
-    providers: [ImpostazioniGlobaliService, UserApiService, IsloggedService],
+    providers: [
+    	ImpostazioniGlobaliService,
+    	UserApiService,
+    	IsloggedService,
+    	VariabiliGlobaliService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

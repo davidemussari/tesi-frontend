@@ -3,19 +3,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Esercizio } from '../models/Esercizio';
+import { VariabiliGlobaliService } from '../services/variabili-globali.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EserciziApiService {
 	
-	public static ulrServerBackEnd: String = 'http://192.168.1.103:8080/';
-    //public static ulrServerBackEnd: String = 'http://172.16.92.84:8080/';
-    
     constructor(private http: HttpClient) { }
 	
-	esercizioCasuale(param: number) {
-        return this.http.post<Esercizio>(EserciziApiService.ulrServerBackEnd + 'esercizioCasuale', param).pipe(
+	esercizioCasuale(param: string) {
+        return this.http.post<Esercizio>(VariabiliGlobaliService.ulrServerBackEnd + 'esercizioCasuale', param).pipe(
             catchError(this.handleError)
         );
     }

@@ -3,17 +3,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { User } from '../models/User';
+import { VariabiliGlobaliService } from '../services/variabili-globali.service';
 
 @Injectable()
 export class UserApiService {
 
-    public static ulrServerBackEnd: String = 'http://192.168.1.103:8080/';
-    //public static ulrServerBackEnd: String = 'http://172.16.92.84:8080/';
-
     constructor(private http: HttpClient) { }
 
     postLogin(param: any) {
-        return this.http.post<User>(UserApiService.ulrServerBackEnd + 'login', param).pipe(
+        return this.http.post<User>(VariabiliGlobaliService.ulrServerBackEnd + 'login', param).pipe(
             catchError(this.handleError)
         );
     }
