@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ImpostazioniGlobaliService } from '../services/impostazioni-globali.service';
-
+import { EserciziApiService } from '../services/esercizi-api.service';
+import { Esercizio } from '../models/Esercizio';
 
 @Component({
     selector: 'app-addizione',
@@ -13,15 +14,31 @@ export class AddizioneComponent implements OnInit {
 	public paginaAssociativa: boolean = false;
 	public numeroScomposto: number = 0;
 	public indiceNumeroScomposto: number = 0;
-	public passaggi: Array<any> = [['12', '+', '17']];
+	public esercizio: Esercizio;
 	public visualizzaPassaggi: boolean = true;
 	public valoreSovrapposto: string = '';
 	public valoreSpostato: string = '';
 	public eventoDrop: any;
+	
+	private eserciziApiService: EserciziApiService;
+	private tipologia: string = 'addizione';
 
-	constructor(private _impostazioniGlobali: ImpostazioniGlobaliService) {	}
+	constructor(private _impostazioniGlobali: ImpostazioniGlobaliService,
+			private _eserciziApiService: EserciziApiService) {
+		this.eserciziApiService = _eserciziApiService;
+	}
 	
 	ngOnInit() {
+		this.eserciziApiService.esercizioCasuale(1).subscribe((response: Esercizio) => {
+	        if (response) {
+	        	var splited = response.testoEsercizio.match(/\+|[^\+]+/g);
+	        	response.testoEsercizio = [];
+	        	response.testoEsercizio.push(splited);
+	        	//notare la forma Shakespiriana della Regex: essere o non essere
+	        	this.esercizio = response;
+	        }
+	    });
+		
 		// Questa e' l'iscrizione all'evento scatenato dal servizio
 		this._impostazioniGlobali.visualizzaPassaggiChange.subscribe(() => {
 			this.visualizzaPassaggi = this._impostazioniGlobali.visualizzaPassaggi;

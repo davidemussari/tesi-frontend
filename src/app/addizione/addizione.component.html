@@ -1,7 +1,7 @@
 <div class="clr-row" *ngIf="!paginaScomposizione && !paginaAssociativa">
 	<div class="clr-col-10 clr-col-sm-10 clr-col-md-10 clr-col-lg-10 clr-col-xl-10">
 		<app-righe-passaggi
-		  	[(passaggi)]="passaggi"
+		  	[(passaggi)]="esercizio.testoEsercizio"
 		  	[visualizzaHeaderCard] = "true"
 		  	[(paginaAssociativa)] = "paginaAssociativa"
 		  	[(paginaScomposizione)] = "paginaScomposizione"
@@ -17,7 +17,7 @@
 <app-input-scomposizione *ngIf="paginaScomposizione"
 	[numeroScomposto] = 'numeroScomposto'
 	[indiceNumeroScomposto] = 'indiceNumeroScomposto'
-	[(passaggi)] = 'passaggi'
+	[(passaggi)] = 'esercizio.testoEsercizio'
 	[(paginaScomposizione)] = 'paginaScomposizione'
 ></app-input-scomposizione>
 
@@ -25,6 +25,6 @@
 	[valoreSovrapposto] = 'valoreSovrapposto'
 	[valoreSpostato] = 'valoreSpostato'
 	[eventoDrop] = 'eventoDrop'
-	[(passaggi)] = 'passaggi'
+	[(passaggi)] = 'esercizio.testoEsercizio'
 	[(paginaAssociativa)] = 'paginaAssociativa'
 ></app-input-somma-algebrica>
