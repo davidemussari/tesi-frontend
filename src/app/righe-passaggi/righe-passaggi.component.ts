@@ -78,6 +78,9 @@ export class RighePassaggiComponent implements OnInit {
 	}
 	
 	paginaScomposizioneSet(visualizzarePaginaScomposizione, nScomposto, indexNumeroScomposto){
+		if(indexNumeroScomposto > 0 &&
+				this.passaggi[this.passaggi.length - 1][indexNumeroScomposto-1] == '-')
+			nScomposto = -nScomposto;
 		this.numeroScomposto = nScomposto;
 		this.numeroScompostoChange.emit(this.numeroScomposto);
 		this.indiceNumeroScomposto = indexNumeroScomposto;
