@@ -77,7 +77,7 @@ export class InputScomposizioneComponent implements OnInit {
 	
 	controlloDecomposizione(): void{		
 		this.decomposizioneCorretta =
-			this.decomposizione.match(/^(\ *0*[1-9]([\d]*)\ *[+-])+\ *0*[1-9]([\d]*)\ *$/)!==null
+			this.decomposizione.match(/^\ *-?\ *[1-9]([\d]*)((\ *[+-]\ *[1-9]([\d]*))+)\ *$/)!==null
 			&& this.numeroScomposto == eval(this.decomposizione);
 		if(this.decomposizioneCorretta){
 			var temp: string[] = [];
