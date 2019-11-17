@@ -91,6 +91,7 @@ export class InputScomposizioneComponent implements OnInit {
 						temp.push(scomp);
 				}else if(_i > 0 && _i == this.indiceNumeroScomposto-1 &&
 						this.passaggi[this.passaggi.length-1][this.indiceNumeroScomposto-1] == '-'){
+					temp.push('+');
 				}else{
 					temp.push(this.passaggi[this.passaggi.length-1][_i]);
 				}
