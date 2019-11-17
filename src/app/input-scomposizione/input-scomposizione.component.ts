@@ -83,10 +83,14 @@ export class InputScomposizioneComponent implements OnInit {
 			var temp: string[] = [];
 			var passaggio = this.decomposizione.replace(/\+/gi, ",+,").replace(
 					/\-/gi,",-,").split(',');
+			if (passaggio[0].length == 0)
+				passaggio.shift();
 			for (var _i = 0; _i < this.passaggi[this.passaggi.length-1].length; _i++){
 				if(_i == this.indiceNumeroScomposto){
 					for(let scomp of passaggio)
 						temp.push(scomp);
+				}else if(_i > 0 && _i == this.indiceNumeroScomposto-1 &&
+						this.passaggi[this.passaggi.length-1][this.indiceNumeroScomposto-1] == '-'){
 				}else{
 					temp.push(this.passaggi[this.passaggi.length-1][_i]);
 				}

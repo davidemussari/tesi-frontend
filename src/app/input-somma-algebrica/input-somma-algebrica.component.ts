@@ -93,17 +93,23 @@ export class InputSommaAlgebricaComponent implements OnInit {
 							// Se e' un segno, alla posizione _i, verifica che sia
 							// preceduto da un segno
 							if(temp.length == 0){
-								temp.push(this.passaggi[this.passaggi.length-1][_i]);
+								if(_i == 0 &&
+									(this.eventoDrop.previousIndex == 1 || this.eventoDrop.currentIndex == 1) &&
+									(this.passaggi[this.passaggi.length-1][_i] == '+' ||
+									this.passaggi[this.passaggi.length-1][_i] == '-')){
+								} else{
+									temp.push(this.passaggi[this.passaggi.length-1][_i]);
+								}
 							}else if(temp[temp.length-1] == '+' && this.passaggi[this.passaggi.length-1][_i] == '+'){
 								// non fare niente, c'e' gia' il +
 							}else if(temp[temp.length-1] == '-' && this.passaggi[this.passaggi.length-1][_i] == '-'){
-								temp.pop();
-								temp.push('+');
+								// non fare niente perché è giusto il -
 							}else if(temp[temp.length-1] == '+' && this.passaggi[this.passaggi.length-1][_i] == '-'){
 								temp.pop();
 								temp.push('-');
 							}else if(temp[temp.length-1] == '-' && this.passaggi[this.passaggi.length-1][_i] == '+'){
-								// non fare niente perche' c'e' gia' un -
+								temp.pop();
+								temp.push('+');
 							}else{
 								temp.push(this.passaggi[this.passaggi.length-1][_i]);
 							}
