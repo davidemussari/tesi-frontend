@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ImpostazioniGlobaliService } from '../services/impostazioni-globali.service';
+import { Esercizio } from '../models/Esercizio';
 
 @Component({
   selector: 'app-righe-passaggi',
@@ -10,10 +11,11 @@ export class RighePassaggiComponent implements OnInit {
 	
 	public visualizzaPassaggi: boolean = true;
 	@Input() visualizzaHeaderCard: boolean = false;
+	@Input() dimostrativoFisso: boolean = false;
 	@Input() paginaAssociativa: boolean = false;
 	@Output() paginaAssociativaChange = new EventEmitter();
-	@Input() passaggi;
-	@Output() passaggiChange = new EventEmitter();
+	@Input() esercizio: Esercizio;
+	@Output() esercizioChange = new EventEmitter();
 	@Input() paginaScomposizione: boolean = false;
 	@Output() paginaScomposizioneChange = new EventEmitter();
 	@Input() numeroScomposto;
@@ -41,20 +43,20 @@ export class RighePassaggiComponent implements OnInit {
 	}
 	
 	drop(event: any): void {
-		if (event.isPointerOverContainer && this.cliccabile(this.passaggi[this.passaggi.length - 1][event.currentIndex]) && this.cliccabile(this.passaggi[this.passaggi.length - 1][event.previousIndex]) && event.currentIndex != event.previousIndex) {
+		if (event.isPointerOverContainer && this.cliccabile(this.esercizio.testoEsercizio[this.esercizio.testoEsercizio.length - 1][event.currentIndex]) && this.cliccabile(this.esercizio.testoEsercizio[this.esercizio.testoEsercizio.length - 1][event.previousIndex]) && event.currentIndex != event.previousIndex) {
 			this.eventoDrop = event;
 			this.eventoDropChange.emit(this.eventoDrop);
 			
-			var tempSpostato = this.passaggi[this.passaggi.length - 1][event.previousIndex];
+			var tempSpostato = this.esercizio.testoEsercizio[this.esercizio.testoEsercizio.length - 1][event.previousIndex];
 			if(event.previousIndex > 0 &&
-					this.passaggi[this.passaggi.length - 1][event.previousIndex-1] == '-')
+					this.esercizio.testoEsercizio[this.esercizio.testoEsercizio.length - 1][event.previousIndex-1] == '-')
 					tempSpostato = -tempSpostato;
 			this.valoreSpostato = tempSpostato;
 			this.valoreSpostatoChange.emit(this.valoreSpostato);
 			
-			var tempSovrapposto = this.passaggi[this.passaggi.length - 1][event.currentIndex];
+			var tempSovrapposto = this.esercizio.testoEsercizio[this.esercizio.testoEsercizio.length - 1][event.currentIndex];
 			if(event.currentIndex > 0 &&
-					this.passaggi[this.passaggi.length - 1][event.currentIndex-1] == '-')
+					this.esercizio.testoEsercizio[this.esercizio.testoEsercizio.length - 1][event.currentIndex-1] == '-')
 					tempSovrapposto = -tempSovrapposto;
 			this.valoreSovrapposto =  tempSovrapposto;
 			this.valoreSovrappostoChange.emit(this.valoreSovrapposto);
@@ -65,8 +67,8 @@ export class RighePassaggiComponent implements OnInit {
 	}
 
 	eliminaPassaggio() {
-		this.passaggi.pop();
-		this.passaggiChange.emit(this.passaggi);
+		this.esercizio.testoEsercizio.pop();
+		this.esercizioChange.emit(this.esercizio);
 	}
 	
 	isArray(elemento: any) {
@@ -79,7 +81,7 @@ export class RighePassaggiComponent implements OnInit {
 	
 	paginaScomposizioneSet(visualizzarePaginaScomposizione, nScomposto, indexNumeroScomposto){
 		if(indexNumeroScomposto > 0 &&
-				this.passaggi[this.passaggi.length - 1][indexNumeroScomposto-1] == '-')
+				this.esercizio.testoEsercizio[this.esercizio.testoEsercizio.length - 1][indexNumeroScomposto-1] == '-')
 			nScomposto = -nScomposto;
 		this.numeroScomposto = nScomposto;
 		this.numeroScompostoChange.emit(this.numeroScomposto);

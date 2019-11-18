@@ -17,7 +17,7 @@
     poter decomporre. Provare con la breve espressione qui di seguito. <br>
     Il pulsante con l'icona con il cestino serve ad eliminare la scomposizione.
 	    <app-righe-passaggi
-	    	[(passaggi)]="passaggi"
+	    	[(esercizio)]="esercizio"
 	    	[visualizzaHeaderCard] = "false"
 	    	[(paginaAssociativa)] = "paginaAssociativa"
 	    	[(paginaScomposizione)] = "paginaScomposizione"
@@ -37,7 +37,7 @@
     	Se non c'è l'icona con la mano, è perché non è stata fatta almeno una scomposizione.
    
     	<app-righe-passaggi
-	    	[(passaggi)]="passaggi"
+	    	[(esercizio)]="esercizio"
 	    	[visualizzaHeaderCard] = "true"
 	    	[(paginaAssociativa)] = "paginaAssociativa"
 	    	[(paginaScomposizione)] = "paginaScomposizione"
@@ -46,6 +46,7 @@
 	    	[(valoreSovrapposto)] = 'valoreSovrapposto'
 			[(valoreSpostato)] = 'valoreSpostato'
 			[(eventoDrop)] = 'eventoDrop'
+			[dimostrativoFisso]="true"
 	    ></app-righe-passaggi>
     </clr-accordion-content>
   </clr-accordion-panel>
@@ -57,12 +58,14 @@
 	    	Se non c'è l'icona con la mano, è perché non è stata fatta almeno una scomposizione.
 	   
 	    	<app-righe-passaggi
-		    	[(passaggi)]="esempio1"
+		    	[(esercizio)]="esempio1"
+		    	[dimostrativoFisso]="true"
 		    ></app-righe-passaggi>
 		    <br>
 		    Eccone un altro.
 		    <app-righe-passaggi
-		    	[(passaggi)]="esempio2"
+		    	[(esercizio)]="esempio2"
+		    	[dimostrativoFisso]="true"
 		    ></app-righe-passaggi>
 	    </clr-accordion-content>
 	  </clr-accordion-panel>
@@ -72,7 +75,7 @@
 <app-input-scomposizione *ngIf="paginaScomposizione"
 	[numeroScomposto] = 'numeroScomposto'
 	[indiceNumeroScomposto] = 'indiceNumeroScomposto'
-	[(passaggi)] = 'passaggi'
+	[(passaggi)] = 'esercizio.testoEsercizio'
 	[(paginaScomposizione)] = 'paginaScomposizione'
 ></app-input-scomposizione>
 
@@ -80,6 +83,6 @@
 	[valoreSovrapposto] = 'valoreSovrapposto'
 	[valoreSpostato] = 'valoreSpostato'
 	[eventoDrop] = 'eventoDrop'
-	[(passaggi)] = 'passaggi'
+	[(passaggi)] = 'esercizio.testoEsercizio'
 	[(paginaAssociativa)] = 'paginaAssociativa'
 ></app-input-somma-algebrica>

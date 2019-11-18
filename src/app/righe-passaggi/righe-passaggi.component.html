@@ -1,4 +1,4 @@
-<div *ngFor="let riga of passaggi; index as numeroRiga; last as ultimo">
+<div *ngFor="let riga of esercizio.testoEsercizio; index as numeroRiga; last as ultimo">
 	<div class="clr-row clr-align-items-end" cdkDropList cdkDropListOrientation="horizontal"
 		(cdkDropListDropped)="drop($event)">
 		<div class="clr-col-3 clr-col-sm-2 clr-col-md-1 clr-col-lg-2 clr-col-xl-1"
@@ -36,7 +36,7 @@
 			<div class="card card-block risultatoCorretto" *ngIf="!isArray(riga)">
 				<p class="card-text">{{riga}}</p>
 			</div>
-			<button type="button" class="btn btn-primary" *ngIf="!isArray(riga)"
+			<button type="button" class="btn btn-primary" *ngIf="!isArray(riga) && !dimostrativoFisso"
 				(click)="nuovoEsercizio()">
 				<clr-icon shape="repeat" class="is-solid"></clr-icon> Nuovo esercizio
 			</button>
