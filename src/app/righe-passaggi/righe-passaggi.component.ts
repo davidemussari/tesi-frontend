@@ -31,6 +31,8 @@ export class RighePassaggiComponent implements OnInit {
 	@Output() EventoNuovoEsercizio = new EventEmitter<string>();
 	@Input() soluzioneConosciutaCorretta;
 	@Output() soluzioneConosciutaCorrettaChange = new EventEmitter();
+	@Input() soluzioneSbagliata: boolean = false;
+	@Output() soluzioneSbagliataaChange = new EventEmitter();
 
 	constructor(private _impostazioniGlobali: ImpostazioniGlobaliService) {}
 	

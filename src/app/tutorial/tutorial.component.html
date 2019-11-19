@@ -60,13 +60,47 @@
 	    	<app-righe-passaggi
 		    	[(esercizio)]="esempio1"
 		    	[dimostrativoFisso]="true"
+		    	[soluzioneConosciutaCorretta]="true"
 		    ></app-righe-passaggi>
 		    <br>
 		    Eccone un altro.
 		    <app-righe-passaggi
 		    	[(esercizio)]="esempio2"
 		    	[dimostrativoFisso]="true"
+		    	[soluzioneConosciutaCorretta]="true"
 		    ></app-righe-passaggi>
+	    </clr-accordion-content>
+	  </clr-accordion-panel>
+	<clr-accordion-panel>
+	    <clr-accordion-title>I colori</clr-accordion-title>
+	    <clr-accordion-content *clrIfExpanded>
+	    	Al termine dell'esercizio, la soluzione finale può essere circondata
+	    	da tre colori differenti.
+	    	<ul class="list">
+			    <li>Soluzione corretta:
+				    <app-righe-passaggi
+				    	[(esercizio)]="esempio1"
+				    	[dimostrativoFisso]="true"
+				    	[soluzioneConosciutaCorretta]="true"
+				    ></app-righe-passaggi>
+			    </li>
+			    <li>Soluzione non conosciuta. Il docente dovrà guardare l'esercizio per decidere.
+				    <app-righe-passaggi
+				    	[(esercizio)]="esempio1"
+				    	[dimostrativoFisso]="true"
+				    	[soluzioneConosciutaCorretta]="false"
+				    ></app-righe-passaggi>
+			    </li>
+			    <li>Soluzione sbagliata. Il docente ha indicato come errato il procedimento
+			    	dell'esercizio.
+				    <app-righe-passaggi
+				    	[(esercizio)]="esempio1"
+				    	[dimostrativoFisso]="true"
+				    	[soluzioneConosciutaCorretta]="false"
+				    	[soluzioneSbagliata]="true"
+				    ></app-righe-passaggi>
+			    </li>
+			</ul>
 	    </clr-accordion-content>
 	  </clr-accordion-panel>
 	</clr-accordion>
