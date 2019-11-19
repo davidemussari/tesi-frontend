@@ -15,6 +15,8 @@
 			[(valoreSpostato)] = 'valoreSpostato'
 			[(eventoDrop)] = 'eventoDrop'
 			(EventoNuovoEsercizio)="nuovoEsercizio()"
+			(esercizioChange)="passaggiCambiati($event)"
+			[(soluzioneConosciutaCorretta)]="soluzioneConosciutaCorretta"
 		></app-righe-passaggi>
 	</div>
 </div>
@@ -24,6 +26,7 @@
 	[indiceNumeroScomposto] = 'indiceNumeroScomposto'
 	[(passaggi)] = 'esercizio.testoEsercizio'
 	[(paginaScomposizione)] = 'paginaScomposizione'
+	(esercizioChange)="passaggiCambiati($event)"
 ></app-input-scomposizione>
 
 <app-input-somma-algebrica *ngIf="paginaAssociativa"
@@ -32,4 +35,5 @@
 	[eventoDrop] = 'eventoDrop'
 	[(passaggi)] = 'esercizio.testoEsercizio'
 	[(paginaAssociativa)] = 'paginaAssociativa'
+	(esercizioChange)="passaggiCambiati($event)"
 ></app-input-somma-algebrica>

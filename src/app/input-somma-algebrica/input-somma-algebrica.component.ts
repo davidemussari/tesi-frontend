@@ -15,7 +15,7 @@ export class InputSommaAlgebricaComponent implements OnInit {
 	@Input() valoreSovrapposto;
 	@Input() valoreSpostato;
 	@Input() passaggi;
-	@Output() passaggiChange = new EventEmitter();
+	@Output('esercizioChange') passaggiChange = new EventEmitter();
 	
 	@ViewChild("editor", {read: ElementRef, static: false}) domEditor: ElementRef;
 	

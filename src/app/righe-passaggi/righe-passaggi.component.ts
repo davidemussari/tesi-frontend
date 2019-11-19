@@ -15,7 +15,7 @@ export class RighePassaggiComponent implements OnInit {
 	@Input() paginaAssociativa: boolean = false;
 	@Output() paginaAssociativaChange = new EventEmitter();
 	@Input() esercizio: Esercizio;
-	@Output() esercizioChange = new EventEmitter();
+	@Output('esercizioChange') esercizioChange = new EventEmitter();
 	@Input() paginaScomposizione: boolean = false;
 	@Output() paginaScomposizioneChange = new EventEmitter();
 	@Input() numeroScomposto;
@@ -29,6 +29,8 @@ export class RighePassaggiComponent implements OnInit {
 	@Input() eventoDrop: any;
 	@Output() eventoDropChange = new EventEmitter();
 	@Output() EventoNuovoEsercizio = new EventEmitter<string>();
+	@Input() soluzioneConosciutaCorretta;
+	@Output() soluzioneConosciutaCorrettaChange = new EventEmitter();
 
 	constructor(private _impostazioniGlobali: ImpostazioniGlobaliService) {}
 	
@@ -69,6 +71,8 @@ export class RighePassaggiComponent implements OnInit {
 	eliminaPassaggio() {
 		this.esercizio.testoEsercizio.pop();
 		this.esercizioChange.emit(this.esercizio);
+		this.soluzioneConosciutaCorretta = true;
+		this.soluzioneConosciutaCorrettaChange.emit(this.soluzioneConosciutaCorretta);
 	}
 	
 	isArray(elemento: any) {
@@ -89,6 +93,5 @@ export class RighePassaggiComponent implements OnInit {
 		this.indiceNumeroScompostoChange.emit(this.indiceNumeroScomposto);
 		this.paginaScomposizione = visualizzarePaginaScomposizione;
 		this.paginaScomposizioneChange.emit(this.paginaScomposizione);
-		
 	}
 }

@@ -18,7 +18,7 @@ export class InputScomposizioneComponent implements OnInit {
 	@Input() paginaScomposizione;
 	@Output() paginaScomposizioneChange = new EventEmitter();
 	@Input() passaggi;
-	@Output() passaggiChange = new EventEmitter();
+	@Output('esercizioChange') passaggiChange = new EventEmitter();
 	
 	@ViewChild("editor", {read: ElementRef, static: false}) domEditor: ElementRef;
 	

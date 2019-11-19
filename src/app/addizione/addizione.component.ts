@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ImpostazioniGlobaliService } from '../services/impostazioni-globali.service';
 import { EserciziApiService } from '../services/esercizi-api.service';
 import { VariabiliGlobaliService } from '../services/variabili-globali.service';
@@ -21,6 +21,7 @@ export class AddizioneComponent implements OnInit {
 	public valoreSpostato: string = '';
 	public eventoDrop: any;
 
+	public soluzioneConosciutaCorretta: boolean = true;
 	private spinner: boolean = true;
 	private eserciziApiService: EserciziApiService;
 
@@ -31,6 +32,7 @@ export class AddizioneComponent implements OnInit {
 	
 	nuovoEsercizio(){
 		this.spinner = true;
+		this.soluzioneConosciutaCorretta = true;
 		this.eserciziApiService.esercizioCasuale(
 			VariabiliGlobaliService.tipologia.addizione
 			).subscribe((response: Esercizio) => {
@@ -52,6 +54,35 @@ export class AddizioneComponent implements OnInit {
 		this._impostazioniGlobali.visualizzaPassaggiChange.subscribe(() => {
 			this.visualizzaPassaggi = this._impostazioniGlobali.visualizzaPassaggi;
 		})
+	}
+	
+	spezza(str: string){
+		str = str.replace("+",";");
+		str = str.replace("-", ";-");
+		let strArray = str.split(";");
+		if (strArray[0].length == 0)
+			strArray.shift();
+		return strArray;
+	}
+	
+	passaggiCambiati(event){
+		let ultimoPassaggio = event[event.length-1].toString().replace(/,/g,"");
+		ultimoPassaggio = this.spezza(ultimoPassaggio);
+		let tuttoTrovato: boolean = false;
+		if (this.soluzioneConosciutaCorretta){
+			for (let sol of this.esercizio.soluzioni){
+				let trovato: boolean = false;
+				for (let uPassaggio of ultimoPassaggio){
+					trovato = sol.search(uPassaggio) > -1;
+				}
+				if (trovato){
+					tuttoTrovato = true;
+					break;
+				}
+			}
+			if (!tuttoTrovato)
+				this.soluzioneConosciutaCorretta = false;
+		}
 	}
 }
 
