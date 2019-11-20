@@ -83,6 +83,9 @@ export class AddizioneComponent implements OnInit {
 			if (!tuttoTrovato)
 				this.soluzioneConosciutaCorretta = false;
 		}
+		if (ultimoPassaggio.length == 1){
+			//chiamata put
+		}
 	}
 }
 

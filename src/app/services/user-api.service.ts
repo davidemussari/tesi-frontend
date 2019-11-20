@@ -11,7 +11,8 @@ export class UserApiService {
     constructor(private http: HttpClient) { }
 
     postLogin(param: any) {
-        return this.http.post<User>(VariabiliGlobaliService.ulrServerBackEnd + 'login', param).pipe(
+        return this.http.post<User>(VariabiliGlobaliService.ulrServerBackEnd + 
+        		VariabiliGlobaliService.apiLogin, param).pipe(
             catchError(this.handleError)
         );
     }

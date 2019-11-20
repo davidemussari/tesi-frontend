@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Esercizio } from '../models/Esercizio';
+import { SvolgimentoDaApprovare } from '../models/SvolgimentoDaApprovare';
 import { VariabiliGlobaliService } from '../services/variabili-globali.service';
 
 @Injectable({
@@ -13,7 +14,15 @@ export class EserciziApiService {
     constructor(private http: HttpClient) { }
 	
 	esercizioCasuale(param: string) {
-        return this.http.post<Esercizio>(VariabiliGlobaliService.ulrServerBackEnd + 'esercizioCasuale', param).pipe(
+        return this.http.post<Esercizio>(VariabiliGlobaliService.ulrServerBackEnd + 
+        		VariabiliGlobaliService.apiEsercizioCasuale, param).pipe(
+            catchError(this.handleError)
+        );
+    }
+	
+	putSvolgimentoDaApprovare(param: SvolgimentoDaApprovare) {
+        return this.http.post<SvolgimentoDaApprovare>(VariabiliGlobaliService.ulrServerBackEnd +
+        		VariabiliGlobaliService.apiSvolgimentoDaApprovare, param).pipe(
             catchError(this.handleError)
         );
     }
