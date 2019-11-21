@@ -4,6 +4,7 @@ import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Esercizio } from '../models/Esercizio';
 import { SvolgimentoDaApprovare } from '../models/SvolgimentoDaApprovare';
+import { StoricoEserciziSvoltiStudenti } from '../models/StoricoEserciziSvoltiStudenti';
 import { VariabiliGlobaliService } from '../services/variabili-globali.service';
 
 @Injectable({
@@ -21,8 +22,15 @@ export class EserciziApiService {
     }
 	
 	putSvolgimentoDaApprovare(param: SvolgimentoDaApprovare) {
-        return this.http.post<SvolgimentoDaApprovare>(VariabiliGlobaliService.ulrServerBackEnd +
+        return this.http.put<SvolgimentoDaApprovare>(VariabiliGlobaliService.ulrServerBackEnd +
         		VariabiliGlobaliService.apiSvolgimentoDaApprovare, param).pipe(
+            catchError(this.handleError)
+        );
+    }
+	
+	putSvolgimento(param: StoricoEserciziSvoltiStudenti) {
+        return this.http.put<SvolgimentoDaApprovare>(VariabiliGlobaliService.ulrServerBackEnd +
+        		VariabiliGlobaliService.apiEsercizioSvolto, param).pipe(
             catchError(this.handleError)
         );
     }

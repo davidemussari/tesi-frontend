@@ -14,7 +14,8 @@ export class VariabiliGlobaliService {
 	
 	static ulrServerBackEnd: string = 'http://127.0.0.1:8080/';
 	static apiEsercizioCasuale: string = 'esercizioCasuale';
-	static apiSvolgimentoDaApprovare: string = 'svolgimentoDaApprovare';
+	static apiSvolgimentoDaApprovare: string = 'putSvolgimentoDaApprovare';
+	static apiEsercizioSvolto: string = 'putEsercizioSvoltoStudenti';
 	static apiLogin: string = 'login';
 	
   constructor() { }

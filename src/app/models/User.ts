@@ -2,8 +2,9 @@ export class User {
     public nome: string;
     public cognome: string;
     public username: string;
-    tipoUtente: any;
-    passwd: string;
+	public tipoUtente: any;
+	public passwd: string;
+	public id: number;
 
     constructor() {
         this.nome = null;
@@ -11,5 +12,6 @@ export class User {
         this.username = null;
         this.passwd = null;
         this.tipoUtente = null;
+        this.id = null;
     }
 }
