@@ -23,6 +23,7 @@ import { LoginComponent } from './login/login.component';
 import { RighePassaggiComponent } from './righe-passaggi/righe-passaggi.component';
 import { SommaAlgebricaFiltroPipe } from './pipe/somma-algebrica-filtro.pipe';
 import { VariabiliGlobaliService } from './services/variabili-globali.service';
+import { GrigliaEserciziSvoltiComponent } from './griglia-esercizi-svolti/griglia-esercizi-svolti.component';
 
 const appRoutes: Routes = [
     { path: 'tutorial', component: TutorialComponent },
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
         InputSommaAlgebricaComponent,
         LoginComponent,
         RighePassaggiComponent,
-        SommaAlgebricaFiltroPipe
+        SommaAlgebricaFiltroPipe,
+        GrigliaEserciziSvoltiComponent
     ],
     imports: [
         BrowserModule,
