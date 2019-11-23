@@ -95,7 +95,7 @@ export class AddizioneComponent implements OnInit {
 	
 	costruzioneEserciziSvolti(): StoricoEserciziSvoltiStudenti{
 		let svolgimento = new StoricoEserciziSvoltiStudenti();
-		svolgimento.idEsercizio = this.esercizio.id;
+		svolgimento.idEsercizio = this.esercizio.idEsercizio;
 		svolgimento.passaggi = this.passaggiToString(this.esercizio.testoEsercizio);
 		svolgimento.primary = {
 			idStudente: this.idUtente,

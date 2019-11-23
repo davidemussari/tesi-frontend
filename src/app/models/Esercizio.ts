@@ -1,12 +1,12 @@
 export class Esercizio {
     
-	public id: number;
+	public idEsercizio: number;
     public tipologia: number;
     public testoEsercizio: any;
 	public soluzioni: any;
 
     constructor() {
-        this.id = null;
+        this.idEsercizio = null;
         this.testoEsercizio = [];
         this.tipologia = null;
         this.soluzioni = [];
