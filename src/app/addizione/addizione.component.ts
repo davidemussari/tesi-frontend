@@ -84,7 +84,7 @@ export class AddizioneComponent implements OnInit {
 	
 	costruzioneSvolgimentoDaApprovare(): SvolgimentoDaApprovare{
 		let svolgimentoDaApprovare = new SvolgimentoDaApprovare();
-		svolgimentoDaApprovare.idEsercizio = this.esercizio.id;
+		svolgimentoDaApprovare.idEsercizio = this.esercizio.idEsercizio;
 		svolgimentoDaApprovare.passaggi = this.passaggiToString(this.esercizio.testoEsercizio);
 		svolgimentoDaApprovare.primary = {
 			idStudente: this.idUtente,
@@ -101,7 +101,7 @@ export class AddizioneComponent implements OnInit {
 			idStudente: this.idUtente,
 			data: new Date()
 		};
-		svolgimento.punteggio = 1;
+		svolgimento.punteggio = VariabiliGlobaliService.punteggioMassimo;
 		return svolgimento;
 	}
 	

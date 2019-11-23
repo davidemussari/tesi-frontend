@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { EserciziApiService } from '../services/esercizi-api.service';
+import { VariabiliGlobaliService } from '../services/variabili-globali.service';
+import { IsloggedService } from '../services/islogged.service';
+import { User } from '../models/User';
+import { EsercizioGriglia } from '../models/EsercizioGriglia';
 
 @Component({
   selector: 'app-griglia-esercizi-svolti',
@@ -7,9 +12,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GrigliaEserciziSvoltiComponent implements OnInit {
 
-  constructor() { }
-
+	private eserciziApiService: EserciziApiService;
+	private spinner: boolean = true;
+	private user: User = new User();
+	public esercizi = [];
+	
+  constructor(private _eserciziApiService: EserciziApiService, private _isLoggedService: IsloggedService) {
+	  this.eserciziApiService = _eserciziApiService;
+	  this.user = _isLoggedService.getUtenteLoggato();
+  }
+  
   ngOnInit() {
+	  this.spinner = true;
+	  this.eserciziApiService.eserciziSvolti(this.user).
+	  	subscribe((response: EsercizioGriglia[]) => {
+	  		if (response) {
+	  			for (let es of response){
+	  				es.data = new Date(es.data);
+	  				this.esercizi.push(es);
+	  			}
+		        this.spinner = false;
+		        }
+	    });
   }
 
 }

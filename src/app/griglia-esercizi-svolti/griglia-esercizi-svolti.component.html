@@ -1,1 +1,14 @@
-<p>griglia-esercizi-svolti works!</p>
+<clr-datagrid [clrDgLoading]="spinner">
+    <clr-dg-column>Tipologia</clr-dg-column>
+    <clr-dg-column>Data</clr-dg-column>
+    <clr-dg-column>Punteggio</clr-dg-column>
+    <clr-dg-placeholder>Non ci sono dati con questi filtri</clr-dg-placeholder>
+
+    <clr-dg-row *ngFor="let es of esercizi">
+        <clr-dg-cell>{{es.tipologia}}</clr-dg-cell>
+        <clr-dg-cell>{{es.data | date: 'dd/MM/yyyy'}}</clr-dg-cell>
+        <clr-dg-cell>{{es.punteggio}}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{esercizi.length}} esercizi</clr-dg-footer>
+</clr-datagrid>

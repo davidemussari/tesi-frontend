@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Esercizio } from '../models/Esercizio';
+import { User } from '../models/User';
 import { SvolgimentoDaApprovare } from '../models/SvolgimentoDaApprovare';
 import { StoricoEserciziSvoltiStudenti } from '../models/StoricoEserciziSvoltiStudenti';
 import { VariabiliGlobaliService } from '../services/variabili-globali.service';
@@ -17,6 +18,13 @@ export class EserciziApiService {
 	esercizioCasuale(param: string) {
         return this.http.post<Esercizio>(VariabiliGlobaliService.ulrServerBackEnd + 
         		VariabiliGlobaliService.apiEsercizioCasuale, param).pipe(
+            catchError(this.handleError)
+        );
+    }
+	
+	eserciziSvolti(param: User) {
+        return this.http.post<Esercizio[]>(VariabiliGlobaliService.ulrServerBackEnd + 
+        		VariabiliGlobaliService.apiEserciziSvoltiStudente, param).pipe(
             catchError(this.handleError)
         );
     }

@@ -12,10 +12,13 @@ export class VariabiliGlobaliService {
 		divisione: "divisione"
 	};
 	
+	static punteggioMassimo: number = 5;
+	
 	static ulrServerBackEnd: string = 'http://127.0.0.1:8080/';
 	static apiEsercizioCasuale: string = 'esercizioCasuale';
 	static apiSvolgimentoDaApprovare: string = 'putSvolgimentoDaApprovare';
 	static apiEsercizioSvolto: string = 'putEsercizioSvoltoStudenti';
+	static apiEserciziSvoltiStudente: string = 'eserciziSvolti';
 	static apiLogin: string = 'login';
 	
   constructor() { }
