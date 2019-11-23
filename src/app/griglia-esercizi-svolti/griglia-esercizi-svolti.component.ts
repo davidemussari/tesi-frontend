@@ -29,6 +29,11 @@ export class GrigliaEserciziSvoltiComponent implements OnInit {
 	  		if (response) {
 	  			for (let es of response){
 	  				es.data = new Date(es.data);
+	  				let temp = [];
+	  				let passaggi = es.passaggi.split(";");
+	  				for (let p of passaggi)
+	  				    temp.push(p.split(","));
+	  				es.testoEsercizio = temp;
 	  				this.esercizi.push(es);
 	  			}
 		        this.spinner = false;

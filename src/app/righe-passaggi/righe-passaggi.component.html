@@ -19,7 +19,7 @@
 		</div>
 		
 		<div class="clr-col-3 clr-col-sm-2 clr-col-md-1 clr-col-lg-2 clr-col-xl-1"
-			*ngIf="isArray(riga) && numeroRiga!=0 && ultimo">
+			*ngIf="isArray(riga) && numeroRiga!=0 && ultimo && !dimostrativoFisso">
 			<button type="button" class="btn btn-icon bottoneEliminaPassaggio"
 				(click)="eliminaPassaggio()">
 				<clr-icon shape="trash" class="is-solid"></clr-icon>
