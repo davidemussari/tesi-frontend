@@ -12,7 +12,6 @@ const routes: Routes = [
     {path: 'addizione', component: AddizioneComponent, canActivate: [IsloggedService]},
     {path: 'esercizi_svolti', component: GrigliaEserciziSvoltiComponent, canActivate: [IsloggedService]},
     {path: 'login', component: LoginComponent},
-    {path: '', redirectTo: 'login', pathMatch: 'full'},
     {path: '**', redirectTo: 'login'}
 ];
 

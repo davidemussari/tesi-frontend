@@ -1,4 +1,4 @@
-<clr-datagrid [clrDgLoading]="spinner">
+<clr-datagrid [clrDgLoading]="spinner" *ngIf="user.tipoUtente == 'studente'">
     <clr-dg-column>Tipologia</clr-dg-column>
     <clr-dg-column>Data</clr-dg-column>
     <clr-dg-column>Punteggio</clr-dg-column>
@@ -7,6 +7,36 @@
     <clr-dg-row *ngFor="let es of esercizi">
         <clr-dg-cell>{{es.tipologia}}</clr-dg-cell>
         <clr-dg-cell>{{es.data | date: 'dd/MM/yyyy'}}</clr-dg-cell>
+        <clr-dg-cell>{{es.punteggio}}</clr-dg-cell>
+        
+        <clr-dg-row-detail *clrIfExpanded>
+        	<div class="clr-row">
+        		<div class="clr-col-10 clr-col-sm-10 clr-col-md-10 clr-col-lg-10 clr-col-xl-10">
+		        	<app-righe-passaggi
+				    	[(esercizio)]="es"
+				    	[dimostrativoFisso]="true"
+				    	[soluzioneConosciutaCorretta]="es.punteggio>0"
+				    	[soluzioneSbagliata]="es.punteggio==0"
+				    ></app-righe-passaggi>
+			    </div>
+		    </div>
+    	</clr-dg-row-detail>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{esercizi.length}} esercizi</clr-dg-footer>
+</clr-datagrid>
+
+<clr-datagrid [clrDgLoading]="spinner" *ngIf="user.tipoUtente == 'docente'">
+    <clr-dg-column>Cognome e nome</clr-dg-column>
+    <clr-dg-column>Data</clr-dg-column>
+    <clr-dg-column>Tipologia</clr-dg-column>
+    <clr-dg-column>Punteggio</clr-dg-column>
+    <clr-dg-placeholder>Non ci sono dati con questi filtri</clr-dg-placeholder>
+
+    <clr-dg-row *ngFor="let es of esercizi">
+        <clr-dg-cell>{{es.nomeAlunno}} {{es.cognomeAlunno}}</clr-dg-cell>
+        <clr-dg-cell>{{es.data | date: 'dd/MM/yyyy'}}</clr-dg-cell>
+        <clr-dg-cell>{{es.tipologia}}</clr-dg-cell>
         <clr-dg-cell>{{es.punteggio}}</clr-dg-cell>
         
         <clr-dg-row-detail *clrIfExpanded>

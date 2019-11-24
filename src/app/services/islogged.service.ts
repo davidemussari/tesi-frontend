@@ -27,7 +27,10 @@ export class IsloggedService implements CanActivate {
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     if(this.utenteLoggato.tipoUtente == 'studente')
-    return true;
-    else return false;
+    	return true;
+    else if(this.utenteLoggato.tipoUtente == 'docente')
+    	return true;
+    else
+    	return false;
   }
 }
