@@ -15,11 +15,17 @@
 		<clr-icon shape="caret down"></clr-icon>
 		</button>
 		<clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-		<div class="dropdown-header toggle-switch">
-			<input clrToggle type="checkbox" id="toggle_1" (change)="cambia()"
-			[checked]="visualizzaPassaggi">
-			<label for="toggle_1">Visualizza passaggi</label>
-		</div>
+			<div class="dropdown left-bottom">
+				<div class="dropdown-item">
+					Visualizza passaggi
+					<input clrToggle type="checkbox" id="toggle_1" (change)="cambia()"
+					[checked]="visualizzaPassaggi">
+				</div>
+			<div class="dropdown-divider"></div>
+			<div class="dropdown-item"
+			routerLink="/"
+			>Esci</div>
+			</div>
 		</clr-dropdown-menu>
 	</clr-dropdown>
 	</div>
