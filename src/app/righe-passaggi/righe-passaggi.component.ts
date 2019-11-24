@@ -38,7 +38,10 @@ export class RighePassaggiComponent implements OnInit {
 	
 	ngOnInit() {
 		this._impostazioniGlobali.visualizzaPassaggiChange.subscribe(() => {
-			this.visualizzaPassaggi = this._impostazioniGlobali.visualizzaPassaggi;
+			if(!this.dimostrativoFisso)
+				this.visualizzaPassaggi = this._impostazioniGlobali.visualizzaPassaggi;
+			else
+				this.visualizzaPassaggi = true;
 		})
 	}
 	
