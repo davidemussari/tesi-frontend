@@ -8,7 +8,7 @@
 		<span class="title">Tesi</span>
 	</a>
 	</div>
-	<div class="header-actions">
+	<div class="header-actions" *ngIf="isLoggato()">
 	<clr-dropdown>
 		<button class="nav-icon" clrDropdownTrigger>
 		<clr-icon shape="cog"></clr-icon>
@@ -45,7 +45,7 @@
 	</div>
 
 	<!-- Barra laterale di navigazione -->
-	<clr-vertical-nav [clrVerticalNavCollapsible]="true">
+	<clr-vertical-nav [clrVerticalNavCollapsible]="true" *ngIf="isLoggato()">
 		<a clrVerticalNavLink
 			routerLink="./tutorial"
 			routerLinkActive="active">
@@ -54,7 +54,8 @@
 		</a>
 		<a clrVerticalNavLink
 			routerLink="./addizione"
-			routerLinkActive="active">
+			routerLinkActive="active"
+			*ngIf="isStudente()">
 			<clr-icon clrVerticalNavIcon shape="plus-circle" class="is-solid"></clr-icon>
 			Addizione
 	    </a>

@@ -14,6 +14,15 @@ export class AppComponent {
 
     public visualizzaPassaggi = true;
     private user: User = new User();
+    private isLoggedService: IsloggedService;
+    
+    isStudente(){
+    	return this.isLoggedService.getUtenteLoggato().tipoUtente == 'studente';
+    }
+    
+    isLoggato(){
+    	return this.isLoggedService.canActivate();
+    }
 
     constructor(private _impostazioniGlobali: ImpostazioniGlobaliService,
         private _router: Router,
@@ -22,11 +31,8 @@ export class AppComponent {
         /*Serve per agganciare al momento del disegno della pagina il valore
          e permette di rappresentarlo con il toggle-switch nella posizione corretta*/
         this.visualizzaPassaggi = this._impostazioniGlobali.visualizzaPassaggi;
-
-        _isLoggedService.utenteLoggatoOsservable$.subscribe(
-            ut => {
-                this.user = ut;
-            });
+        this.isLoggedService = _isLoggedService;
+        this.user = _isLoggedService.getUtenteLoggato();
     }
     
     cambia() {
