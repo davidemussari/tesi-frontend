@@ -24,11 +24,8 @@ import { RighePassaggiComponent } from './righe-passaggi/righe-passaggi.componen
 import { SommaAlgebricaFiltroPipe } from './pipe/somma-algebrica-filtro.pipe';
 import { VariabiliGlobaliService } from './services/variabili-globali.service';
 import { GrigliaEserciziSvoltiComponent } from './griglia-esercizi-svolti/griglia-esercizi-svolti.component';
+import { IscrizioneComponent } from './iscrizione/iscrizione.component';
 
-const appRoutes: Routes = [
-    { path: 'tutorial', component: TutorialComponent },
-    { path: 'addizione', component: AddizioneComponent },
-];
 
 @NgModule({
     declarations: [
@@ -40,14 +37,14 @@ const appRoutes: Routes = [
         LoginComponent,
         RighePassaggiComponent,
         SommaAlgebricaFiltroPipe,
-        GrigliaEserciziSvoltiComponent
+        GrigliaEserciziSvoltiComponent,
+        IscrizioneComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         ClarityModule,
         BrowserAnimationsModule,
-        RouterModule.forRoot(appRoutes),
         FormsModule,
         NoopAnimationsModule,
         DragDropModule,

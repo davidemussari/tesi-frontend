@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ImpostazioniGlobaliService } from '../services/impostazioni-globali.service';
 import { IsloggedService } from '../services/islogged.service';
 import { Subscription } from 'rxjs';
+import {RouterModule} from '@angular/router';
 
 @Component({
     selector: 'app-login',
