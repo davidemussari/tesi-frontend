@@ -8,6 +8,8 @@ export class EsercizioGriglia {
 	public nomeAlunno: string;
 	public cognomeAlunno: string;
 	public commenti: string;
+	public idStudente: number;
+	public punteggio: number;
 
     constructor() {
         this.idEsercizio = null;
@@ -17,6 +19,8 @@ export class EsercizioGriglia {
         this.data = null;
         this.nomeAlunno = null;
         this.cognomeAlunno = null;
-        this.commenti = null;
+        this.commenti = "";
+        this.idStudente = null;
+        this.punteggio = null;
     }
 }

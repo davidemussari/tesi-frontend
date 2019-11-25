@@ -44,6 +44,13 @@ export class EserciziApiService {
         );
     }
 	
+	putCommentoPunteggio(param: EsercizioGriglia) {
+        return this.http.put<boolean>(VariabiliGlobaliService.ulrServerBackEnd +
+        		VariabiliGlobaliService.apiSalvaCommentoPunteggio, param).pipe(
+            catchError(this.handleError)
+        );
+    }
+	
 	handleError(error) {
         let errorMessage = '';
         if (error.error instanceof ErrorEvent) {
