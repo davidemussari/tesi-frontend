@@ -29,7 +29,7 @@ export class RighePassaggiComponent implements OnInit {
 	@Input() eventoDrop: any;
 	@Output() eventoDropChange = new EventEmitter();
 	@Output() EventoNuovoEsercizio = new EventEmitter<string>();
-	@Input() soluzioneConosciutaCorretta;
+	@Input() soluzioneConosciutaCorretta: boolean = false;
 	@Output() soluzioneConosciutaCorrettaChange = new EventEmitter();
 	@Input() soluzioneSbagliata: boolean = false;
 	@Output() soluzioneSbagliataaChange = new EventEmitter();
@@ -81,7 +81,14 @@ export class RighePassaggiComponent implements OnInit {
 	}
 	
 	isArray(elemento: any) {
-		return Array.isArray(elemento);
+		if (Array.isArray(elemento))
+			if(elemento.length == 1)
+				return false;
+			else
+				return true;
+		else
+			return false;
+			
 	}
 	
 	nuovoEsercizio(){
@@ -98,5 +105,12 @@ export class RighePassaggiComponent implements OnInit {
 		this.indiceNumeroScompostoChange.emit(this.indiceNumeroScomposto);
 		this.paginaScomposizione = visualizzarePaginaScomposizione;
 		this.paginaScomposizioneChange.emit(this.paginaScomposizione);
+	}
+	
+	coloreSoluzione(){
+		if (this.soluzioneConosciutaCorretta)
+			return 'risultatoCorretto';
+		if(this.soluzioneSbagliata || this.esercizio.punteggio == 0)
+			return'risultatoSbagliato';
 	}
 }

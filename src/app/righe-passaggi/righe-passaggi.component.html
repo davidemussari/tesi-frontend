@@ -34,8 +34,7 @@
 
 		<div class="clr-col-3 clr-col-sm-2 clr-col-md-1 clr-col-lg-2 clr-col-xl-1">
 			<div class="card card-block " *ngIf="!isArray(riga)"
-			[ngClass]="soluzioneConosciutaCorretta? 'risultatoCorretto' :
-				(soluzioneSbagliata? 'risultatoSbagliato' : '')">
+			[ngClass]="coloreSoluzione()">
 				<p class="card-text">{{riga}}</p>
 			</div>
 			<button type="button" class="btn btn-primary" *ngIf="!isArray(riga) && !dimostrativoFisso"
