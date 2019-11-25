@@ -1,10 +1,10 @@
 <clr-datagrid [clrDgLoading]="spinner" *ngIf="user.tipoUtente == 'studente'">
-    <clr-dg-column>Tipologia</clr-dg-column>
-    <clr-dg-column>Data</clr-dg-column>
-    <clr-dg-column>Punteggio</clr-dg-column>
+    <clr-dg-column [clrDgField]="'tipologia'">Tipologia</clr-dg-column>
+    <clr-dg-column [clrDgField]="'data'">Data</clr-dg-column>
+    <clr-dg-column [clrDgField]="'punteggio'">Punteggio</clr-dg-column>
     <clr-dg-placeholder>Non ci sono dati con questi filtri</clr-dg-placeholder>
 
-    <clr-dg-row *ngFor="let es of esercizi">
+    <clr-dg-row *clrDgItems="let es of esercizi">
         <clr-dg-cell>{{es.tipologia}}</clr-dg-cell>
         <clr-dg-cell>{{es.data | date: 'dd/MM/yyyy'}}</clr-dg-cell>
         <clr-dg-cell>{{es.punteggio}}</clr-dg-cell>
@@ -19,6 +19,19 @@
 				    	[soluzioneSbagliata]="es.punteggio==0"
 				    ></app-righe-passaggi>
 			    </div>
+			    <div class="clr-break-row"></div>
+		    	<div class="clr-col-10 clr-col-sm-10 clr-col-md-10 clr-col-lg-10 clr-col-xl-10">
+				    <div class="card" *ngIf="es.commenti != null">
+				    	 <div class="card-header">
+			                Commenti
+			            </div>
+			            <div class="card-block">
+			                <div class="card-text">
+			                    {{es.commenti}}
+			                </div>
+		                </div>
+				    </div>
+			    </div>
 		    </div>
     	</clr-dg-row-detail>
     </clr-dg-row>
@@ -27,14 +40,14 @@
 </clr-datagrid>
 
 <clr-datagrid [clrDgLoading]="spinner" *ngIf="user.tipoUtente == 'docente'">
-    <clr-dg-column>Cognome e nome</clr-dg-column>
-    <clr-dg-column>Data</clr-dg-column>
-    <clr-dg-column>Tipologia</clr-dg-column>
-    <clr-dg-column>Punteggio</clr-dg-column>
+    <clr-dg-column [clrDgField]="'cognome'">Cognome e nome</clr-dg-column>
+    <clr-dg-column [clrDgField]="'data'">Data</clr-dg-column>
+    <clr-dg-column [clrDgField]="'tipologia'">Tipologia</clr-dg-column>
+    <clr-dg-column [clrDgField]="'punteggio'">Punteggio</clr-dg-column>
     <clr-dg-placeholder>Non ci sono dati con questi filtri</clr-dg-placeholder>
 
-    <clr-dg-row *ngFor="let es of esercizi">
-        <clr-dg-cell>{{es.nomeAlunno}} {{es.cognomeAlunno}}</clr-dg-cell>
+    <clr-dg-row *clrDgItems="let es of esercizi">
+        <clr-dg-cell>{{es.cognomeAlunno}} {{es.nomeAlunno}}</clr-dg-cell>
         <clr-dg-cell>{{es.data | date: 'dd/MM/yyyy'}}</clr-dg-cell>
         <clr-dg-cell>{{es.tipologia}}</clr-dg-cell>
         <clr-dg-cell>{{es.punteggio}}</clr-dg-cell>
@@ -48,6 +61,22 @@
 				    	[soluzioneConosciutaCorretta]="es.punteggio>0"
 				    	[soluzioneSbagliata]="es.punteggio==0"
 				    ></app-righe-passaggi>
+			    </div>
+			    <div class="clr-break-row"></div>
+		    	<div class="clr-col-10 clr-col-sm-10 clr-col-md-10 clr-col-lg-10 clr-col-xl-10">
+				    <div class="card">
+				    	 <div class="card-header">
+			                Commenti
+			            </div>
+			            <div class="card-block">
+			                <div class="card-text">
+			                    {{es.commenti}}
+			                </div>
+		                </div>
+		                <div class="card-footer">
+			                <button class="btn btn-sm btn-link">Modifica</button>
+			            </div>
+				    </div>
 			    </div>
 		    </div>
     	</clr-dg-row-detail>
