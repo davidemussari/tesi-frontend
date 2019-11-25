@@ -69,7 +69,7 @@ export class GrigliaEserciziSvoltiComponent implements OnInit {
   }
   
   modificaEsercizioConferma(){
-	  if(this.esercizioDaModificare.punteggio == null || this.esercizioDaModificare.punteggio == ''){
+	  if(this.esercizioDaModificare.punteggio == null || this.esercizioDaModificare.punteggio.toString() == ''){
 		  this.valoreObbligatorioDimenticato = true;
 	  }else{
 		  this.validateBtnState = ClrLoadingState.LOADING;
