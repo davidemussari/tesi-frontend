@@ -30,7 +30,9 @@
               "node_modules/@clr/icons/clr-icons.min.css",
               "node_modules/@clr/ui/clr-ui.min.css",
               "src/styles.scss",
-              "node_modules/myscript/dist/myscript.min.css"
+              "node_modules/myscript/dist/myscript.min.css",
+              "node_modules/ngx-bar-rating/themes/br-stars-theme.css",
+              "node_modules/ngx-bar-rating/themes/br-bootstrap-theme.css"
             ],
             "scripts": [
               "node_modules/@webcomponents/custom-elements/custom-elements.min.js",

@@ -1,85 +1,92 @@
 <clr-datagrid [clrDgLoading]="spinner"
-	*ngIf="user.tipoUtente == 'studente'"> <clr-dg-column
-	[clrDgField]="'tipologia'">Tipologia</clr-dg-column> <clr-dg-column
-	[clrDgField]="'data'">Data</clr-dg-column> <clr-dg-column
-	[clrDgField]="'punteggio'">Punteggio</clr-dg-column> <clr-dg-placeholder>Non
-ci sono dati con questi filtri</clr-dg-placeholder> <clr-dg-row
-	*clrDgItems="let es of esercizi"> <clr-dg-cell>{{es.tipologia}}</clr-dg-cell>
-<clr-dg-cell>{{es.data | date: 'dd/MM/yyyy'}}</clr-dg-cell> <clr-dg-cell>{{es.punteggio}}</clr-dg-cell>
+	*ngIf="user.tipoUtente == 'studente'">
+	<clr-dg-column [clrDgField]="'tipologia'">Tipologia</clr-dg-column>
+	<clr-dg-column [clrDgField]="'data'">Data</clr-dg-column>
+	<clr-dg-column [clrDgField]="'punteggio'">Punteggio</clr-dg-column>
+	<clr-dg-placeholder>Non ci sono dati con questi filtri</clr-dg-placeholder>
+	
+	<clr-dg-row *clrDgItems="let es of esercizi">
+		<clr-dg-cell>{{es.tipologia}}</clr-dg-cell>
+		<clr-dg-cell>{{es.data | date: 'dd/MM/yyyy'}}</clr-dg-cell>
+		<clr-dg-cell>
+			<bar-rating [(rate)]="es.punteggio" [max]="5" [theme]="'stars'"
+				[readOnly]="true">
+			</bar-rating>
+		</clr-dg-cell>
 
-<clr-dg-row-detail *clrIfExpanded>
-<div class="clr-row">
-	<div
-		class="clr-col-10 clr-col-sm-10 clr-col-md-10 clr-col-lg-10 clr-col-xl-10">
-		<app-righe-passaggi [(esercizio)]="es" [dimostrativoFisso]="true"
-			[soluzioneConosciutaCorretta]="es.punteggio>0"
-			[soluzioneSbagliata]="es.punteggio==0"></app-righe-passaggi>
-	</div>
-	<div class="clr-break-row"></div>
-	<div
-		class="clr-col-10 clr-col-sm-10 clr-col-md-10 clr-col-lg-10 clr-col-xl-10">
-		<div class="card" *ngIf="es.commenti.trim().length > 0">
-			<div class="card-header">Commenti</div>
-			<div class="card-block">
-				<div class="card-text">{{es.commenti}}</div>
+		<clr-dg-row-detail *clrIfExpanded>
+		<div class="clr-row">
+			<div
+				class="clr-col-10 clr-col-sm-10 clr-col-md-10 clr-col-lg-10 clr-col-xl-10">
+				<app-righe-passaggi [(esercizio)]="es" [dimostrativoFisso]="true"
+					[soluzioneConosciutaCorretta]="es.punteggio>0"
+					[soluzioneSbagliata]="es.punteggio==0"></app-righe-passaggi>
+			</div>
+			<div class="clr-break-row"></div>
+			<div
+				class="clr-col-10 clr-col-sm-10 clr-col-md-10 clr-col-lg-10 clr-col-xl-10">
+				<div class="card" *ngIf="es.commenti.trim().length > 0">
+					<div class="card-header">Commenti</div>
+					<div class="card-block">
+						<div class="card-text">{{es.commenti}}</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
-</clr-dg-row-detail> </clr-dg-row> <clr-dg-footer>{{esercizi.length}} esercizi</clr-dg-footer> </clr-datagrid>
+		</clr-dg-row-detail>
+	</clr-dg-row>
+	<clr-dg-footer>{{esercizi.length}} esercizi</clr-dg-footer>
+</clr-datagrid>
 
 <clr-datagrid [clrDgLoading]="spinner"
-	*ngIf="user.tipoUtente == 'docente'"> <clr-dg-column
-	[clrDgField]="'cognome'">Cognome e nome</clr-dg-column> <clr-dg-column
-	[clrDgField]="'data'">Data</clr-dg-column> <clr-dg-column
-	[clrDgField]="'tipologia'">Tipologia</clr-dg-column> <clr-dg-column
-	[clrDgField]="'punteggio'">Punteggio</clr-dg-column> <clr-dg-placeholder>Non
-ci sono dati con questi filtri</clr-dg-placeholder> <clr-dg-row
-	*clrDgItems="let es of esercizi; let index = index"> <clr-dg-cell>{{es.cognomeAlunno}}
-{{es.nomeAlunno}}</clr-dg-cell> <clr-dg-cell>{{es.data | date:
-'dd/MM/yyyy'}}</clr-dg-cell> <clr-dg-cell>{{es.tipologia}}</clr-dg-cell> <clr-dg-cell>{{es.punteggio}}</clr-dg-cell>
-
-<clr-dg-row-detail *clrIfExpanded>
-<div class="clr-row">
-	<div
-		class="clr-col-10 clr-col-sm-10 clr-col-md-10 clr-col-lg-10 clr-col-xl-10">
-		<app-righe-passaggi [(esercizio)]="es" [dimostrativoFisso]="true"
-			[soluzioneConosciutaCorretta]="es.punteggio>0"
-			[soluzioneSbagliata]="es.punteggio==0"></app-righe-passaggi>
-	</div>
-	<div class="clr-break-row"></div>
-	<div
-		class="clr-col-10 clr-col-sm-10 clr-col-md-10 clr-col-lg-10 clr-col-xl-10">
-		<div class="card" *ngIf="es.commenti.trim().length > 0">
-			<div class="card-header">Commenti</div>
-			<div class="card-block">
-				<div class="card-text">{{es.commenti}}</div>
+	*ngIf="user.tipoUtente == 'docente'">
+	<clr-dg-column [clrDgField]="'cognome'">Cognome e nome</clr-dg-column>
+	<clr-dg-column [clrDgField]="'data'">Data</clr-dg-column>
+	<clr-dg-column [clrDgField]="'tipologia'">Tipologia</clr-dg-column>
+	<clr-dg-column [clrDgField]="'punteggio'">Punteggio</clr-dg-column>
+	<clr-dg-placeholder>Non ci sono dati con questi filtri</clr-dg-placeholder>
+	<clr-dg-row *clrDgItems="let es of esercizi; let index = index">
+		<clr-dg-cell>{{es.cognomeAlunno}} {{es.nomeAlunno}}</clr-dg-cell>
+		<clr-dg-cell>{{es.data | date: 'dd/MM/yyyy'}}</clr-dg-cell>
+		<clr-dg-cell>{{es.tipologia}}</clr-dg-cell>
+		<clr-dg-cell>
+			<bar-rating [(rate)]="es.punteggio" [max]="5" [theme]="'stars'"
+			[readOnly]="true"></bar-rating>
+		</clr-dg-cell>
+	
+		<clr-dg-row-detail *clrIfExpanded>
+			<div class="clr-row">
+				<div
+					class="clr-col-10 clr-col-sm-10 clr-col-md-10 clr-col-lg-10 clr-col-xl-10">
+					<app-righe-passaggi [(esercizio)]="es" [dimostrativoFisso]="true"
+						[soluzioneConosciutaCorretta]="es.punteggio>0"
+						[soluzioneSbagliata]="es.punteggio==0"></app-righe-passaggi>
+				</div>
+				<div class="clr-break-row"></div>
+				<div
+					class="clr-col-10 clr-col-sm-10 clr-col-md-10 clr-col-lg-10 clr-col-xl-10">
+					<div class="card" *ngIf="es.commenti.trim().length > 0">
+						<div class="card-header">Commenti</div>
+						<div class="card-block">
+							<div class="card-text">{{es.commenti}}</div>
+						</div>
+					</div>
+					<button class="btn btn-primary" (click)="modificaEsercizio(es, index)">
+						<clr-icon shape="note" class="is-solid"></clr-icon>
+						Commenta e assegna punteggio
+					</button>
+				</div>
 			</div>
-		</div>
-		<button class="btn btn-primary" (click)="modificaEsercizio(es, index)">
-			<clr-icon shape="note" class="is-solid"></clr-icon>
-			Commenta e assegna punteggio
-		</button>
-	</div>
-</div>
-</clr-dg-row-detail> </clr-dg-row> <clr-dg-footer>{{esercizi.length}} esercizi</clr-dg-footer> </clr-datagrid>
+			</clr-dg-row-detail>
+	</clr-dg-row>
+	<clr-dg-footer>{{esercizi.length}} esercizi</clr-dg-footer>
+</clr-datagrid>
 
 <clr-modal [(clrModalOpen)]="modaleAperta">
 <h3 class="modal-title">Commento e punteggio</h3>
 <div class="modal-body">
-	<clr-select-container>
-		<label>Punteggio</label>
-		<select clrSelect name="options"
-			[(ngModel)]="esercizioDaModificare.punteggio">
-			<option value=""></option>
-			<option value="0">0</option>
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-		</select>
-	</clr-select-container>
+	<label>Punteggio</label>
+	<bar-rating [(rate)]="esercizioDaModificare.punteggio" [max]="5" [theme]="'stars'"></bar-rating>
 	<div class="clr-subtext" *ngIf="valoreObbligatorioDimenticato" style="color: #e12200">
 	 <clr-icon shape="exclamation-circle"></clr-icon>Assegnare punteggio!</div>
 
@@ -87,7 +94,8 @@ ci sono dati con questi filtri</clr-dg-placeholder> <clr-dg-row
 		<clr-textarea-container> <label>Commento:</label>
 		<textarea clrTextarea [(ngModel)]="esercizioDaModificare.commenti"
 			placeholder="Inserire commento visibile a {{esercizioDaModificare.cognomeAlunno}} {{esercizioDaModificare.nomeAlunno}}"
-			name="textAreaCommento"></textarea> </clr-textarea-container>
+			name="textAreaCommento"></textarea>
+		</clr-textarea-container>
 	</form>
 </div>
 <div class="modal-footer">

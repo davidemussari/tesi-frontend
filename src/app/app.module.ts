@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { BarRatingModule } from 'ngx-bar-rating';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClarityModule } from '@clr/angular';
@@ -48,7 +50,8 @@ import { IscrizioneComponent } from './iscrizione/iscrizione.component';
         FormsModule,
         NoopAnimationsModule,
         DragDropModule,
-        HttpClientModule
+        HttpClientModule,
+        BarRatingModule
     ],
     providers: [
     	ImpostazioniGlobaliService,

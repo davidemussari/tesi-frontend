@@ -5,6 +5,8 @@ import { IsloggedService } from '../services/islogged.service';
 import { User } from '../models/User';
 import { EsercizioGriglia } from '../models/EsercizioGriglia';
 import { ClrLoadingState } from '@clr/angular';
+import { BarRatingModule } from 'ngx-bar-rating';
+
 
 
 @Component({
@@ -23,6 +25,7 @@ export class GrigliaEserciziSvoltiComponent implements OnInit {
 	private user: User = new User();
 	private valoreObbligatorioDimenticato: boolean = false;
 	public esercizi = [];
+	public rate: number = 2;
 	
   constructor(private _eserciziApiService: EserciziApiService, private _isLoggedService: IsloggedService) {
 	  this.eserciziApiService = _eserciziApiService;
@@ -87,7 +90,5 @@ export class GrigliaEserciziSvoltiComponent implements OnInit {
 		  		this.generaElenco();
 		    });
 	  }
-	  
   }
-
 }
