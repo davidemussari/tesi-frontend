@@ -60,3 +60,33 @@
 	-ms-touch-action: none;
 }
 */
+
+.iconaGrande{
+	width: 30px;
+	height: 30px;
+	animation-name: passaggio_giusto;
+	animation-duration: 1.5s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes passaggio_giusto {
+	from { color: #CCCCCC; }
+	to { color: #2F8400; }
+}
+@-moz-keyframes passaggio_giusto {
+	from { color: #CCCCCC; }
+	to { color: #2F8400; }
+}
+@-ms-keyframes passaggio_giusto {
+	from { color: #CCCCCC; }
+	to { color: #2F8400; }
+}
+@-o-keyframes passaggio_giusto {
+	from { color: #CCCCCC; }
+	to { color: #2F8400; }
+}
+@keyframes passaggio_giusto {
+	from { color: #CCCCCC; }
+	to { color: #2F8400; }
+}

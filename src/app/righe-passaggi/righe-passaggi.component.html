@@ -28,9 +28,10 @@
 		<!-- Questo div serve per far riconosce la fine della riga dei passaggi
 		(altrimento se si fa drop dopo l'ultima card viene sempre chiesto di
 		sommare con l'ultimo valore -->
-		<div
-			class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1"
-			cdkDrag></div>
+		<div class="clr-col-1 clr-col-sm-1 clr-col-md-1 clr-col-lg-1 clr-col-xl-1"
+			cdkDrag *ngIf="isArray(riga) && numeroRiga!=0">
+			<clr-icon shape="success-standard" class="is-solid iconaGrande"></clr-icon>
+		</div>
 
 		<div class="clr-col-3 clr-col-sm-2 clr-col-md-1 clr-col-lg-2 clr-col-xl-1">
 			<div class="card card-block " *ngIf="!isArray(riga)"
