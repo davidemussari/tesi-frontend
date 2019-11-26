@@ -64,8 +64,8 @@ export class AddizioneComponent implements OnInit {
 	}
 	
 	spezza(str: string){
-		str = str.replace("+",";");
-		str = str.replace("-", ";-");
+		str = str.replace("/+/g",";");
+		str = str.replace("/-/g", ";-");
 		let strArray = str.split(";");
 		if (strArray[0].length == 0)
 			strArray.shift();
@@ -111,9 +111,10 @@ export class AddizioneComponent implements OnInit {
 		let tuttoTrovato: boolean = false;
 		if (this.soluzioneConosciutaCorretta){
 			for (let sol of this.esercizio.soluzioni){
+				let solSpezzato = this.spezza(sol);
 				let trovato: boolean = false;
 				for (let uPassaggio of ultimoPassaggio){
-					trovato = sol.search(uPassaggio) > -1;
+					trovato = solSpezzato.search(uPassaggio) > -1;
 				}
 				if (trovato){
 					tuttoTrovato = true;
