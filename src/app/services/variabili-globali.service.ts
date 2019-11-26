@@ -20,6 +20,7 @@ export class VariabiliGlobaliService {
 	static apiEsercizioSvolto: string = 'putEsercizioSvoltoStudenti';
 	static apiEserciziSvoltiStudente: string = 'eserciziSvolti';
 	static apiLogin: string = 'login';
+	static apiIscrizione: string = 'iscrizione';
 	static apiSalvaCommentoPunteggio: string = 'salvaCommentoPunteggio';
 	
   constructor() { }

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { User } from '../models/User';
+import { Iscrizione } from '../models/Iscrizione';
 import { VariabiliGlobaliService } from '../services/variabili-globali.service';
 
 @Injectable()
@@ -13,6 +14,13 @@ export class UserApiService {
     postLogin(param: any) {
         return this.http.post<User>(VariabiliGlobaliService.ulrServerBackEnd + 
         		VariabiliGlobaliService.apiLogin, param).pipe(
+            catchError(this.handleError)
+        );
+    }
+    
+    postIscrizione(param: Iscrizione){
+    	return this.http.post<boolean>(VariabiliGlobaliService.ulrServerBackEnd + 
+        		VariabiliGlobaliService.apiIscrizione, param).pipe(
             catchError(this.handleError)
         );
     }

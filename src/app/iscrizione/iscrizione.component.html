@@ -1,1 +1,53 @@
-<p>iscrizione works!</p>
+<div class="alert alert-danger" role="alert" *ngIf="visuallizzaErrore">
+    <div class="alert-items">
+        <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+                <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+            </div>
+            <span class="alert-text">
+                Username già assegnato. Inventane un altro.
+            </span>
+        </div>
+    </div>
+</div>
+<div class="alert alert-success" role="alert" *ngIf="visuallizzaSuccesso">
+    <div class="alert-items">
+        <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+                <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+            </div>
+            <span class="alert-text">
+                Completato. Tra poco potrai fare login.
+            </span>
+        </div>
+    </div>
+</div>
+
+
+<form clrForm>
+    <clr-input-container>
+        <label>Nome</label>
+        <input clrInput type="text" [(ngModel)]="iscritto.nome" name="example" />
+    </clr-input-container>
+    <clr-input-container>
+        <label>Cognome</label>
+        <input clrInput type="text" [(ngModel)]="iscritto.cognome" name="example" />
+    </clr-input-container>
+     <clr-input-container>
+        <label>Username</label>
+        <input clrInput type="text" [(ngModel)]="iscritto.username" name="example" />
+    </clr-input-container>
+     <clr-input-container>
+        <label>Password</label>
+        <input clrInput type="password" type="text" [(ngModel)]="iscritto.passwd" name="example" />
+    </clr-input-container>
+     <clr-input-container>
+        <label>Docente assegnato</label>
+        <input clrInput type="text" [(ngModel)]="iscritto.docenteAssegnato" name="example" />
+    </clr-input-container>
+</form>
+
+<button type="button" class="btn btn-primary" (click)="iscrizione()">
+	<clr-icon shape="assign-user" class="is-solid"></clr-icon> Iscrivimi
+</button>
+			
